@@ -152,4 +152,13 @@
   .icon-circle {
     @apply w-14 h-14 rounded-full flex items-center justify-center mb-6;
   }
+  
+  /* New component classes */
+  .hover-card {
+    @apply hover:bg-white hover:shadow-md;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-chaasms-blue to-blue-700 bg-clip-text text-transparent;
+  }
 }

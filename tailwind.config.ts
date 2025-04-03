@@ -69,10 +69,22 @@ export default {
                     lightgray: '#F7F7F7',
                     midgray: '#E5E5E5',
                     text: '#555555',
-                }
+                },
+                // New color palette for visual interest
+                soft: {
+                    green: '#F2FCE2',
+                    yellow: '#FEF7CD',
+                    orange: '#FEC6A1',
+                    purple: '#E5DEFF',
+                    pink: '#FFDEE2',
+                    peach: '#FDE1D3',
+                    blue: '#D3E4FD',
+                    gray: '#F1F0FB',
+                },
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
+                playfair: ['"Playfair Display"', 'serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -82,18 +94,22 @@ export default {
 			keyframes: {
 				'accordion-down': {
 					from: {
-						height: '0'
+						height: '0',
+						opacity: '0'
 					},
 					to: {
-						height: 'var(--radix-accordion-content-height)'
+						height: 'var(--radix-accordion-content-height)',
+						opacity: '1'
 					}
 				},
 				'accordion-up': {
 					from: {
-						height: 'var(--radix-accordion-content-height)'
+						height: 'var(--radix-accordion-content-height)',
+						opacity: '1'
 					},
 					to: {
-						height: '0'
+						height: '0',
+						opacity: '0'
 					}
 				},
 				'fade-in': {
@@ -122,7 +138,12 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'slide-in': 'slide-in 0.3s ease-out',
-			}
+			},
+            backgroundImage: {
+                'soft-gradient': 'linear-gradient(60deg, #abecd6 0%, #fbed96 100%)',
+                'warm-gradient': 'linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%)',
+                'blue-gradient': 'linear-gradient(to right, #243949 0%, #517fa4 100%)',
+            }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
