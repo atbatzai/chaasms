@@ -1,55 +1,64 @@
 
 import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-br from-blue-50 to-indigo-50">
+    <section className="pt-32 md:pt-40 pb-20 md:pb-28 bg-white">
       <div className="chaasms-container">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-1/2 mb-10 md:mb-0 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-chaasms-dark leading-tight mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="lg:col-span-7 space-y-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-chaasms-dark leading-tight">
               The Definitive Channel Strategy Framework for Modern ISVs
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl">
+            
+            <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
               Navigate the complex world of channel partnerships, ecosystems, and marketplace strategies with clarity and structure.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-chaasms-blue hover:bg-blue-700 text-white font-medium py-2 px-6">
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button className="bg-chaasms-blue hover:bg-blue-700 text-white rounded-md px-6 py-6 h-auto">
                 Book a Consultation
               </Button>
-              <Button variant="outline" className="bg-white text-chaasms-blue border-chaasms-blue hover:bg-blue-50">
+              
+              <Button 
+                variant="outline" 
+                className="bg-transparent text-chaasms-blue border-chaasms-blue hover:bg-blue-50 rounded-md px-6 py-6 h-auto group"
+              >
                 Explore the Framework
+                <ChevronRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 rounded-lg transform rotate-3"></div>
-              <div className="relative bg-white p-6 rounded-lg shadow-lg">
-                <div className="flex flex-col items-center">
-                  <div className="w-full max-w-md">
-                    <div className="pyramid-container relative mb-4">
-                      {/* Simplified framework pyramid visualization */}
-                      <div className="bg-chaasms-blue/90 text-white p-3 rounded-t-lg text-center text-xs sm:text-sm">
-                        Measurement & Scaling
-                      </div>
-                      <div className="bg-chaasms-blue/80 text-white p-3 text-center text-xs sm:text-sm mt-1">
-                        GTM Motion
-                      </div>
-                      <div className="bg-chaasms-blue/70 text-white p-3 text-center text-xs sm:text-sm mt-1">
-                        Touchpoint & Segmentation
-                      </div>
-                      <div className="bg-chaasms-blue/60 text-white p-3 text-center text-xs sm:text-sm mt-1">
-                        Ecosystem Strategy
-                      </div>
-                      <div className="bg-chaasms-blue/50 text-white p-3 text-center text-xs sm:text-sm mt-1">
-                        Program Architecture
-                      </div>
-                      <div className="bg-chaasms-blue/40 text-white p-3 rounded-b-lg text-center text-xs sm:text-sm mt-1">
-                        Foundational Strategy
-                      </div>
+          
+          <div className="lg:col-span-5">
+            <div className="relative mx-auto max-w-md">
+              <div className="absolute inset-0 bg-gradient-to-tr from-chaasms-blue/5 to-chaasms-blue/10 rounded-xl transform rotate-2"></div>
+              <div className="relative bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div className="space-y-6">
+                  <div className="text-lg font-medium text-center text-chaasms-dark mb-4">
+                    The CHAASMS Framework
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="bg-chaasms-blue text-white py-3 px-4 rounded-md text-sm font-medium">
+                      Measurement & Scaling
                     </div>
-                    <p className="text-center text-sm text-gray-600 mt-2">The CHAASMS Six-Layer Framework</p>
+                    <div className="bg-chaasms-blue/90 text-white py-3 px-4 rounded-md text-sm font-medium">
+                      GTM Motion
+                    </div>
+                    <div className="bg-chaasms-blue/80 text-white py-3 px-4 rounded-md text-sm font-medium">
+                      Touchpoint & Segmentation
+                    </div>
+                    <div className="bg-chaasms-blue/70 text-white py-3 px-4 rounded-md text-sm font-medium">
+                      Ecosystem Strategy
+                    </div>
+                    <div className="bg-chaasms-blue/60 text-white py-3 px-4 rounded-md text-sm font-medium">
+                      Program Architecture
+                    </div>
+                    <div className="bg-chaasms-blue/50 text-white py-3 px-4 rounded-md text-sm font-medium">
+                      Foundational Strategy
+                    </div>
                   </div>
                 </div>
               </div>
