@@ -10,12 +10,12 @@ const ServiceCard = ({
   title: string; 
   description: string 
 }) => (
-  <div className="bg-white p-8 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-sm hover:border-gray-200 h-full group">
-    <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 bg-blue-50 group-hover:bg-blue-100 transition-colors">
-      <Icon className="text-chaasms-blue" size={22} />
+  <div className="premium-card group">
+    <div className="icon-circle bg-chaasms-lightgray group-hover:bg-blue-50 transition-colors">
+      <Icon className="text-chaasms-blue" size={24} />
     </div>
-    <h3 className="text-xl font-medium text-chaasms-dark mb-3">{title}</h3>
-    <p className="text-gray-600 leading-relaxed">{description}</p>
+    <h3 className="text-xl font-normal text-chaasms-dark mb-4">{title}</h3>
+    <p className="text-chaasms-text leading-relaxed">{description}</p>
   </div>
 );
 
@@ -44,13 +44,13 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-gray-50">
+    <section id="services" className="section-padding bg-chaasms-lightgray">
       <div className="chaasms-container">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <h2 className="section-heading">
             Our Services
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-xl text-chaasms-text leading-relaxed">
             Specialized consulting services to help ISVs build and optimize successful channel programs.
           </p>
         </div>

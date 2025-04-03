@@ -12,18 +12,18 @@ const ImplementationPhase = ({
   description: string;
   activities: string[];
 }) => (
-  <div className="relative bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-    <div className="absolute -top-4 -left-4 w-12 h-12 bg-chaasms-blue rounded-full flex items-center justify-center text-white font-bold">
+  <div className="premium-card relative">
+    <div className="absolute -top-5 -left-5 w-14 h-14 flex items-center justify-center bg-chaasms-blue text-white text-xl font-light">
       {number}
     </div>
-    <div className="mt-2 ml-2">
-      <h3 className="text-xl font-semibold text-chaasms-dark mb-2">{title}</h3>
-      <p className="text-gray-600 mb-4">{description}</p>
-      <div className="space-y-2">
+    <div className="mt-6 ml-4">
+      <h3 className="text-2xl font-normal text-chaasms-dark mb-3">{title}</h3>
+      <p className="text-chaasms-text mb-6">{description}</p>
+      <div className="space-y-3">
         {activities.map((activity, index) => (
-          <div key={index} className="flex items-start gap-2">
-            <CheckCircle className="text-chaasms-blue mt-1 flex-shrink-0" size={16} />
-            <p className="text-gray-600 text-sm">{activity}</p>
+          <div key={index} className="flex items-start gap-3">
+            <CheckCircle className="text-chaasms-blue mt-1 flex-shrink-0" size={18} />
+            <p className="text-chaasms-text">{activity}</p>
           </div>
         ))}
       </div>
@@ -80,16 +80,16 @@ const Implementation = () => {
   ];
 
   return (
-    <section id="implementation" className="py-16 md:py-24 bg-white">
+    <section id="implementation" className="section-padding bg-chaasms-lightgray">
       <div className="chaasms-container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-20">
           <h2 className="section-heading">Implementation Approach</h2>
-          <p className="section-subheading">
+          <p className="text-xl text-chaasms-text max-w-3xl mx-auto">
             Our proven four-phase methodology for successful channel program implementation.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
           {phases.map((phase, index) => (
             <ImplementationPhase
               key={index}
@@ -101,28 +101,28 @@ const Implementation = () => {
           ))}
         </div>
         
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-lg">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-chaasms-dark mb-2">Customized to Your Business</h3>
-            <p className="text-gray-600">
+        <div className="premium-card bg-gradient-to-r from-chaasms-blue/5 to-chaasms-blue/10">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-normal text-chaasms-dark mb-4">Customized to Your Business</h3>
+            <p className="text-chaasms-text max-w-2xl mx-auto">
               Each implementation is tailored to your specific business needs, industry context, and growth objectives.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-4 rounded shadow-sm">
-              <h4 className="font-semibold text-chaasms-dark mb-2">Scalable Approach</h4>
-              <p className="text-sm text-gray-600">Flexible implementation that grows with your business needs.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-white border-t-2 border-chaasms-blue">
+              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Scalable Approach</h4>
+              <p className="text-chaasms-text">Flexible implementation that grows with your business needs.</p>
             </div>
             
-            <div className="bg-white p-4 rounded shadow-sm">
-              <h4 className="font-semibold text-chaasms-dark mb-2">Industry-Specific Insights</h4>
-              <p className="text-sm text-gray-600">Tailored strategies based on your vertical market and ICP.</p>
+            <div className="p-8 bg-white border-t-2 border-chaasms-blue">
+              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Industry-Specific Insights</h4>
+              <p className="text-chaasms-text">Tailored strategies based on your vertical market and ICP.</p>
             </div>
             
-            <div className="bg-white p-4 rounded shadow-sm">
-              <h4 className="font-semibold text-chaasms-dark mb-2">Technology Integration</h4>
-              <p className="text-sm text-gray-600">Seamless connection with your existing tech stack and PRM systems.</p>
+            <div className="p-8 bg-white border-t-2 border-chaasms-blue">
+              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Technology Integration</h4>
+              <p className="text-chaasms-text">Seamless connection with your existing tech stack and PRM systems.</p>
             </div>
           </div>
         </div>

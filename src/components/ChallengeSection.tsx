@@ -9,12 +9,12 @@ const ChallengePoint = ({
   title: string; 
   description: string 
 }) => (
-  <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-    <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center mb-4">
-      <AlertTriangle className="text-amber-600" size={20} />
+  <div className="premium-card">
+    <div className="icon-circle bg-amber-50">
+      <AlertTriangle className="text-amber-600" size={22} />
     </div>
-    <h3 className="text-lg font-semibold text-chaasms-dark mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+    <h3 className="text-xl font-normal text-chaasms-dark mb-3">{title}</h3>
+    <p className="text-chaasms-text">{description}</p>
   </div>
 );
 
@@ -47,16 +47,16 @@ const ChallengeSection = () => {
   ];
 
   return (
-    <section id="challenges" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="challenges" className="section-padding bg-white">
       <div className="chaasms-container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-20">
           <h2 className="section-heading">The Channel Challenge</h2>
-          <p className="section-subheading">
+          <p className="text-xl text-chaasms-text max-w-3xl mx-auto">
             Today's ISVs face unprecedented complexity in building effective channel programs.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {challenges.map((challenge, index) => (
             <ChallengePoint
               key={index}
@@ -66,33 +66,33 @@ const ChallengeSection = () => {
           ))}
         </div>
         
-        <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-chaasms-dark mb-2">The Cost of Inaction</h3>
-            <p className="text-gray-600">
+        <div className="premium-card">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-normal text-chaasms-dark mb-4">The Cost of Inaction</h3>
+            <p className="text-chaasms-text max-w-2xl mx-auto">
               Without a structured channel framework, ISVs risk:
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-red-50 p-4 rounded">
-              <h4 className="font-semibold text-chaasms-dark mb-2">Lost Revenue Opportunities</h4>
-              <p className="text-sm text-gray-600">Missing out on partner-influenced and partner-led revenue streams.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div className="p-8 bg-red-50 border-l-2 border-red-400">
+              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Lost Revenue Opportunities</h4>
+              <p className="text-chaasms-text">Missing out on partner-influenced and partner-led revenue streams.</p>
             </div>
             
-            <div className="bg-red-50 p-4 rounded">
-              <h4 className="font-semibold text-chaasms-dark mb-2">Competitive Disadvantage</h4>
-              <p className="text-sm text-gray-600">Falling behind competitors with more mature partner ecosystems.</p>
+            <div className="p-8 bg-red-50 border-l-2 border-red-400">
+              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Competitive Disadvantage</h4>
+              <p className="text-chaasms-text">Falling behind competitors with more mature partner ecosystems.</p>
             </div>
             
-            <div className="bg-red-50 p-4 rounded">
-              <h4 className="font-semibold text-chaasms-dark mb-2">Wasted Investment</h4>
-              <p className="text-sm text-gray-600">Resources allocated to channel activities without strategic returns.</p>
+            <div className="p-8 bg-red-50 border-l-2 border-red-400">
+              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Wasted Investment</h4>
+              <p className="text-chaasms-text">Resources allocated to channel activities without strategic returns.</p>
             </div>
           </div>
           
           <div className="text-center">
-            <Button className="bg-chaasms-blue hover:bg-blue-700">Solve These Challenges</Button>
+            <Button className="btn-primary">Solve These Challenges</Button>
           </div>
         </div>
       </div>
