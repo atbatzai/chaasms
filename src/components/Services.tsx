@@ -1,5 +1,6 @@
 
 import { ShieldCheck, Zap, BarChart3, Globe } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
 
 const ServiceCard = ({ 
   icon: Icon, 
@@ -12,25 +13,19 @@ const ServiceCard = ({
   description: string;
   index: number;
 }) => {
-  const colorClasses = [
-    "from-soft-blue to-soft-purple",
-    "from-soft-green to-soft-yellow",
-    "from-soft-peach to-soft-pink",
-    "from-soft-purple to-soft-blue",
-  ];
-  
   return (
-    <div className="premium-card group relative rounded-lg">
-      <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[index % 4]} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
-      
-      <div className="relative">
-        <div className="icon-circle bg-gradient-to-br from-white to-gray-100 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all">
-          <Icon className="text-chaasms-blue" size={24} />
+    <Card className="shadow-sm border border-gray-200 bg-white h-full hover:shadow-md transition-all duration-300">
+      <CardContent className="p-6">
+        <div className="flex flex-col h-full">
+          <div className="p-3 rounded-full bg-gray-100 w-12 h-12 flex items-center justify-center mb-4">
+            <Icon className="text-chaasms-blue" size={22} />
+          </div>
+          
+          <h3 className="text-xl font-medium text-chaasms-dark mb-3">{title}</h3>
+          <p className="text-chaasms-text text-sm">{description}</p>
         </div>
-        <h3 className="text-xl font-normal text-chaasms-dark mb-4 group-hover:text-chaasms-blue transition-colors">{title}</h3>
-        <p className="text-chaasms-text leading-relaxed">{description}</p>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -61,7 +56,7 @@ const Services = () => {
   return (
     <section id="services" className="section-padding bg-chaasms-lightgray">
       <div className="chaasms-container">
-        <div className="max-w-3xl mx-auto text-center mb-20">
+        <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4">Our Expertise</span>
           <h2 className="section-heading font-playfair">
             Our Services
@@ -71,7 +66,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
