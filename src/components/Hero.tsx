@@ -6,11 +6,6 @@ import TiltCard from "./TiltCard";
 const Hero = () => {
   return (
     <section className="pt-32 md:pt-36 pb-24 md:pb-36 bg-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-soft-blue/10 to-transparent"></div>
-      <div className="absolute top-1/4 -left-20 w-40 h-40 rounded-full bg-soft-yellow/40 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-20 w-64 h-64 rounded-full bg-soft-purple/30 blur-3xl"></div>
-      
       <div className="chaasms-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           <div className="lg:col-span-7 space-y-8">
@@ -43,8 +38,6 @@ const Hero = () => {
           
           <div className="lg:col-span-5">
             <div className="relative mx-auto max-w-md lg:ml-auto">
-              <div className="absolute top-6 -left-6 w-full h-full bg-gradient-to-br from-soft-purple/30 to-soft-blue/20 rounded-lg transform rotate-3"></div>
-              
               <TiltCard className="relative bg-white p-8 rounded-lg shadow-md border border-chaasms-midgray/30">
                 <div className="space-y-6">
                   <div className="text-xl font-normal text-center text-chaasms-dark mb-6 font-playfair">

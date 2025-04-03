@@ -7,13 +7,11 @@ import Implementation from '@/components/Implementation';
 import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import FloatingShapes from '@/components/FloatingShapes';
 import SectionDivider from '@/components/SectionDivider';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
-      <FloatingShapes />
       <Header />
       <main className="flex-grow">
         <Hero />

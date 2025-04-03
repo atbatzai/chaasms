@@ -29,7 +29,6 @@ const ServiceCard = ({
       }}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[index % 4]} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
-      <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-gradient-to-br from-white to-gray-100 rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
       
       <div className="relative z-10">
         <div className="icon-circle bg-gradient-to-br from-white to-gray-100 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all">
@@ -68,9 +67,6 @@ const Services = () => {
 
   return (
     <section id="services" className="section-padding bg-chaasms-lightgray relative overflow-hidden">
-      <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-soft-purple/20 to-soft-blue/30 blur-3xl rounded-full"></div>
-      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-gradient-to-tl from-soft-yellow/20 to-soft-green/30 blur-3xl rounded-full"></div>
-      
       <div className="chaasms-container relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-20">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4">Our Expertise</span>
