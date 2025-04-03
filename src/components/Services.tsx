@@ -1,6 +1,5 @@
 
 import { ShieldCheck, Zap, BarChart3, Globe } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const ServiceCard = ({ 
   icon: Icon, 
@@ -21,16 +20,10 @@ const ServiceCard = ({
   ];
   
   return (
-    <div 
-      className="premium-card group relative overflow-hidden rounded-lg"
-      style={{
-        transformStyle: "preserve-3d",
-        transform: "perspective(1000px)",
-      }}
-    >
+    <div className="premium-card group relative rounded-lg">
       <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[index % 4]} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
       
-      <div className="relative z-10">
+      <div className="relative">
         <div className="icon-circle bg-gradient-to-br from-white to-gray-100 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all">
           <Icon className="text-chaasms-blue" size={24} />
         </div>

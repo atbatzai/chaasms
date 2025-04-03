@@ -5,8 +5,8 @@ import TiltCard from "./TiltCard";
 
 const Hero = () => {
   return (
-    <section className="pt-32 md:pt-36 pb-24 md:pb-36 bg-white relative overflow-hidden">
-      <div className="chaasms-container relative z-10">
+    <section className="pt-32 md:pt-36 pb-24 md:pb-36 bg-white">
+      <div className="chaasms-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           <div className="lg:col-span-7 space-y-8">
             <div className="inline-block px-4 py-2 bg-soft-blue/50 rounded-full text-chaasms-blue text-sm mb-4 animate-fade-in">
