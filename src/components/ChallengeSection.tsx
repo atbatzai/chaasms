@@ -32,8 +32,14 @@ const ChallengePoint = ({
 
   return (
     <motion.div 
-      className="premium-card hover:shadow-lg transition-all duration-300 border-l-4 rounded-r-lg overflow-hidden relative group"
-      style={{ borderLeftColor: color }}
+      className="premium-card hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden relative group"
+      style={{ 
+        background: `linear-gradient(135deg, ${color}05, ${color}15)`,
+        borderLeft: `3px solid ${color}`,
+        borderTop: `1px solid ${color}20`, 
+        borderRight: `1px solid ${color}10`, 
+        borderBottom: `1px solid ${color}10` 
+      }}
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
@@ -48,7 +54,8 @@ const ChallengePoint = ({
           className="icon-circle mr-5 flex-shrink-0 bg-gradient-to-br shadow-md group-hover:shadow-lg transition-all duration-300"
           style={{ 
             background: `linear-gradient(135deg, ${color}20, ${color}40)`,
-            borderLeft: `1px solid ${color}30`
+            borderLeft: `1px solid ${color}30`,
+            borderRadius: "50%"
           }}
         >
           <Icon className="text-chaasms-dark" style={{ color }} size={22} />
@@ -103,6 +110,30 @@ const ChallengeSection = () => {
     }
   ];
 
+  // Animation variants for the title section
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  // Animation variants for the risk cards
+  const riskCardVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { 
+        duration: 0.5, 
+        ease: "easeOut",
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
     <section id="challenges" className="section-padding bg-white relative overflow-hidden">
       {/* Background decorative elements */}
@@ -111,8 +142,23 @@ const ChallengeSection = () => {
       <div className="absolute top-1/4 -right-10 w-40 h-40 bg-soft-yellow/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 -left-20 w-60 h-60 bg-soft-purple/20 rounded-full blur-3xl"></div>
       
+      {/* Animated wavy shape */}
+      <div className="absolute right-0 top-1/3 w-72 h-72 opacity-20" 
+           style={{ 
+             borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+             background: 'linear-gradient(135deg, #4A6FA5 0%, #27AE60 100%)',
+             animation: 'floating 20s infinite ease-in-out'
+           }}>
+      </div>
+      
       <div className="chaasms-container relative z-10">
-        <div className="text-center mb-20">
+        <motion.div 
+          className="text-center mb-20"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <span className="inline-block px-4 py-1 rounded-full bg-soft-orange/30 text-chaasms-dark text-sm mb-4">
             Industry Challenges
           </span>
@@ -120,7 +166,7 @@ const ChallengeSection = () => {
           <p className="text-xl text-chaasms-text max-w-3xl mx-auto leading-relaxed">
             Today's ISVs face unprecedented complexity in building effective channel programs.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {challenges.map((challenge, index) => (
@@ -150,25 +196,43 @@ const ChallengeSection = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-            <div className="p-8 bg-gradient-to-br from-red-50 to-white border-l-2 border-red-400 rounded-r-lg shadow-sm hover:shadow-md transition-all duration-300">
-              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Lost Revenue Opportunities</h4>
-              <p className="text-chaasms-text">Missing out on partner-influenced and partner-led revenue streams.</p>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+            variants={riskCardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="p-8 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-white border-l-2 border-t-2 border-red-400/30 rounded-lg transform transition-transform duration-300 group-hover:scale-95"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-100/30 to-transparent rounded-lg transform transition-transform duration-300 group-hover:scale-105"></div>
+              <div className="relative z-10">
+                <h4 className="text-lg font-medium text-chaasms-dark mb-3">Lost Revenue Opportunities</h4>
+                <p className="text-chaasms-text">Missing out on partner-influenced and partner-led revenue streams.</p>
+              </div>
             </div>
             
-            <div className="p-8 bg-gradient-to-br from-red-50 to-white border-l-2 border-red-400 rounded-r-lg shadow-sm hover:shadow-md transition-all duration-300">
-              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Competitive Disadvantage</h4>
-              <p className="text-chaasms-text">Falling behind competitors with more mature partner ecosystems.</p>
+            <div className="p-8 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-white border-l-2 border-t-2 border-red-400/30 rounded-lg transform transition-transform duration-300 group-hover:scale-95"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-100/30 to-transparent rounded-lg transform transition-transform duration-300 group-hover:scale-105"></div>
+              <div className="relative z-10">
+                <h4 className="text-lg font-medium text-chaasms-dark mb-3">Competitive Disadvantage</h4>
+                <p className="text-chaasms-text">Falling behind competitors with more mature partner ecosystems.</p>
+              </div>
             </div>
             
-            <div className="p-8 bg-gradient-to-br from-red-50 to-white border-l-2 border-red-400 rounded-r-lg shadow-sm hover:shadow-md transition-all duration-300">
-              <h4 className="text-lg font-medium text-chaasms-dark mb-3">Wasted Investment</h4>
-              <p className="text-chaasms-text">Resources allocated to channel activities without strategic returns.</p>
+            <div className="p-8 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-white border-l-2 border-t-2 border-red-400/30 rounded-lg transform transition-transform duration-300 group-hover:scale-95"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-100/30 to-transparent rounded-lg transform transition-transform duration-300 group-hover:scale-105"></div>
+              <div className="relative z-10">
+                <h4 className="text-lg font-medium text-chaasms-dark mb-3">Wasted Investment</h4>
+                <p className="text-chaasms-text">Resources allocated to channel activities without strategic returns.</p>
+              </div>
             </div>
-          </div>
+          </motion.div>
           
           <div className="text-center pb-8">
-            <Button className="btn-primary bg-gradient-to-r from-chaasms-blue to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-md hover:shadow-lg transition-all">
+            <Button className="btn-primary bg-gradient-to-r from-chaasms-blue to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-md hover:shadow-lg transition-all rounded-lg">
               Solve These Challenges
             </Button>
           </div>

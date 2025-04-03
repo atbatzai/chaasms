@@ -2,7 +2,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import FrameworkOverview from '@/components/FrameworkOverview';
-import Testimonials from '@/components/Testimonials';
 import ChallengeSection from '@/components/ChallengeSection';
 import Implementation from '@/components/Implementation';
 import Services from '@/components/Services';
@@ -23,7 +22,6 @@ const Index = () => {
           <FrameworkOverview />
           <SectionDivider position="bottom" color="white" />
         </div>
-        <Testimonials />
         <div className="relative">
           <SectionDivider position="top" color="#f7f7f7" />
           <ChallengeSection />
