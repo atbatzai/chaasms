@@ -66,8 +66,8 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-chaasms-lightgray relative overflow-hidden">
-      <div className="chaasms-container relative z-10">
+    <section id="services" className="section-padding bg-chaasms-lightgray">
+      <div className="chaasms-container">
         <div className="max-w-3xl mx-auto text-center mb-20">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4">Our Expertise</span>
           <h2 className="section-heading font-playfair">
