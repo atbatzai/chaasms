@@ -57,6 +57,20 @@ const FloatingShapes = () => {
       opacity: shape.opacity,
     };
     
+    // Parse the color string safely
+    const getGradientColors = (colorString: string) => {
+      const fromMatch = colorString.match(/from-([a-zA-Z0-9-]+)/);
+      const toMatch = colorString.match(/to-([a-zA-Z0-9-]+)/);
+      
+      const fromColor = fromMatch ? fromMatch[1] : 'blue-300';
+      const toColor = toMatch ? toMatch[1] : 'purple-300';
+      
+      return {
+        from: fromColor,
+        to: toColor
+      };
+    };
+    
     switch (shape.type) {
       case 'square':
         return (
@@ -66,29 +80,35 @@ const FloatingShapes = () => {
           />
         );
       case 'triangle':
-        return (
-          <div 
-            className={`absolute ${shape.blur} ${shape.rotate}`}
-            style={{
-              ...commonStyles,
-              clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
-              background: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
-              backgroundImage: `linear-gradient(to bottom right, ${shape.color.split(' ')[1].replace('from-', '')} 0%, ${shape.color.split(' ')[2].replace('to-', '')} 100%)`,
-            }}
-          />
-        );
+        {
+          const colors = getGradientColors(shape.color);
+          return (
+            <div 
+              className={`absolute ${shape.blur} ${shape.rotate}`}
+              style={{
+                ...commonStyles,
+                clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+                background: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
+                backgroundImage: `linear-gradient(to bottom right, var(--${colors.from}) 0%, var(--${colors.to}) 100%)`,
+              }}
+            />
+          );
+        }
       case 'wave':
-        return (
-          <div 
-            className={`absolute ${shape.blur} ${shape.rotate}`}
-            style={{
-              ...commonStyles,
-              borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
-              background: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
-              backgroundImage: `linear-gradient(to bottom right, ${shape.color.split(' ')[1].replace('from-', '')} 0%, ${shape.color.split(' ')[2].replace('to-', '')} 100%)`,
-            }}
-          />
-        );
+        {
+          const colors = getGradientColors(shape.color);
+          return (
+            <div 
+              className={`absolute ${shape.blur} ${shape.rotate}`}
+              style={{
+                ...commonStyles,
+                borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+                background: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
+                backgroundImage: `linear-gradient(to bottom right, var(--${colors.from}) 0%, var(--${colors.to}) 100%)`,
+              }}
+            />
+          );
+        }
       case 'circle':
       default:
         return (
