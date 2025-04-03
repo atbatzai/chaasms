@@ -1,6 +1,5 @@
-
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, LinkedIn } from 'lucide-react';
+import { Facebook, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,7 +13,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-4">The definitive channel strategy framework for modern ISVs.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white transition-colors" aria-label="LinkedIn">
-                <LinkedIn size={20} />
+                <Linkedin size={20} />
               </a>
               <a href="#" className="text-gray-300 hover:text-white transition-colors" aria-label="Twitter">
                 <Twitter size={20} />
