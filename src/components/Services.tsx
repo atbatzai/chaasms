@@ -1,23 +1,46 @@
 
 import { ShieldCheck, Zap, BarChart3, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ServiceCard = ({ 
   icon: Icon, 
   title, 
-  description 
+  description,
+  index
 }: { 
   icon: React.ElementType; 
   title: string; 
-  description: string 
-}) => (
-  <div className="premium-card group">
-    <div className="icon-circle bg-chaasms-lightgray group-hover:bg-blue-50 transition-colors">
-      <Icon className="text-chaasms-blue" size={24} />
+  description: string;
+  index: number;
+}) => {
+  const colorClasses = [
+    "from-soft-blue to-soft-purple",
+    "from-soft-green to-soft-yellow",
+    "from-soft-peach to-soft-pink",
+    "from-soft-purple to-soft-blue",
+  ];
+  
+  return (
+    <div 
+      className="premium-card group relative overflow-hidden rounded-lg"
+      style={{
+        transformStyle: "preserve-3d",
+        transform: "perspective(1000px)",
+      }}
+    >
+      <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[index % 4]} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
+      <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-gradient-to-br from-white to-gray-100 rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
+      
+      <div className="relative z-10">
+        <div className="icon-circle bg-gradient-to-br from-white to-gray-100 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all">
+          <Icon className="text-chaasms-blue" size={24} />
+        </div>
+        <h3 className="text-xl font-normal text-chaasms-dark mb-4 group-hover:text-chaasms-blue transition-colors">{title}</h3>
+        <p className="text-chaasms-text leading-relaxed">{description}</p>
+      </div>
     </div>
-    <h3 className="text-xl font-normal text-chaasms-dark mb-4">{title}</h3>
-    <p className="text-chaasms-text leading-relaxed">{description}</p>
-  </div>
-);
+  );
+};
 
 const Services = () => {
   const services = [
@@ -44,10 +67,14 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-chaasms-lightgray">
-      <div className="chaasms-container">
+    <section id="services" className="section-padding bg-chaasms-lightgray relative overflow-hidden">
+      <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-soft-purple/20 to-soft-blue/30 blur-3xl rounded-full"></div>
+      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-gradient-to-tl from-soft-yellow/20 to-soft-green/30 blur-3xl rounded-full"></div>
+      
+      <div className="chaasms-container relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <h2 className="section-heading">
+          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4">Our Expertise</span>
+          <h2 className="section-heading font-playfair">
             Our Services
           </h2>
           <p className="text-xl text-chaasms-text leading-relaxed">
@@ -62,6 +89,7 @@ const Services = () => {
               icon={service.icon}
               title={service.title}
               description={service.description}
+              index={index}
             />
           ))}
         </div>
