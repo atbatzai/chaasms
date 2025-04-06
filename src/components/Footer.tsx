@@ -1,9 +1,17 @@
 
-import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -100; // Adjust for header height
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
   
   return (
     <footer className="bg-chaasms-dark text-white pt-20 pb-10">
@@ -28,30 +36,114 @@ const Footer = () => {
           <div>
             <h4 className="font-medium mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">Home</Link></li>
-              <li><Link to="/challenges" className="text-gray-300 hover:text-white transition-colors text-sm">The Channel Challenge</Link></li>
-              <li><Link to="/framework" className="text-gray-300 hover:text-white transition-colors text-sm">Framework</Link></li>
-              <li><Link to="/implementation" className="text-gray-300 hover:text-white transition-colors text-sm">Implementation</Link></li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('hero')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Home
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('challenges')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  The Channel Challenge
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('framework-overview')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Framework
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('implementation')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Implementation
+                </span>
+              </li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-medium mb-6">Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors text-sm">Framework Implementation</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors text-sm">Channel Strategy Assessment</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors text-sm">Partner Program Design</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors text-sm">Marketplace Strategy</Link></li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Framework Implementation
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Channel Strategy Assessment
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Partner Program Design
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Marketplace Strategy
+                </span>
+              </li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-medium mb-6">Resources</h4>
             <ul className="space-y-3">
-              <li><Link to="/resources" className="text-gray-300 hover:text-white transition-colors text-sm">Blog</Link></li>
-              <li><Link to="/resources" className="text-gray-300 hover:text-white transition-colors text-sm">Framework Overview</Link></li>
-              <li><Link to="/resources" className="text-gray-300 hover:text-white transition-colors text-sm">Assessment Tool</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm">Contact</Link></li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('resources')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Blog
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('chaasms-framework')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Framework Overview
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('framework-overview')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Assessment Tool
+                </span>
+              </li>
+              <li>
+                <span 
+                  onClick={() => scrollToSection('contact')}
+                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
+                >
+                  Contact
+                </span>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
@@ -14,7 +13,6 @@ import {
 import { cn } from "@/lib/utils";
 
 const Header = () => {
-  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   
@@ -32,12 +30,18 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -100; // Adjust for header height
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
   };
   
   // Custom styles for navigation menu items
-  const navItemClasses = "px-5 py-2 text-sm font-medium transition-colors";
+  const navItemClasses = "px-5 py-2 text-sm font-medium transition-colors cursor-pointer";
   const activeNavItemClasses = "text-chaasms-blue";
   const inactiveNavItemClasses = "text-chaasms-dark hover:text-chaasms-blue";
 
@@ -48,30 +52,31 @@ const Header = () => {
     >
       <div className="chaasms-container">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-normal text-chaasms-blue">
+          <span 
+            onClick={() => scrollToSection('hero')}
+            className="text-2xl font-normal text-chaasms-blue cursor-pointer"
+          >
             CHAASMS
-          </Link>
+          </span>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-12">
             <NavigationMenu>
               <NavigationMenuList className="space-x-8">
                 <NavigationMenuItem>
-                  <Link 
-                    to="/" 
-                    className={cn(navItemClasses, isActive('/') ? activeNavItemClasses : inactiveNavItemClasses)}
+                  <span 
+                    onClick={() => scrollToSection('hero')}
+                    className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
                     Home
-                  </Link>
+                  </span>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger 
                     className={cn(
-                      "text-sm font-medium bg-transparent hover:bg-transparent focus:bg-transparent px-5", 
-                      isActive('/challenges') || isActive('/framework') || isActive('/implementation')
-                        ? "text-chaasms-blue" 
-                        : "text-chaasms-dark hover:text-chaasms-blue"
+                      "text-sm font-medium bg-transparent hover:bg-transparent focus:bg-transparent px-5",
+                      "text-chaasms-dark hover:text-chaasms-blue"
                     )}
                   >
                     Framework
@@ -79,9 +84,9 @@ const Header = () => {
                   <NavigationMenuContent>
                     <div className="w-[500px] p-6 bg-white shadow-lg">
                       <div className="grid gap-6 md:grid-cols-2">
-                        <Link
-                          to="/challenges"
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray"
+                        <div
+                          onClick={() => scrollToSection('challenges')}
+                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
                         >
                           <div className="text-sm font-medium text-chaasms-blue mb-1">
                             The Channel Challenge
@@ -89,10 +94,10 @@ const Header = () => {
                           <p className="text-sm leading-snug text-chaasms-text">
                             Understanding today's complex ecosystem landscape
                           </p>
-                        </Link>
-                        <Link
-                          to="/framework"
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray"
+                        </div>
+                        <div
+                          onClick={() => scrollToSection('framework-overview')}
+                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
                         >
                           <div className="text-sm font-medium text-chaasms-blue mb-1">
                             Framework Overview
@@ -100,10 +105,10 @@ const Header = () => {
                           <p className="text-sm leading-snug text-chaasms-text">
                             Explore our six-layer comprehensive methodology
                           </p>
-                        </Link>
-                        <Link
-                          to="/implementation"
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray"
+                        </div>
+                        <div
+                          onClick={() => scrollToSection('implementation')}
+                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
                         >
                           <div className="text-sm font-medium text-chaasms-blue mb-1">
                             Implementation
@@ -111,51 +116,54 @@ const Header = () => {
                           <p className="text-sm leading-snug text-chaasms-text">
                             Our four-phase implementation approach
                           </p>
-                        </Link>
+                        </div>
                       </div>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <Link 
-                    to="/services" 
-                    className={cn(navItemClasses, isActive('/services') ? activeNavItemClasses : inactiveNavItemClasses)}
+                  <span 
+                    onClick={() => scrollToSection('services')}
+                    className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
                     Services
-                  </Link>
+                  </span>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <Link 
-                    to="/about" 
-                    className={cn(navItemClasses, isActive('/about') ? activeNavItemClasses : inactiveNavItemClasses)}
+                  <span 
+                    onClick={() => scrollToSection('chaasms-framework')}
+                    className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
-                    About
-                  </Link>
+                    CHAASMS Framework
+                  </span>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <Link 
-                    to="/resources" 
-                    className={cn(navItemClasses, isActive('/resources') ? activeNavItemClasses : inactiveNavItemClasses)}
+                  <span 
+                    onClick={() => scrollToSection('resources')}
+                    className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
                     Resources
-                  </Link>
+                  </span>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <Link 
-                    to="/contact" 
-                    className={cn(navItemClasses, isActive('/contact') ? activeNavItemClasses : inactiveNavItemClasses)}
+                  <span 
+                    onClick={() => scrollToSection('contact')}
+                    className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
                     Contact
-                  </Link>
+                  </span>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
             
-            <Button className="btn-primary">
+            <Button 
+              className="btn-primary"
+              onClick={() => scrollToSection('contact')}
+            >
               Book a Consultation
             </Button>
           </div>
@@ -174,17 +182,12 @@ const Header = () => {
         {mobileMenuOpen && (
           <div className="md:hidden py-6 mt-4 bg-white shadow-md border-t border-chaasms-lightgray animate-fade-in">
             <nav className="flex flex-col space-y-2">
-              <Link 
-                to="/" 
-                className={`px-4 py-3 ${
-                  isActive('/') 
-                    ? 'text-chaasms-blue' 
-                    : 'text-chaasms-dark hover:text-chaasms-blue'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+              <span 
+                onClick={() => scrollToSection('hero')}
+                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
                 Home
-              </Link>
+              </span>
               
               <div className="px-4 py-3 flex flex-col">
                 <div className="flex items-center justify-between">
@@ -192,94 +195,59 @@ const Header = () => {
                   <ChevronDown size={16} className="text-gray-400" />
                 </div>
                 <div className="pl-4 mt-3 space-y-2 border-l border-chaasms-lightgray">
-                  <Link 
-                    to="/challenges" 
-                    className={`block py-2 ${
-                      isActive('/challenges') 
-                        ? 'text-chaasms-blue' 
-                        : 'text-chaasms-dark hover:text-chaasms-blue'
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
+                  <span 
+                    onClick={() => scrollToSection('challenges')}
+                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
                   >
                     The Channel Challenge
-                  </Link>
-                  <Link 
-                    to="/framework" 
-                    className={`block py-2 ${
-                      isActive('/framework') 
-                        ? 'text-chaasms-blue' 
-                        : 'text-chaasms-dark hover:text-chaasms-blue'
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
+                  </span>
+                  <span 
+                    onClick={() => scrollToSection('framework-overview')}
+                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
                   >
                     Framework Overview
-                  </Link>
-                  <Link 
-                    to="/implementation" 
-                    className={`block py-2 ${
-                      isActive('/implementation') 
-                        ? 'text-chaasms-blue' 
-                        : 'text-chaasms-dark hover:text-chaasms-blue'
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
+                  </span>
+                  <span 
+                    onClick={() => scrollToSection('implementation')}
+                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
                   >
                     Implementation
-                  </Link>
+                  </span>
                 </div>
               </div>
               
-              <Link 
-                to="/services" 
-                className={`px-4 py-3 ${
-                  isActive('/services') 
-                    ? 'text-chaasms-blue' 
-                    : 'text-chaasms-dark hover:text-chaasms-blue'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+              <span 
+                onClick={() => scrollToSection('services')}
+                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
                 Services
-              </Link>
+              </span>
               
-              <Link 
-                to="/about" 
-                className={`px-4 py-3 ${
-                  isActive('/about') 
-                    ? 'text-chaasms-blue' 
-                    : 'text-chaasms-dark hover:text-chaasms-blue'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+              <span 
+                onClick={() => scrollToSection('chaasms-framework')}
+                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
-                About
-              </Link>
+                CHAASMS Framework
+              </span>
               
-              <Link 
-                to="/resources" 
-                className={`px-4 py-3 ${
-                  isActive('/resources') 
-                    ? 'text-chaasms-blue' 
-                    : 'text-chaasms-dark hover:text-chaasms-blue'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+              <span 
+                onClick={() => scrollToSection('resources')}
+                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
                 Resources
-              </Link>
+              </span>
               
-              <Link 
-                to="/contact" 
-                className={`px-4 py-3 ${
-                  isActive('/contact') 
-                    ? 'text-chaasms-blue' 
-                    : 'text-chaasms-dark hover:text-chaasms-blue'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+              <span 
+                onClick={() => scrollToSection('contact')}
+                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
                 Contact
-              </Link>
+              </span>
               
               <div className="px-4 pt-4 pb-2">
                 <Button 
                   className="w-full btn-primary"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => scrollToSection('contact')}
                 >
                   Book a Consultation
                 </Button>
