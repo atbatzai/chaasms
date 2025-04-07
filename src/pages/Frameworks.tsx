@@ -10,9 +10,8 @@ import Layer3Svg from '@/components/framework/Layer3Svg';
 import Layer4Svg from '@/components/framework/Layer4Svg';
 import Layer5Svg from '@/components/framework/Layer5Svg';
 import Layer6Svg from '@/components/framework/Layer6Svg';
-import ChaasmsFrameworkClean from '@/components/framework/ChaasmsFrameworkClean';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 
 // Define consistent color theme for the page
 const colors = {
@@ -47,6 +46,18 @@ const Frameworks = () => {
       <main className="flex-grow pt-32">
         <section className="section-padding relative bg-white pb-24">
           <div className="chaasms-container">
+            {/* Navigation to Framework Overview */}
+            <div className="mb-8">
+              <Button 
+                onClick={() => navigate('/framework-overview')}
+                variant="outline"
+                className="flex items-center gap-2 border-chaasms-blue text-chaasms-blue hover:bg-blue-50"
+              >
+                <Home size={16} />
+                <span>Framework Overview</span>
+              </Button>
+            </div>
+
             <div className="max-w-3xl mx-auto text-center mb-16">
               <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">
                 CHAASMS Framework
@@ -120,21 +131,15 @@ const Frameworks = () => {
               </Button>
             </div>
             
-            {/* Interlocking Framework Visual - Added new component */}
-            <div className="pt-8 border-t border-gray-200">
-              <div className="max-w-3xl mx-auto text-center mb-12">
-                <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">
-                  Framework Integration
-                </span>
-                <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6 font-playfair">
-                  The Interlocking System
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Visualize how each layer of the CHAASMS framework connects to create a cohesive channel strategy.
-                </p>
-              </div>
-              
-              <ChaasmsFrameworkClean />
+            {/* Return to Framework Overview Button */}
+            <div className="text-center mt-10">
+              <Button 
+                onClick={() => navigate('/framework-overview')}
+                variant="outline"
+                className="border-chaasms-blue text-chaasms-blue hover:bg-blue-50"
+              >
+                Return to Framework Overview
+              </Button>
             </div>
           </div>
         </section>

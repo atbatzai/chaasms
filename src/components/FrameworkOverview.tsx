@@ -1,13 +1,17 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FrameworkLayerType } from '@/types/framework';
 import { frameworkLayers, benefits } from '@/data/frameworkData';
 import FrameworkSteps from './framework/FrameworkSteps';
 import LayerDetailDialog from './framework/LayerDetailDialog';
 import FrameworkBenefits from './framework/FrameworkBenefits';
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const FrameworkOverview = () => {
   const [selectedLayer, setSelectedLayer] = useState<FrameworkLayerType | null>(null);
+  const navigate = useNavigate();
 
   const handleLayerClick = (layer: FrameworkLayerType) => {
     setSelectedLayer(layer);
@@ -37,6 +41,18 @@ const FrameworkOverview = () => {
         />
         
         <FrameworkBenefits benefits={benefits} />
+        
+        {/* Add navigation button to detailed framework pages */}
+        <div className="text-center mt-12">
+          <Button
+            onClick={() => navigate('/framework-overview')}
+            className="flex items-center gap-2 mx-auto"
+            style={{ backgroundColor: '#0f4c81', color: 'white' }}
+          >
+            <span>Explore Full Framework</span>
+            <ArrowRight size={16} />
+          </Button>
+        </div>
       </div>
     </section>
   );
