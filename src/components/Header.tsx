@@ -108,13 +108,6 @@ const Header = () => {
               </span>
               
               <span 
-                onClick={() => scrollToSection('resources')}
-                className={cn(navItemClasses, inactiveNavItemClasses)}
-              >
-                Resources
-              </span>
-              
-              <span 
                 onClick={() => scrollToSection('contact')}
                 className={cn(navItemClasses, inactiveNavItemClasses)}
               >
@@ -174,13 +167,6 @@ const Header = () => {
                 className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
                 Framework Layers
-              </span>
-              
-              <span 
-                onClick={() => scrollToSection('resources')}
-                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
-              >
-                Resources
               </span>
               
               <span 

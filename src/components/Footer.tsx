@@ -110,16 +110,8 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-medium mb-6">Resources</h4>
+            <h4 className="font-medium mb-6">Contact</h4>
             <ul className="space-y-3">
-              <li>
-                <span 
-                  onClick={() => scrollToSection('resources')}
-                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
-                >
-                  Blog
-                </span>
-              </li>
               <li>
                 <span 
                   onClick={() => scrollToSection('chaasms-framework')}
