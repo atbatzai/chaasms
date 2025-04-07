@@ -8,7 +8,7 @@ import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
-import SimpleChaasmsFramework from '@/components/SimpleChaasmsFramework';
+import ChaasmsFrameworkSvg from '@/components/ChaasmsFrameworkSvg';
 
 const Index = () => {
   return (
@@ -57,11 +57,11 @@ const Index = () => {
                   Explore the CHAASMS Framework
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  A hands-on look at our six-layer methodology for building channel programs that drive growth.
+                  A visual representation of our six-layer methodology for building channel programs that drive growth.
                 </p>
               </div>
               
-              <SimpleChaasmsFramework />
+              <ChaasmsFrameworkSvg />
             </div>
           </section>
           <SectionDivider position="bottom" color="white" />
