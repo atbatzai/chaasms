@@ -28,7 +28,7 @@ const EcosystemCard: React.FC<EcosystemCardProps> = ({
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <div className="bg-chaasms-blue text-white p-3">
-        <h4 className="font-bold">{title}</h4>
+        <h4 className="font-bold text-white">{title}</h4>
       </div>
       <div className="p-4">
         {/* Strategic */}
