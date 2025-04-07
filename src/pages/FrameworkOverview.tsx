@@ -24,18 +24,18 @@ const FrameworkOverview = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
-      <main className="flex-grow pt-20">
-        <section className="section-padding relative bg-white pb-24">
+      <main className="flex-grow pt-16">
+        <section className="section-padding relative bg-white pb-16">
           <div className="chaasms-container">
-            <div className="max-w-3xl mx-auto text-center mb-8">
-              <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-2 animate-fade-in">
+            <div className="max-w-3xl mx-auto text-center mb-4">
+              <span className="inline-block px-3 py-0.5 rounded-full bg-blue-50 text-chaasms-blue text-xs mb-1 animate-fade-in">
                 CHAASMS Framework
               </span>
-              <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-4 font-playfair">
+              <h2 className="text-2xl md:text-3xl font-medium text-chaasms-dark mb-2 font-playfair">
                 The CHAASMS Framework Overview
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                A comprehensive six-layer methodology that delivers a structured approach to building successful channel programs.
+              <p className="text-base text-gray-600 leading-relaxed">
+                A comprehensive six-layer methodology for building successful channel programs.
               </p>
             </div>
             
@@ -43,12 +43,12 @@ const FrameworkOverview = () => {
             <ChaasmsFrameworkClean />
             
             {/* Navigation to detailed framework pages */}
-            <div className="mt-12 text-center">
-              <h3 className="text-2xl font-medium text-chaasms-dark mb-3">
+            <div className="mt-8 text-center">
+              <h3 className="text-xl font-medium text-chaasms-dark mb-2">
                 Explore Each Framework Layer
               </h3>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-                Dive deeper into each layer of the CHAASMS framework to understand the components and implementation strategies.
+              <p className="text-base text-gray-600 max-w-2xl mx-auto mb-4">
+                Dive deeper into each layer to understand the components and implementation strategies.
               </p>
               
               <Button
