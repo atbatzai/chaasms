@@ -1,7 +1,15 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const Layer4Svg = () => {
   // Define consistent color palette based on site theme
@@ -387,19 +395,19 @@ const Layer4Svg = () => {
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
-                <div className="flex items-center mb-4">
-                  <div className="w-1/4 text-right pr-2">
-                    <span className="text-xs font-medium">By Ecosystem</span>
-                  </div>
-                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '35%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MS 35%</span>
+                
+                {/* Fixed distribution bars to show full text */}
+                <div className="mb-4">
+                  <div className="text-sm mb-1 font-medium">By Ecosystem</div>
+                  <div className="flex h-10 rounded-md overflow-hidden">
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-2" style={{width: '35%'}}>
+                      Microsoft 35%
                     </div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '40%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">SF 40%</span>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '40%'}}>
+                      Salesforce 40%
                     </div>
-                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '25%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">NS 25%</span>
+                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '25%'}}>
+                      NetSuite 25%
                     </div>
                   </div>
                 </div>
@@ -428,19 +436,19 @@ const Layer4Svg = () => {
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
-                <div className="flex items-center mb-4">
-                  <div className="w-1/4 text-right pr-2">
-                    <span className="text-xs font-medium">By Ecosystem</span>
-                  </div>
-                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '50%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MS 50%</span>
+                
+                {/* Fixed distribution bars to show full text */}
+                <div className="mb-4">
+                  <div className="text-sm mb-1 font-medium">By Ecosystem</div>
+                  <div className="flex h-10 rounded-md overflow-hidden">
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-2" style={{width: '50%'}}>
+                      Microsoft 50%
                     </div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '30%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">SF 30%</span>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '30%'}}>
+                      Salesforce 30%
                     </div>
-                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '20%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">NS 20%</span>
+                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '20%'}}>
+                      NetSuite 20%
                     </div>
                   </div>
                 </div>
@@ -469,22 +477,22 @@ const Layer4Svg = () => {
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
-                <div className="flex items-center mb-4">
-                  <div className="w-1/4 text-right pr-2">
-                    <span className="text-xs font-medium">By Industry</span>
-                  </div>
-                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '35%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">HC 35%</span>
+                
+                {/* Fixed distribution bars to show full text */}
+                <div className="mb-4">
+                  <div className="text-sm mb-1 font-medium">By Industry</div>
+                  <div className="flex h-10 rounded-md overflow-hidden">
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-2" style={{width: '35%'}}>
+                      Healthcare 35%
                     </div>
-                    <div className="bg-blue-700 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '30%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">FS 30%</span>
+                    <div className="bg-blue-700 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '30%'}}>
+                      Financial 30%
                     </div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '20%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MFG 20%</span>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '20%'}}>
+                      Manufacturing 20%
                     </div>
-                    <div className="bg-blue-500 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '15%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">RTL 15%</span>
+                    <div className="bg-blue-500 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '15%'}}>
+                      Retail 15%
                     </div>
                   </div>
                 </div>
@@ -513,19 +521,19 @@ const Layer4Svg = () => {
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
-                <div className="flex items-center mb-4">
-                  <div className="w-1/4 text-right pr-2">
-                    <span className="text-xs font-medium">By Ecosystem</span>
-                  </div>
-                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '60%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MS 60%</span>
+                
+                {/* Fixed distribution bars to show full text */}
+                <div className="mb-4">
+                  <div className="text-sm mb-1 font-medium">By Ecosystem</div>
+                  <div className="flex h-10 rounded-md overflow-hidden">
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-2" style={{width: '60%'}}>
+                      Microsoft 60%
                     </div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '25%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">SF 25%</span>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '25%'}}>
+                      Salesforce 25%
                     </div>
-                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '15%'}}>
-                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">NS 15%</span>
+                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-2" style={{width: '15%'}}>
+                      NetSuite 15%
                     </div>
                   </div>
                 </div>
