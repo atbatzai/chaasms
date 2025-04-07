@@ -1,6 +1,10 @@
 
-import { Phone, Mail, Calendar } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const ContactItem = ({ 
   icon: Icon, 
@@ -23,6 +27,29 @@ const ContactItem = ({
 );
 
 const Contact = () => {
+  const [formData, useState] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: ""
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast.success("Your message has been sent! We'll be in touch shortly.");
+      // Reset form
+      const form = e.target as HTMLFormElement;
+      form.reset();
+    }, 1500);
+  };
+  
   return (
     <section id="contact" className="py-16 md:py-24 bg-white">
       <div className="chaasms-container">
@@ -33,23 +60,11 @@ const Contact = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+        <div className="max-w-xl mx-auto mb-12">
           <ContactItem
             icon={Calendar}
             title="Book a Consultation"
-            content={<a href="#" className="hover:text-chaasms-blue transition-colors">Schedule a free 30-minute discovery call</a>}
-          />
-          
-          <ContactItem
-            icon={Mail}
-            title="Email Us"
-            content={<a href="mailto:info@chaasms.com" className="hover:text-chaasms-blue transition-colors">info@chaasms.com</a>}
-          />
-          
-          <ContactItem
-            icon={Phone}
-            title="Call Us"
-            content={<a href="tel:+1234567890" className="hover:text-chaasms-blue transition-colors">+1 (234) 567-890</a>}
+            content={<span className="hover:text-chaasms-blue transition-colors">Fill out the form below for a free 30-minute discovery call</span>}
           />
         </div>
         
@@ -86,48 +101,62 @@ const Contact = () => {
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-chaasms-dark mb-1">Name</label>
-                  <input
+                  <Input
                     type="text"
                     id="name"
+                    name="name"
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-chaasms-dark mb-1">Email</label>
-                  <input
+                  <Input
                     type="email"
                     id="email"
+                    name="email"
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="your@email.com"
+                    required
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-chaasms-dark mb-1">Company</label>
-                  <input
+                  <Input
                     type="text"
                     id="company"
+                    name="company"
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Your company"
+                    required
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-chaasms-dark mb-1">Message</label>
-                  <textarea
+                  <Textarea
                     id="message"
+                    name="message"
                     rows={4}
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Tell us about your channel challenges"
-                  ></textarea>
+                    required
+                  ></Textarea>
                 </div>
                 
-                <Button className="w-full bg-chaasms-blue hover:bg-blue-700">Submit</Button>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-chaasms-blue hover:bg-blue-700"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </Button>
               </form>
             </div>
           </div>

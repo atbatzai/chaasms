@@ -9,6 +9,7 @@ import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
+import { Toaster } from "sonner";
 
 const Index = () => {
   // Ensure page starts at the top when navigating to this route
@@ -57,6 +58,7 @@ const Index = () => {
         </section>
       </main>
       <Footer />
+      <Toaster position="top-right" />
     </div>
   );
 };
