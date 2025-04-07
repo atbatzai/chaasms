@@ -48,18 +48,18 @@ const ChaasmsFrameworkSvg = () => {
         <text x="400" y="125" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#ffffff">Layer 6: Measurement & Scaling</text>
         <text x="400" y="145" fontFamily="Arial, sans-serif" fontSize="14" textAnchor="middle" fill="#ffffff">KPIs, governance, optimization loop</text>
         
-        {/* Bottom navigation buttons - increased spacing between buttons and adjusted widths */}
+        {/* Bottom navigation buttons - improved spacing and width for Comprehensive Metrics button */}
         <rect x="40" y="580" width="150" height="40" rx="20" fill="#3075fa" />
         <text x="115" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Hybrid Approach</text>
         
-        <rect x="220" y="580" width="220" height="40" rx="20" fill="#3075fa" />
-        <text x="330" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Ecosystem-Specific Strategies</text>
+        <rect x="220" y="580" width="190" height="40" rx="20" fill="#3075fa" />
+        <text x="315" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Ecosystem Strategies</text>
         
-        <rect x="470" y="580" width="160" height="40" rx="20" fill="#3075fa" />
-        <text x="550" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Comprehensive Metrics</text>
+        <rect x="440" y="580" width="180" height="40" rx="20" fill="#3075fa" />
+        <text x="530" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Comprehensive Metrics</text>
         
-        <rect x="660" y="580" width="140" height="40" rx="20" fill="#3075fa" />
-        <text x="730" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Implementation</text>
+        <rect x="650" y="580" width="140" height="40" rx="20" fill="#3075fa" />
+        <text x="720" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Implementation</text>
       </svg>
     </div>
   );
