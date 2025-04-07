@@ -43,7 +43,7 @@ const Frameworks = () => {
     navigate(`/frameworks?layer=${layerNumber}`, { replace: true });
     // Scroll back to the top of the framework content
     window.scrollTo({
-      top: document.querySelector('.pt-32')?.getBoundingClientRect().top + window.pageYOffset || 0,
+      top: document.querySelector('.pt-20')?.getBoundingClientRect().top + window.pageYOffset || 0,
       behavior: 'smooth'
     });
   };
@@ -56,11 +56,11 @@ const Frameworks = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
-      <main className="flex-grow pt-32">
-        <section className="section-padding relative bg-white pb-24">
+      <main className="flex-grow pt-20">
+        <section className="section-padding relative bg-white pb-16">
           <div className="chaasms-container">
-            {/* Navigation to Framework Overview */}
-            <div className="mb-8">
+            <div className="flex justify-between items-center mb-6">
+              {/* Navigation to Framework Overview */}
               <Button 
                 onClick={navigateToFrameworkOverview}
                 variant="outline"
@@ -69,22 +69,23 @@ const Frameworks = () => {
                 <Home size={16} />
                 <span>Framework Overview</span>
               </Button>
-            </div>
-
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">
+              
+              <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm">
                 CHAASMS Framework
               </span>
-              <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6 font-playfair">
+            </div>
+
+            <div className="max-w-3xl mx-auto text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-3 font-playfair">
                 The Six-Layer Framework
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed mb-4">
                 Explore our comprehensive methodology for building successful channel programs in today's complex ecosystem landscape.
               </p>
             </div>
 
             {/* Layer Navigation - Consistent styling */}
-            <div className="flex justify-center flex-wrap gap-3 mb-12">
+            <div className="flex justify-center flex-wrap gap-3 mb-8">
               {[1, 2, 3, 4, 5, 6].map(layer => (
                 <button
                   key={layer}
@@ -104,7 +105,7 @@ const Frameworks = () => {
             </div>
 
             {/* Layer Content - Consistent container */}
-            <div className="mb-16 overflow-hidden bg-white rounded-lg shadow-sm p-4">
+            <div className="mb-8 overflow-hidden bg-white rounded-lg shadow-sm p-4">
               {activeLayer === 1 && <Layer1Svg />}
               {activeLayer === 2 && <Layer2Svg />}
               {activeLayer === 3 && <Layer3Svg />}
@@ -114,7 +115,7 @@ const Frameworks = () => {
             </div>
 
             {/* Navigation Arrows - Consistent styling */}
-            <div className="flex justify-between items-center max-w-4xl mx-auto mb-16">
+            <div className="flex justify-between items-center max-w-4xl mx-auto mb-10">
               <Button
                 onClick={() => handleLayerChange(activeLayer > 1 ? activeLayer - 1 : 6)}
                 className="flex items-center gap-2"
@@ -145,7 +146,7 @@ const Frameworks = () => {
             </div>
             
             {/* Return to Framework Overview Button */}
-            <div className="text-center mt-10">
+            <div className="text-center">
               <Button 
                 onClick={navigateToFrameworkOverview}
                 variant="outline"

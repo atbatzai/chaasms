@@ -1,7 +1,6 @@
 
-import { useState } from 'react';
-import { Info } from 'lucide-react';
 import { motion } from "framer-motion";
+import { Info } from 'lucide-react';
 import { FrameworkLayerType } from '@/types/framework';
 
 interface FrameworkStepsProps {
@@ -11,7 +10,7 @@ interface FrameworkStepsProps {
 
 const FrameworkSteps = ({ frameworkLayers, onLayerClick }: FrameworkStepsProps) => {
   return (
-    <div className="relative mb-20">
+    <div className="relative mb-16">
       {/* Progress Line */}
       <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gray-200 z-0">
         <div className="absolute left-0 h-full bg-chaasms-blue" style={{ width: "100%" }}></div>
@@ -28,7 +27,7 @@ const FrameworkSteps = ({ frameworkLayers, onLayerClick }: FrameworkStepsProps) 
             className="flex flex-col items-center"
           >
             <div 
-              className="w-24 h-24 rounded-full flex items-center justify-center text-white mb-4 shadow-md cursor-pointer transition-transform hover:scale-105 hover:shadow-lg"
+              className="w-20 h-20 rounded-full flex items-center justify-center text-white mb-3 shadow-md cursor-pointer transition-transform hover:scale-105 hover:shadow-lg"
               style={{ backgroundColor: layer.color }}
               onClick={() => onLayerClick(layer)}
             >

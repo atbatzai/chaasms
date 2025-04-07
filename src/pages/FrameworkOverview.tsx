@@ -24,14 +24,14 @@ const FrameworkOverview = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
-      <main className="flex-grow pt-32">
+      <main className="flex-grow pt-20">
         <section className="section-padding relative bg-white pb-24">
           <div className="chaasms-container">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">
+            <div className="max-w-3xl mx-auto text-center mb-8">
+              <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-2 animate-fade-in">
                 CHAASMS Framework
               </span>
-              <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6 font-playfair">
+              <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-4 font-playfair">
                 The CHAASMS Framework Overview
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
@@ -43,11 +43,11 @@ const FrameworkOverview = () => {
             <ChaasmsFrameworkClean />
             
             {/* Navigation to detailed framework pages */}
-            <div className="mt-16 text-center">
-              <h3 className="text-2xl font-medium text-chaasms-dark mb-4">
+            <div className="mt-12 text-center">
+              <h3 className="text-2xl font-medium text-chaasms-dark mb-3">
                 Explore Each Framework Layer
               </h3>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
                 Dive deeper into each layer of the CHAASMS framework to understand the components and implementation strategies.
               </p>
               
