@@ -383,7 +383,7 @@ const Layer4Svg = () => {
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="bg-chaasms-blue text-white p-3">
                 <h4 className="font-bold">Integration Solutions</h4>
-                <p className="text-xs">Data integration, API management, workflow automation</p>
+                <p className="text-white text-xs">Data integration, API management, workflow automation</p>
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
@@ -391,10 +391,16 @@ const Layer4Svg = () => {
                   <div className="w-1/4 text-right pr-2">
                     <span className="text-xs font-medium">By Ecosystem</span>
                   </div>
-                  <div className="w-3/4 h-6 flex">
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center" style={{width: '35%'}}>MS 35%</div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center" style={{width: '40%'}}>SF 40%</div>
-                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center" style={{width: '25%'}}>NS 25%</div>
+                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '35%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MS 35%</span>
+                    </div>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '40%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">SF 40%</span>
+                    </div>
+                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '25%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">NS 25%</span>
+                    </div>
                   </div>
                 </div>
                 
@@ -418,7 +424,7 @@ const Layer4Svg = () => {
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="bg-chaasms-blue text-white p-3">
                 <h4 className="font-bold">Data Analytics Solutions</h4>
-                <p className="text-xs">Business intelligence, reporting, predictive analytics</p>
+                <p className="text-white text-xs">Business intelligence, reporting, predictive analytics</p>
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
@@ -426,10 +432,16 @@ const Layer4Svg = () => {
                   <div className="w-1/4 text-right pr-2">
                     <span className="text-xs font-medium">By Ecosystem</span>
                   </div>
-                  <div className="w-3/4 h-6 flex">
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center" style={{width: '50%'}}>MS 50%</div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center" style={{width: '30%'}}>SF 30%</div>
-                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center" style={{width: '20%'}}>NS 20%</div>
+                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '50%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MS 50%</span>
+                    </div>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '30%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">SF 30%</span>
+                    </div>
+                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '20%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">NS 20%</span>
+                    </div>
                   </div>
                 </div>
                 
@@ -453,7 +465,7 @@ const Layer4Svg = () => {
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="bg-chaasms-blue text-white p-3">
                 <h4 className="font-bold">Industry Vertical Solutions</h4>
-                <p className="text-xs">Healthcare, Financial Services, Manufacturing, Retail</p>
+                <p className="text-white text-xs">Healthcare, Financial Services, Manufacturing, Retail</p>
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
@@ -461,11 +473,19 @@ const Layer4Svg = () => {
                   <div className="w-1/4 text-right pr-2">
                     <span className="text-xs font-medium">By Industry</span>
                   </div>
-                  <div className="w-3/4 h-6 flex">
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center" style={{width: '35%'}}>HC 35%</div>
-                    <div className="bg-blue-700 h-full text-xs text-white flex items-center justify-center" style={{width: '30%'}}>FS 30%</div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center" style={{width: '20%'}}>MFG 20%</div>
-                    <div className="bg-blue-500 h-full text-xs text-white flex items-center justify-center" style={{width: '15%'}}>RTL 15%</div>
+                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '35%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">HC 35%</span>
+                    </div>
+                    <div className="bg-blue-700 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '30%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">FS 30%</span>
+                    </div>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '20%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MFG 20%</span>
+                    </div>
+                    <div className="bg-blue-500 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '15%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">RTL 15%</span>
+                    </div>
                   </div>
                 </div>
                 
@@ -489,7 +509,7 @@ const Layer4Svg = () => {
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="bg-chaasms-blue text-white p-3">
                 <h4 className="font-bold">Cloud Modernization</h4>
-                <p className="text-xs">Migration, Infrastructure, DevOps, Application modernization</p>
+                <p className="text-white text-xs">Migration, Infrastructure, DevOps, Application modernization</p>
               </div>
               <div className="p-4">
                 <h5 className="font-medium text-chaasms-blue mb-2">Partner Distribution</h5>
@@ -497,10 +517,16 @@ const Layer4Svg = () => {
                   <div className="w-1/4 text-right pr-2">
                     <span className="text-xs font-medium">By Ecosystem</span>
                   </div>
-                  <div className="w-3/4 h-6 flex">
-                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center" style={{width: '60%'}}>MS 60%</div>
-                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center" style={{width: '25%'}}>SF 25%</div>
-                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center" style={{width: '15%'}}>NS 15%</div>
+                  <div className="w-3/4 h-8 flex"> {/* Increased height from h-6 to h-8 */}
+                    <div className="bg-chaasms-blue h-full text-xs text-white flex items-center justify-center px-1" style={{width: '60%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">MS 60%</span>
+                    </div>
+                    <div className="bg-blue-600 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '25%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">SF 25%</span>
+                    </div>
+                    <div className="bg-blue-400 h-full text-xs text-white flex items-center justify-center px-1" style={{width: '15%'}}>
+                      <span className="whitespace-nowrap overflow-hidden text-ellipsis">NS 15%</span>
+                    </div>
                   </div>
                 </div>
                 
