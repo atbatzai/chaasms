@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,6 +10,16 @@ import { ArrowRight } from "lucide-react";
 
 const FrameworkOverview = () => {
   const navigate = useNavigate();
+  
+  // Ensure page starts at the top when navigating to this route
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  const navigateToFrameworks = () => {
+    navigate('/frameworks');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="min-h-screen flex flex-col relative">
@@ -42,7 +52,7 @@ const FrameworkOverview = () => {
               </p>
               
               <Button
-                onClick={() => navigate('/frameworks')}
+                onClick={navigateToFrameworks}
                 className="flex items-center gap-2 mx-auto"
                 style={{ backgroundColor: '#0f4c81', color: 'white' }}
               >

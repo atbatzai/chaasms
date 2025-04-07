@@ -17,6 +17,17 @@ const FrameworkOverview = () => {
     setSelectedLayer(layer);
   };
 
+  // Updated navigation functions to ensure top-of-page navigation
+  const navigateToFrameworkOverview = () => {
+    navigate('/framework-overview');
+    window.scrollTo(0, 0);
+  };
+
+  const navigateToFrameworks = () => {
+    navigate('/frameworks');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <section id="framework-overview" className="section-padding relative overflow-hidden bg-white">
       <div className="chaasms-container relative z-10">
@@ -31,7 +42,7 @@ const FrameworkOverview = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              onClick={() => navigate('/framework-overview')}
+              onClick={navigateToFrameworkOverview}
               className="flex items-center gap-2"
               style={{ backgroundColor: '#0f4c81', color: 'white' }}
             >
@@ -40,7 +51,7 @@ const FrameworkOverview = () => {
             </Button>
             
             <Button
-              onClick={() => navigate('/frameworks')}
+              onClick={navigateToFrameworks}
               className="flex items-center gap-2"
               variant="outline"
             >
@@ -62,11 +73,11 @@ const FrameworkOverview = () => {
         
         <FrameworkBenefits benefits={benefits} />
         
-        {/* Navigation buttons to detailed framework pages */}
+        {/* Navigation buttons to detailed framework pages - Updated with scroll to top */}
         <div className="text-center mt-12">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              onClick={() => navigate('/framework-overview')}
+              onClick={navigateToFrameworkOverview}
               className="flex items-center gap-2"
               style={{ backgroundColor: '#0f4c81', color: 'white' }}
             >
@@ -75,7 +86,7 @@ const FrameworkOverview = () => {
             </Button>
             
             <Button
-              onClick={() => navigate('/frameworks')}
+              onClick={navigateToFrameworks}
               className="flex items-center gap-2"
               variant="outline"
             >

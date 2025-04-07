@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import FrameworkOverview from '@/components/FrameworkOverview';
@@ -10,6 +11,11 @@ import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
 
 const Index = () => {
+  // Ensure page starts at the top when navigating to this route
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />

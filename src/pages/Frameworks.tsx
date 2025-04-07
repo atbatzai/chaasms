@@ -26,6 +26,9 @@ const Frameworks = () => {
   
   // Get layer from URL parameters if available
   useEffect(() => {
+    // Ensure page starts at the top when navigating to this route
+    window.scrollTo(0, 0);
+    
     const layerParam = searchParams.get('layer');
     if (layerParam) {
       const layerNumber = parseInt(layerParam);
@@ -38,6 +41,16 @@ const Frameworks = () => {
   const handleLayerChange = (layerNumber: number) => {
     setActiveLayer(layerNumber);
     navigate(`/frameworks?layer=${layerNumber}`, { replace: true });
+    // Scroll back to the top of the framework content
+    window.scrollTo({
+      top: document.querySelector('.pt-32')?.getBoundingClientRect().top + window.pageYOffset || 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const navigateToFrameworkOverview = () => {
+    navigate('/framework-overview');
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -49,7 +62,7 @@ const Frameworks = () => {
             {/* Navigation to Framework Overview */}
             <div className="mb-8">
               <Button 
-                onClick={() => navigate('/framework-overview')}
+                onClick={navigateToFrameworkOverview}
                 variant="outline"
                 className="flex items-center gap-2 border-chaasms-blue text-chaasms-blue hover:bg-blue-50"
               >
@@ -134,7 +147,7 @@ const Frameworks = () => {
             {/* Return to Framework Overview Button */}
             <div className="text-center mt-10">
               <Button 
-                onClick={() => navigate('/framework-overview')}
+                onClick={navigateToFrameworkOverview}
                 variant="outline"
                 className="border-chaasms-blue text-chaasms-blue hover:bg-blue-50"
               >
