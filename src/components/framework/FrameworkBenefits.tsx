@@ -1,7 +1,5 @@
 
-import { ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { BenefitType } from '@/types/framework';
 
 interface FrameworkBenefitsProps {
@@ -31,13 +29,6 @@ const FrameworkBenefits = ({ benefits }: FrameworkBenefitsProps) => {
             <p className="text-gray-600 leading-relaxed text-sm">{benefit.description}</p>
           </motion.div>
         ))}
-      </div>
-        
-      <div className="pt-12 flex justify-center">
-        <Button className="bg-chaasms-blue hover:bg-blue-700 rounded-md px-6 py-2 h-auto text-sm shadow-sm hover:shadow-md group transition-all">
-          Explore the Framework
-          <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-        </Button>
       </div>
     </div>
   );
