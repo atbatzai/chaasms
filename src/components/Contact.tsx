@@ -27,7 +27,7 @@ const ContactItem = ({
 );
 
 const Contact = () => {
-  const [formData, useState] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
