@@ -5,8 +5,12 @@ const ChaasmsFrameworkSvg = () => {
   const navigate = useNavigate();
   
   const handleButtonClick = (section: string) => {
-    navigate('/frameworks');
-    // We can expand this later to navigate to specific sections
+    if (section.startsWith('layer')) {
+      const layerNumber = section.replace('layer', '');
+      navigate(`/frameworks?layer=${layerNumber}`);
+    } else {
+      navigate('/frameworks');
+    }
   };
   
   return (

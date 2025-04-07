@@ -1,5 +1,6 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
@@ -8,7 +9,19 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const Frameworks = () => {
+  const [searchParams] = useSearchParams();
   const [activeLayer, setActiveLayer] = useState(1);
+  
+  // Get layer from URL parameters if available
+  useEffect(() => {
+    const layerParam = searchParams.get('layer');
+    if (layerParam) {
+      const layerNumber = parseInt(layerParam);
+      if (!isNaN(layerNumber) && layerNumber >= 1 && layerNumber <= 6) {
+        setActiveLayer(layerNumber);
+      }
+    }
+  }, [searchParams]);
   
   const handleLayerChange = (layerNumber: number) => {
     setActiveLayer(layerNumber);

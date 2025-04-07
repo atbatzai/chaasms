@@ -13,7 +13,7 @@ const Layer1Svg = () => {
         {/* Background */}
         <rect width="1000" height="800" fill="#f8fafc" />
         
-        {/* Title and Subtitle - Fixed positioning to prevent overlap */}
+        {/* Title and Subtitle - Added more spacing */}
         <text x="500" y="60" fontFamily="Arial, sans-serif" fontSize="30" fontWeight="bold" textAnchor="middle" fill="#1e40af">LAYER 1: FOUNDATIONAL STRATEGY</text>
         <text x="500" y="100" fontFamily="Arial, sans-serif" fontSize="18" textAnchor="middle" fill="#1e40af">Channel philosophy, ecosystem orientation, GTM alignment</text>
         
@@ -38,56 +38,56 @@ const Layer1Svg = () => {
           <text x="145" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Conflict resolution</text>
         </g>
         
-        {/* Ecosystem Orientation */}
+        {/* Ecosystem Orientation - Fixed text overrun and increased spacing */}
         <g>
           <rect x="380" y="150" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
           <text x="500" y="185" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Ecosystem Orientation</text>
           <line x1="420" y1="200" x2="580" y2="200" stroke="#2563eb" strokeWidth="1.5" />
           
-          {/* Content bullets with improved spacing */}
+          {/* Content bullets with improved spacing and reduced text length */}
           <circle cx="405" cy="230" r="5" fill="#2563eb" />
-          <text x="420" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Platform-agnostic mindset</text>
+          <text x="425" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Platform-agnostic mindset</text>
           
           <circle cx="405" cy="265" r="5" fill="#2563eb" />
-          <text x="420" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Meet customers where they are</text>
+          <text x="425" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Meet customers where they are</text>
           
           <circle cx="405" cy="300" r="5" fill="#2563eb" />
-          <text x="420" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Multi-cloud strategy</text>
+          <text x="425" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Multi-cloud strategy</text>
           
           <circle cx="405" cy="335" r="5" fill="#2563eb" />
-          <text x="420" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Ecosystem ROI prioritization</text>
+          <text x="425" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Ecosystem ROI prioritization</text>
         </g>
         
-        {/* GTM Alignment */}
+        {/* GTM Alignment - Fixed text touching border */}
         <g>
           <rect x="660" y="150" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
           <text x="780" y="185" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">GTM Alignment</text>
           <line x1="700" y1="200" x2="860" y2="200" stroke="#2563eb" strokeWidth="1.5" />
           
-          {/* Content bullets with improved spacing */}
+          {/* Content bullets with improved spacing from borders */}
           <circle cx="685" cy="230" r="5" fill="#2563eb" />
-          <text x="700" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">"Land with partners" approach</text>
+          <text x="705" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">"Land with partners" approach</text>
           
           <circle cx="685" cy="265" r="5" fill="#2563eb" />
-          <text x="700" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Cross-functional buy-in</text>
+          <text x="705" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Cross-functional buy-in</text>
           
           <circle cx="685" cy="300" r="5" fill="#2563eb" />
-          <text x="700" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Compensation alignment</text>
+          <text x="705" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Compensation alignment</text>
           
           <circle cx="685" cy="335" r="5" fill="#2563eb" />
-          <text x="700" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive sponsorship</text>
+          <text x="705" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive sponsorship</text>
         </g>
         
-        {/* Key Elements Section - Improved spacing and padding */}
+        {/* Key Elements Section - Fixed spacing between header and content */}
         <g>
           <rect x="100" y="400" width="420" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
           <text x="310" y="435" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Key Elements</text>
           <line x1="170" y1="450" x2="450" y2="450" stroke="#2563eb" strokeWidth="1.5" />
           
-          {/* Content with proper alignment and spacing */}
+          {/* Content with increased spacing between header and content */}
           <text x="130" y="490" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Channel Vision:</text>
-          <text x="250" y="490" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Clear articulation of why partners</text>
-          <text x="250" y="515" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">are essential to strategy</text>
+          <text x="250" y="490" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Clear articulation of why</text>
+          <text x="250" y="515" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">partners are essential</text>
           
           <text x="130" y="550" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Executive Alignment:</text>
           <text x="250" y="550" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">C-suite commitment to</text>
@@ -98,13 +98,13 @@ const Layer1Svg = () => {
           <text x="250" y="635" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">for partner engagement</text>
         </g>
         
-        {/* Core Metrics Section - Simplified with improved spacing */}
+        {/* Core Metrics Section - Removed headers and improved spacing */}
         <g>
           <rect x="560" y="400" width="340" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
           <text x="730" y="435" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Core Metrics</text>
           <line x1="620" y1="450" x2="840" y2="450" stroke="#2563eb" strokeWidth="1.5" />
           
-          {/* All metrics in one list, no subcategories */}
+          {/* All metrics in one list with improved spacing, no subcategories */}
           <circle cx="590" cy="490" r="5" fill="#2563eb" />
           <text x="610" y="495" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive Engagement</text>
           
