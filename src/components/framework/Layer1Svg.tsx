@@ -13,141 +13,137 @@ const Layer1Svg = () => {
         {/* Background */}
         <rect width="1000" height="800" fill="#f8fafc" />
         
-        {/* Title and Subtitle */}
+        {/* Title and Subtitle - Fixed positioning to prevent overlap */}
         <text x="500" y="60" fontFamily="Arial, sans-serif" fontSize="30" fontWeight="bold" textAnchor="middle" fill="#1e40af">LAYER 1: FOUNDATIONAL STRATEGY</text>
-        <text x="500" y="95" fontFamily="Arial, sans-serif" fontSize="18" textAnchor="middle" fill="#1e40af">Channel philosophy, ecosystem orientation, GTM alignment</text>
+        <text x="500" y="100" fontFamily="Arial, sans-serif" fontSize="18" textAnchor="middle" fill="#1e40af">Channel philosophy, ecosystem orientation, GTM alignment</text>
         
-        {/* Three Pillars Visual - With proper spacing */}
+        {/* Three Pillars Visual - With improved spacing and padding */}
         {/* Channel Philosophy */}
         <g>
-          <rect x="100" y="140" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
-          <text x="220" y="175" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Channel Philosophy</text>
-          <line x1="140" y1="190" x2="300" y2="190" stroke="#2563eb" strokeWidth="1.5" />
+          <rect x="100" y="150" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
+          <text x="220" y="185" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Channel Philosophy</text>
+          <line x1="140" y1="200" x2="300" y2="200" stroke="#2563eb" strokeWidth="1.5" />
           
           {/* Content bullets with improved spacing and alignment */}
-          <circle cx="125" cy="220" r="5" fill="#2563eb" />
-          <text x="140" y="225" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Clear rules of engagement</text>
+          <circle cx="130" cy="230" r="5" fill="#2563eb" />
+          <text x="145" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Clear rules of engagement</text>
           
-          <circle cx="125" cy="255" r="5" fill="#2563eb" />
-          <text x="140" y="260" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Partner-first mindset</text>
+          <circle cx="130" cy="265" r="5" fill="#2563eb" />
+          <text x="145" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Partner-first mindset</text>
           
-          <circle cx="125" cy="290" r="5" fill="#2563eb" />
-          <text x="140" y="295" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Value exchange principles</text>
+          <circle cx="130" cy="300" r="5" fill="#2563eb" />
+          <text x="145" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Value exchange principles</text>
           
-          <circle cx="125" cy="325" r="5" fill="#2563eb" />
-          <text x="140" y="330" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Conflict resolution</text>
+          <circle cx="130" cy="335" r="5" fill="#2563eb" />
+          <text x="145" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Conflict resolution</text>
         </g>
         
         {/* Ecosystem Orientation */}
         <g>
-          <rect x="380" y="140" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
-          <text x="500" y="175" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Ecosystem Orientation</text>
-          <line x1="420" y1="190" x2="580" y2="190" stroke="#2563eb" strokeWidth="1.5" />
+          <rect x="380" y="150" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
+          <text x="500" y="185" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Ecosystem Orientation</text>
+          <line x1="420" y1="200" x2="580" y2="200" stroke="#2563eb" strokeWidth="1.5" />
           
           {/* Content bullets with improved spacing */}
-          <circle cx="405" cy="220" r="5" fill="#2563eb" />
-          <text x="420" y="225" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Platform-agnostic mindset</text>
+          <circle cx="405" cy="230" r="5" fill="#2563eb" />
+          <text x="420" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Platform-agnostic mindset</text>
           
-          <circle cx="405" cy="255" r="5" fill="#2563eb" />
-          <text x="420" y="260" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Meet customers where they are</text>
+          <circle cx="405" cy="265" r="5" fill="#2563eb" />
+          <text x="420" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Meet customers where they are</text>
           
-          <circle cx="405" cy="290" r="5" fill="#2563eb" />
-          <text x="420" y="295" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Multi-cloud & platform strategy</text>
+          <circle cx="405" cy="300" r="5" fill="#2563eb" />
+          <text x="420" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Multi-cloud strategy</text>
           
-          <circle cx="405" cy="325" r="5" fill="#2563eb" />
-          <text x="420" y="330" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Ecosystem ROI prioritization</text>
+          <circle cx="405" cy="335" r="5" fill="#2563eb" />
+          <text x="420" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Ecosystem ROI prioritization</text>
         </g>
         
         {/* GTM Alignment */}
         <g>
-          <rect x="660" y="140" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
-          <text x="780" y="175" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">GTM Alignment</text>
-          <line x1="700" y1="190" x2="860" y2="190" stroke="#2563eb" strokeWidth="1.5" />
+          <rect x="660" y="150" width="240" height="220" rx="5" fill="#ebf2ff" stroke="#2563eb" strokeWidth="1.5" />
+          <text x="780" y="185" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">GTM Alignment</text>
+          <line x1="700" y1="200" x2="860" y2="200" stroke="#2563eb" strokeWidth="1.5" />
           
           {/* Content bullets with improved spacing */}
-          <circle cx="685" cy="220" r="5" fill="#2563eb" />
-          <text x="700" y="225" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">"Land with partners" philosophy</text>
+          <circle cx="685" cy="230" r="5" fill="#2563eb" />
+          <text x="700" y="235" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">"Land with partners" approach</text>
           
-          <circle cx="685" cy="255" r="5" fill="#2563eb" />
-          <text x="700" y="260" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Cross-functional buy-in</text>
+          <circle cx="685" cy="265" r="5" fill="#2563eb" />
+          <text x="700" y="270" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Cross-functional buy-in</text>
           
-          <circle cx="685" cy="290" r="5" fill="#2563eb" />
-          <text x="700" y="295" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Compensation alignment</text>
+          <circle cx="685" cy="300" r="5" fill="#2563eb" />
+          <text x="700" y="305" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Compensation alignment</text>
           
-          <circle cx="685" cy="325" r="5" fill="#2563eb" />
-          <text x="700" y="330" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive sponsorship</text>
+          <circle cx="685" cy="335" r="5" fill="#2563eb" />
+          <text x="700" y="340" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive sponsorship</text>
         </g>
         
-        {/* Key Elements Section - Improved layout with proper spacing */}
+        {/* Key Elements Section - Improved spacing and padding */}
         <g>
-          <rect x="100" y="390" width="420" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
-          <text x="310" y="425" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Key Elements</text>
-          <line x1="170" y1="440" x2="450" y2="440" stroke="#2563eb" strokeWidth="1.5" />
+          <rect x="100" y="400" width="420" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
+          <text x="310" y="435" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Key Elements</text>
+          <line x1="170" y1="450" x2="450" y2="450" stroke="#2563eb" strokeWidth="1.5" />
           
           {/* Content with proper alignment and spacing */}
-          <text x="130" y="475" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Channel Vision:</text>
-          <text x="260" y="475" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Clear articulation of why partners</text>
-          <text x="260" y="495" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">are essential to strategy</text>
+          <text x="130" y="490" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Channel Vision:</text>
+          <text x="250" y="490" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Clear articulation of why partners</text>
+          <text x="250" y="515" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">are essential to strategy</text>
           
-          <text x="130" y="530" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Executive Alignment:</text>
-          <text x="260" y="530" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">C-suite commitment to channel</text>
-          <text x="260" y="550" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">as strategic imperative</text>
+          <text x="130" y="550" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Executive Alignment:</text>
+          <text x="250" y="550" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">C-suite commitment to</text>
+          <text x="250" y="575" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">channel strategy</text>
           
-          <text x="130" y="585" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Org Readiness:</text>
-          <text x="260" y="585" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Cross-functional preparedness</text>
-          <text x="260" y="605" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">for partner engagement</text>
-          
-          <text x="130" y="640" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Resource Commitment:</text>
-          <text x="260" y="640" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Staffing, budget, and</text>
-          <text x="260" y="660" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">technology investments</text>
+          <text x="130" y="610" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="bold" fill="#1e3a8a">Org Readiness:</text>
+          <text x="250" y="610" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Cross-functional readiness</text>
+          <text x="250" y="635" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">for partner engagement</text>
         </g>
         
-        {/* Core Metrics Section - Improved layout with proper spacing */}
+        {/* Core Metrics Section - Simplified with improved spacing */}
         <g>
-          <rect x="560" y="390" width="340" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
-          <text x="730" y="425" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Core Metrics</text>
-          <line x1="620" y1="440" x2="840" y2="440" stroke="#2563eb" strokeWidth="1.5" />
+          <rect x="560" y="400" width="340" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
+          <text x="730" y="435" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Core Metrics</text>
+          <line x1="620" y1="450" x2="840" y2="450" stroke="#2563eb" strokeWidth="1.5" />
           
-          {/* Commitment Metrics with proper spacing - removed specific metric values */}
-          <text x="600" y="475" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="#1e3a8a">Commitment Metrics</text>
-          <line x1="600" y1="485" x2="760" y2="485" stroke="#2563eb" strokeWidth="1" />
+          {/* All metrics in one list, no subcategories */}
+          <circle cx="590" cy="490" r="5" fill="#2563eb" />
+          <text x="610" y="495" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive Engagement</text>
           
-          <text x="600" y="515" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Executive Engagement</text>
+          <circle cx="590" cy="525" r="5" fill="#2563eb" />
+          <text x="610" y="530" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Channel Team Size</text>
           
-          <text x="600" y="545" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Channel Team Size</text>
+          <circle cx="590" cy="560" r="5" fill="#2563eb" />
+          <text x="610" y="565" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Channel Budget</text>
           
-          <text x="600" y="575" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Channel Budget</text>
+          <circle cx="590" cy="595" r="5" fill="#2563eb" />
+          <text x="610" y="600" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Ecosystems Targeted</text>
           
-          {/* Foundation Metrics with proper spacing - removed specific metric values */}
-          <text x="600" y="615" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="#1e3a8a">Foundation Metrics</text>
-          <line x1="600" y1="625" x2="760" y2="625" stroke="#2563eb" strokeWidth="1" />
-          
-          <text x="600" y="655" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Ecosystems Targeted</text>
+          <circle cx="590" cy="630" r="5" fill="#2563eb" />
+          <text x="610" y="635" fontFamily="Arial, sans-serif" fontSize="15" fill="#1e3a8a">Partner Satisfaction Score</text>
         </g>
         
         {/* Critical Touchpoints - With proper spacing and alignment */}
         <g>
-          <text x="500" y="680" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Critical Touchpoints</text>
-          <line x1="375" y1="695" x2="625" y2="695" stroke="#2563eb" strokeWidth="1.5" />
+          <text x="500" y="690" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Critical Touchpoints</text>
+          <line x1="375" y1="705" x2="625" y2="705" stroke="#2563eb" strokeWidth="1.5" />
           
-          <rect x="90" y="720" width="160" height="40" rx="20" fill="#3b82f6" />
-          <text x="170" y="747" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Executive Briefings</text>
+          <rect x="105" y="725" width="140" height="40" rx="20" fill="#3b82f6" />
+          <text x="175" y="752" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Executive Briefings</text>
           
-          <rect x="270" y="720" width="160" height="40" rx="20" fill="#3b82f6" />
-          <text x="350" y="747" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">All-Hands Rollout</text>
+          <rect x="265" y="725" width="140" height="40" rx="20" fill="#3b82f6" />
+          <text x="335" y="752" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">All-Hands Rollout</text>
           
-          <rect x="450" y="720" width="160" height="40" rx="20" fill="#3b82f6" />
-          <text x="530" y="747" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Sales Enablement</text>
+          <rect x="425" y="725" width="140" height="40" rx="20" fill="#3b82f6" />
+          <text x="495" y="752" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Sales Enablement</text>
           
-          <rect x="630" y="720" width="160" height="40" rx="20" fill="#3b82f6" />
-          <text x="710" y="747" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Channel Kickoff</text>
+          <rect x="585" y="725" width="140" height="40" rx="20" fill="#3b82f6" />
+          <text x="655" y="752" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Channel Kickoff</text>
           
-          <rect x="810" y="720" width="160" height="40" rx="20" fill="#3b82f6" />
-          <text x="890" y="747" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Partner Advisory</text>
+          <rect x="745" y="725" width="150" height="40" rx="20" fill="#3b82f6" />
+          <text x="820" y="752" fontFamily="Arial, sans-serif" fontSize="15" textAnchor="middle" fill="white">Partner Advisory</text>
         </g>
         
         {/* Note on Interlocking - Proper positioning and font sizing */}
-        <text x="500" y="780" fontFamily="Arial, sans-serif" fontSize="15" fontStyle="italic" textAnchor="middle" fill="#1e3a8a">
+        <text x="500" y="790" fontFamily="Arial, sans-serif" fontSize="15" fontStyle="italic" textAnchor="middle" fill="#1e3a8a">
           This foundational layer drives the Program Architecture choices and tiering structure in Layer 2.
         </text>
       </svg>
