@@ -1,6 +1,5 @@
 
 import { AlertTriangle, TrendingUp, Shield, Zap, BarChart3, Globe } from 'lucide-react';
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -112,7 +111,7 @@ const ChallengeSection = () => {
     <section id="challenges" className="section-padding bg-white">
       <div className="chaasms-container">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           variants={titleVariants}
           initial="hidden"
           whileInView="visible"
@@ -148,7 +147,7 @@ const ChallengeSection = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="p-8">
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <h3 className="text-2xl font-playfair text-chaasms-dark mb-4">The Cost of Inaction</h3>
               <p className="text-chaasms-text max-w-2xl mx-auto">
                 Without a structured channel framework, ISVs risk:
@@ -176,12 +175,6 @@ const ChallengeSection = () => {
                   <p className="text-chaasms-text text-sm">Resources allocated to channel activities without strategic returns.</p>
                 </CardContent>
               </Card>
-            </div>
-            
-            <div className="text-center mt-10">
-              <Button className="bg-chaasms-blue hover:bg-blue-700 text-white px-6 py-2 rounded-md shadow-sm">
-                Solve These Challenges
-              </Button>
             </div>
           </div>
         </motion.div>

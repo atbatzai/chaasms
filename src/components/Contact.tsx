@@ -51,16 +51,16 @@ const Contact = () => {
   };
   
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
+    <section id="contact" className="py-10 md:py-16 bg-white">
       <div className="chaasms-container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="section-heading">Get Started</h2>
-          <p className="section-subheading">
+          <p className="section-subheading mb-8">
             Ready to transform your channel strategy? Connect with our experts.
           </p>
         </div>
         
-        <div className="max-w-xl mx-auto mb-12">
+        <div className="max-w-xl mx-auto mb-8">
           <ContactItem
             icon={Calendar}
             title="Book a Consultation"
@@ -68,40 +68,40 @@ const Contact = () => {
           />
         </div>
         
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-lg max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-2xl font-bold text-chaasms-dark mb-4">Contact Us</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-xl font-bold text-chaasms-dark mb-3">Contact Us</h3>
+              <p className="text-gray-600 mb-4">
                 Fill out the form to tell us about your channel challenges, and we'll get back to you within 24 hours.
               </p>
               
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-chaasms-blue rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold">1</span>
+                  <div className="w-6 h-6 bg-chaasms-blue rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">1</span>
                   </div>
-                  <p className="text-chaasms-dark">Discovery Call</p>
+                  <p className="text-chaasms-dark text-sm">Discovery Call</p>
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-chaasms-blue rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold">2</span>
+                  <div className="w-6 h-6 bg-chaasms-blue rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">2</span>
                   </div>
-                  <p className="text-chaasms-dark">Needs Assessment</p>
+                  <p className="text-chaasms-dark text-sm">Needs Assessment</p>
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-chaasms-blue rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold">3</span>
+                  <div className="w-6 h-6 bg-chaasms-blue rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">3</span>
                   </div>
-                  <p className="text-chaasms-dark">Proposal & Engagement</p>
+                  <p className="text-chaasms-dark text-sm">Proposal & Engagement</p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <form className="space-y-4" onSubmit={handleSubmit}>
+            <div className="bg-white p-5 rounded-lg shadow-sm">
+              <form className="space-y-3" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-chaasms-dark mb-1">Name</label>
                   <Input
@@ -143,7 +143,7 @@ const Contact = () => {
                   <Textarea
                     id="message"
                     name="message"
-                    rows={4}
+                    rows={3}
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Tell us about your channel challenges"
                     required

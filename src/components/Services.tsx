@@ -15,13 +15,13 @@ const ServiceCard = ({
 }) => {
   return (
     <Card className="shadow-sm border border-gray-200 bg-white h-full hover:shadow-md transition-all duration-300">
-      <CardContent className="p-6">
+      <CardContent className="p-5">
         <div className="flex flex-col h-full">
-          <div className="p-3 rounded-full bg-gray-100 w-12 h-12 flex items-center justify-center mb-4">
-            <Icon className="text-chaasms-blue" size={22} />
+          <div className="p-2 rounded-full bg-gray-100 w-10 h-10 flex items-center justify-center mb-3">
+            <Icon className="text-chaasms-blue" size={20} />
           </div>
           
-          <h3 className="text-xl font-medium text-chaasms-dark mb-3">{title}</h3>
+          <h3 className="text-lg font-medium text-chaasms-dark mb-2">{title}</h3>
           <p className="text-chaasms-text text-sm">{description}</p>
         </div>
       </CardContent>
@@ -54,14 +54,14 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-chaasms-lightgray">
+    <section id="services" className="py-16 md:py-24 bg-chaasms-lightgray">
       <div className="chaasms-container">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4">Our Expertise</span>
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-3">Our Expertise</span>
           <h2 className="section-heading font-playfair">
             Our Services
           </h2>
-          <p className="text-xl text-chaasms-text leading-relaxed">
+          <p className="text-lg text-chaasms-text leading-relaxed">
             Specialized consulting services to help ISVs build and optimize successful channel programs.
           </p>
         </div>
