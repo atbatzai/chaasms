@@ -10,6 +10,7 @@ import Layer3Svg from '@/components/framework/Layer3Svg';
 import Layer4Svg from '@/components/framework/Layer4Svg';
 import Layer5Svg from '@/components/framework/Layer5Svg';
 import Layer6Svg from '@/components/framework/Layer6Svg';
+import ChaasmsFrameworkClean from '@/components/framework/ChaasmsFrameworkClean';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -89,7 +90,7 @@ const Frameworks = () => {
             </div>
 
             {/* Navigation Arrows - Consistent styling */}
-            <div className="flex justify-between items-center max-w-4xl mx-auto">
+            <div className="flex justify-between items-center max-w-4xl mx-auto mb-16">
               <Button
                 onClick={() => handleLayerChange(activeLayer > 1 ? activeLayer - 1 : 6)}
                 className="flex items-center gap-2"
@@ -117,6 +118,23 @@ const Frameworks = () => {
                 <span>Next Layer</span>
                 <ArrowRight size={16} />
               </Button>
+            </div>
+            
+            {/* Interlocking Framework Visual - Added new component */}
+            <div className="pt-8 border-t border-gray-200">
+              <div className="max-w-3xl mx-auto text-center mb-12">
+                <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">
+                  Framework Integration
+                </span>
+                <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6 font-playfair">
+                  The Interlocking System
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Visualize how each layer of the CHAASMS framework connects to create a cohesive channel strategy.
+                </p>
+              </div>
+              
+              <ChaasmsFrameworkClean />
             </div>
           </div>
         </section>
