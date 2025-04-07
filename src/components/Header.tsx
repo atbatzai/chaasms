@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { Link, useNavigate } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
   
   // Add scroll effect
   useEffect(() => {
@@ -31,13 +33,27 @@ const Header = () => {
   };
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -100; // Adjust for header height
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      setMobileMenuOpen(false);
+    // If we're on a different page, navigate to home first
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      // Need a small timeout to allow navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const yOffset = -100; // Adjust for header height
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        const yOffset = -100; // Adjust for header height
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
+    setMobileMenuOpen(false);
   };
   
   // Custom styles for navigation menu items
@@ -52,24 +68,24 @@ const Header = () => {
     >
       <div className="chaasms-container">
         <div className="flex justify-between items-center">
-          <span 
-            onClick={() => scrollToSection('hero')}
+          <Link 
+            to="/"
             className="text-2xl font-normal text-chaasms-blue cursor-pointer"
           >
             CHAASMS
-          </span>
+          </Link>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-12">
             <NavigationMenu>
               <NavigationMenuList className="space-x-8">
                 <NavigationMenuItem>
-                  <span 
-                    onClick={() => scrollToSection('hero')}
+                  <Link 
+                    to="/"
                     className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
                     Home
-                  </span>
+                  </Link>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
@@ -106,6 +122,17 @@ const Header = () => {
                             Explore our six-layer comprehensive methodology
                           </p>
                         </div>
+                        <Link
+                          to="/frameworks"
+                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
+                        >
+                          <div className="text-sm font-medium text-chaasms-blue mb-1">
+                            Framework Layers
+                          </div>
+                          <p className="text-sm leading-snug text-chaasms-text">
+                            Detailed view of each framework layer
+                          </p>
+                        </Link>
                         <div
                           onClick={() => scrollToSection('implementation')}
                           className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
@@ -132,12 +159,12 @@ const Header = () => {
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <span 
-                    onClick={() => scrollToSection('chaasms-framework')}
+                  <Link 
+                    to="/frameworks"
                     className={cn(navItemClasses, inactiveNavItemClasses)}
                   >
                     CHAASMS Framework
-                  </span>
+                  </Link>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
@@ -182,12 +209,13 @@ const Header = () => {
         {mobileMenuOpen && (
           <div className="md:hidden py-6 mt-4 bg-white shadow-md border-t border-chaasms-lightgray animate-fade-in">
             <nav className="flex flex-col space-y-2">
-              <span 
-                onClick={() => scrollToSection('hero')}
+              <Link 
+                to="/"
                 className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Home
-              </span>
+              </Link>
               
               <div className="px-4 py-3 flex flex-col">
                 <div className="flex items-center justify-between">
@@ -207,6 +235,13 @@ const Header = () => {
                   >
                     Framework Overview
                   </span>
+                  <Link 
+                    to="/frameworks"
+                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Framework Layers
+                  </Link>
                   <span 
                     onClick={() => scrollToSection('implementation')}
                     className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
@@ -223,12 +258,13 @@ const Header = () => {
                 Services
               </span>
               
-              <span 
-                onClick={() => scrollToSection('chaasms-framework')}
+              <Link 
+                to="/frameworks"
                 className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
+                onClick={() => setMobileMenuOpen(false)}
               >
                 CHAASMS Framework
-              </span>
+              </Link>
               
               <span 
                 onClick={() => scrollToSection('resources')}

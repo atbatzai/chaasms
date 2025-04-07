@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import TiltCard from "./TiltCard";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -29,6 +30,8 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 className="btn-secondary group rounded-md"
+                as={Link}
+                to="/frameworks"
               >
                 Explore the Framework
                 <ChevronRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
