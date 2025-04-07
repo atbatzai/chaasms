@@ -12,6 +12,14 @@ import Layer5Svg from '@/components/framework/Layer5Svg';
 import Layer6Svg from '@/components/framework/Layer6Svg';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Home } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 // Define consistent color theme for the page
 const colors = {
@@ -53,30 +61,42 @@ const Frameworks = () => {
     window.scrollTo(0, 0);
   };
 
+  const navigateToHome = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
       <main className="flex-grow pt-16">
         <section className="section-padding relative bg-white pb-12">
           <div className="chaasms-container">
-            <div className="flex justify-between items-center mb-3">
-              {/* Navigation to Framework Overview */}
-              <Button 
-                onClick={navigateToFrameworkOverview}
-                variant="outline"
-                size="sm"
-                className="flex items-center gap-1 border-chaasms-blue text-chaasms-blue hover:bg-blue-50"
-              >
-                <Home size={14} />
-                <span>Framework Overview</span>
-              </Button>
-              
+            {/* Breadcrumb navigation */}
+            <Breadcrumb className="mb-4">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink onClick={navigateToHome} className="cursor-pointer">
+                    <Home className="h-3.5 w-3.5" />
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink onClick={navigateToFrameworkOverview} className="cursor-pointer">
+                    Framework Overview
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Framework Layers</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+
+            <div className="max-w-3xl mx-auto text-center mb-4">
               <span className="inline-block px-3 py-0.5 rounded-full bg-blue-50 text-chaasms-blue text-xs">
                 CHAASMS Framework
               </span>
-            </div>
-
-            <div className="max-w-3xl mx-auto text-center mb-4">
               <h2 className="text-2xl md:text-3xl font-medium text-chaasms-dark mb-2 font-playfair">
                 The Six-Layer Framework
               </h2>
@@ -154,8 +174,9 @@ const Frameworks = () => {
                 onClick={navigateToFrameworkOverview}
                 variant="outline"
                 size="sm"
-                className="border-chaasms-blue text-chaasms-blue hover:bg-blue-50"
+                className="border-chaasms-blue text-chaasms-blue hover:bg-blue-50 flex items-center gap-2"
               >
+                <ArrowLeft size={14} />
                 Return to Framework Overview
               </Button>
             </div>

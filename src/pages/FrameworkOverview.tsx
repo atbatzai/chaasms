@@ -6,7 +6,15 @@ import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
 import ChaasmsFrameworkClean from '@/components/framework/ChaasmsFrameworkClean';
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft, Home } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const FrameworkOverview = () => {
   const navigate = useNavigate();
@@ -21,12 +29,32 @@ const FrameworkOverview = () => {
     window.scrollTo(0, 0);
   };
 
+  const navigateToHome = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
       <main className="flex-grow pt-16">
         <section className="section-padding relative bg-white pb-16">
           <div className="chaasms-container">
+            {/* Breadcrumb navigation */}
+            <Breadcrumb className="mb-4">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink onClick={navigateToHome} className="cursor-pointer">
+                    <Home className="h-3.5 w-3.5" />
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Framework Overview</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            
             <div className="max-w-3xl mx-auto text-center mb-4">
               <span className="inline-block px-3 py-0.5 rounded-full bg-blue-50 text-chaasms-blue text-xs mb-1 animate-fade-in">
                 CHAASMS Framework
@@ -51,14 +79,25 @@ const FrameworkOverview = () => {
                 Dive deeper into each layer to understand the components and implementation strategies.
               </p>
               
-              <Button
-                onClick={navigateToFrameworks}
-                className="flex items-center gap-2 mx-auto"
-                style={{ backgroundColor: '#0f4c81', color: 'white' }}
-              >
-                <span>Explore Framework Details</span>
-                <ArrowRight size={16} />
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  onClick={navigateToHome}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <ArrowLeft size={16} />
+                  <span>Back to Home</span>
+                </Button>
+                
+                <Button
+                  onClick={navigateToFrameworks}
+                  className="flex items-center gap-2"
+                  style={{ backgroundColor: '#0f4c81', color: 'white' }}
+                >
+                  <span>Explore Framework Details</span>
+                  <ArrowRight size={16} />
+                </Button>
+              </div>
             </div>
           </div>
         </section>

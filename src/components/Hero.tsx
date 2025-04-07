@@ -27,7 +27,7 @@ const Hero = () => {
                 Book a Consultation
               </Button>
               
-              <Link to="/frameworks">
+              <Link to="/framework-overview">
                 <Button 
                   variant="outline" 
                   className="btn-secondary group rounded-md"
