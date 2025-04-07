@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
@@ -10,6 +10,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const Frameworks = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [activeLayer, setActiveLayer] = useState(1);
   
   // Get layer from URL parameters if available
@@ -25,6 +26,7 @@ const Frameworks = () => {
   
   const handleLayerChange = (layerNumber: number) => {
     setActiveLayer(layerNumber);
+    navigate(`/frameworks?layer=${layerNumber}`, { replace: true });
   };
 
   return (
