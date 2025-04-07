@@ -7,6 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import Layer1Svg from '@/components/framework/Layer1Svg';
 import Layer2Svg from '@/components/framework/Layer2Svg';
 import Layer3Svg from '@/components/framework/Layer3Svg';
+import Layer4Svg from '@/components/framework/Layer4Svg';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -80,7 +81,7 @@ const Frameworks = () => {
               {activeLayer === 1 && <Layer1Svg />}
               {activeLayer === 2 && <Layer2Svg />}
               {activeLayer === 3 && <Layer3Svg />}
-              {activeLayer === 4 && <div className="text-center py-12 text-gray-500">Layer 4 content coming soon...</div>}
+              {activeLayer === 4 && <Layer4Svg />}
               {activeLayer === 5 && <div className="text-center py-12 text-gray-500">Layer 5 content coming soon...</div>}
               {activeLayer === 6 && <div className="text-center py-12 text-gray-500">Layer 6 content coming soon...</div>}
             </div>
