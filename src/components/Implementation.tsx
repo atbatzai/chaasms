@@ -80,7 +80,7 @@ const Implementation = () => {
   ];
 
   return (
-    <section id="implementation" className="section-padding bg-chaasms-lightgray">
+    <section id="implementation" className="section-padding bg-chaasms-lightgray pb-8">
       <div className="chaasms-container">
         <div className="text-center mb-20">
           <h2 className="section-heading">Implementation Approach</h2>
@@ -89,7 +89,7 @@ const Implementation = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
           {phases.map((phase, index) => (
             <ImplementationPhase
               key={index}
@@ -101,8 +101,8 @@ const Implementation = () => {
           ))}
         </div>
         
-        <div className="premium-card bg-gradient-to-r from-chaasms-blue/5 to-chaasms-blue/10">
-          <div className="text-center mb-12">
+        <div className="premium-card bg-gradient-to-r from-chaasms-blue/5 to-chaasms-blue/10 mb-0">
+          <div className="text-center mb-8">
             <h3 className="text-2xl font-normal text-chaasms-dark mb-4">Customized to Your Business</h3>
             <p className="text-chaasms-text max-w-2xl mx-auto">
               Each implementation is tailored to your specific business needs, industry context, and growth objectives.
@@ -110,17 +110,17 @@ const Implementation = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-white border-t-2 border-chaasms-blue">
+            <div className="p-6 bg-white border-t-2 border-chaasms-blue">
               <h4 className="text-lg font-medium text-chaasms-dark mb-3">Scalable Approach</h4>
               <p className="text-chaasms-text">Flexible implementation that grows with your business needs.</p>
             </div>
             
-            <div className="p-8 bg-white border-t-2 border-chaasms-blue">
+            <div className="p-6 bg-white border-t-2 border-chaasms-blue">
               <h4 className="text-lg font-medium text-chaasms-dark mb-3">Industry-Specific Insights</h4>
               <p className="text-chaasms-text">Tailored strategies based on your vertical market and ICP.</p>
             </div>
             
-            <div className="p-8 bg-white border-t-2 border-chaasms-blue">
+            <div className="p-6 bg-white border-t-2 border-chaasms-blue">
               <h4 className="text-lg font-medium text-chaasms-dark mb-3">Technology Integration</h4>
               <p className="text-chaasms-text">Seamless connection with your existing tech stack and PRM systems.</p>
             </div>

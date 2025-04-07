@@ -54,10 +54,10 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-chaasms-lightgray">
+    <section id="services" className="py-10 md:py-16 bg-chaasms-lightgray">
       <div className="chaasms-container">
-        <div className="max-w-3xl mx-auto text-center mb-10">
-          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-3">Our Expertise</span>
+        <div className="max-w-3xl mx-auto text-center mb-8">
+          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-2">Our Expertise</span>
           <h2 className="section-heading font-playfair">
             Our Services
           </h2>
