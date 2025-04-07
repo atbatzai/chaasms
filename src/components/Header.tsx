@@ -1,16 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
 const Header = () => {
@@ -85,116 +77,50 @@ const Header = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-12">
-            <NavigationMenu>
-              <NavigationMenuList className="space-x-8">
-                <NavigationMenuItem>
-                  <Link 
-                    to="/"
-                    className={cn(navItemClasses, inactiveNavItemClasses)}
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    Home
-                  </Link>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className={cn(
-                      "text-sm font-medium bg-transparent hover:bg-transparent focus:bg-transparent px-5",
-                      "text-chaasms-dark hover:text-chaasms-blue"
-                    )}
-                  >
-                    Framework
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[500px] p-6 bg-white shadow-lg">
-                      <div className="grid gap-6 md:grid-cols-2">
-                        <div
-                          onClick={() => scrollToSection('challenges')}
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
-                        >
-                          <div className="text-sm font-medium text-chaasms-blue mb-1">
-                            The Channel Challenge
-                          </div>
-                          <p className="text-sm leading-snug text-chaasms-text">
-                            Understanding today's complex ecosystem landscape
-                          </p>
-                        </div>
-                        <div
-                          onClick={() => scrollToSection('framework-overview')}
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
-                        >
-                          <div className="text-sm font-medium text-chaasms-blue mb-1">
-                            Framework Overview
-                          </div>
-                          <p className="text-sm leading-snug text-chaasms-text">
-                            Explore our six-layer comprehensive methodology
-                          </p>
-                        </div>
-                        <div
-                          onClick={() => navigateToRoute('/frameworks')}
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
-                        >
-                          <div className="text-sm font-medium text-chaasms-blue mb-1">
-                            Framework Layers
-                          </div>
-                          <p className="text-sm leading-snug text-chaasms-text">
-                            Detailed view of each framework layer
-                          </p>
-                        </div>
-                        <div
-                          onClick={() => scrollToSection('implementation')}
-                          className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-chaasms-lightgray cursor-pointer"
-                        >
-                          <div className="text-sm font-medium text-chaasms-blue mb-1">
-                            Implementation
-                          </div>
-                          <p className="text-sm leading-snug text-chaasms-text">
-                            Our four-phase implementation approach
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <span 
-                    onClick={() => scrollToSection('services')}
-                    className={cn(navItemClasses, inactiveNavItemClasses)}
-                  >
-                    Services
-                  </span>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <span
-                    onClick={() => navigateToRoute('/frameworks')}
-                    className={cn(navItemClasses, inactiveNavItemClasses)}
-                  >
-                    CHAASMS Framework
-                  </span>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <span 
-                    onClick={() => scrollToSection('resources')}
-                    className={cn(navItemClasses, inactiveNavItemClasses)}
-                  >
-                    Resources
-                  </span>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <span 
-                    onClick={() => scrollToSection('contact')}
-                    className={cn(navItemClasses, inactiveNavItemClasses)}
-                  >
-                    Contact
-                  </span>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            <nav className="flex items-center space-x-8">
+              <Link 
+                to="/"
+                className={cn(navItemClasses, inactiveNavItemClasses)}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Home
+              </Link>
+              
+              <span 
+                onClick={() => scrollToSection('services')}
+                className={cn(navItemClasses, inactiveNavItemClasses)}
+              >
+                Services
+              </span>
+              
+              <span
+                onClick={() => navigateToRoute('/framework-overview')}
+                className={cn(navItemClasses, inactiveNavItemClasses)}
+              >
+                Framework Overview
+              </span>
+              
+              <span
+                onClick={() => navigateToRoute('/frameworks')}
+                className={cn(navItemClasses, inactiveNavItemClasses)}
+              >
+                Framework Layers
+              </span>
+              
+              <span 
+                onClick={() => scrollToSection('resources')}
+                className={cn(navItemClasses, inactiveNavItemClasses)}
+              >
+                Resources
+              </span>
+              
+              <span 
+                onClick={() => scrollToSection('contact')}
+                className={cn(navItemClasses, inactiveNavItemClasses)}
+              >
+                Contact
+              </span>
+            </nav>
             
             <Button 
               className="btn-primary"
@@ -229,39 +155,6 @@ const Header = () => {
                 Home
               </Link>
               
-              <div className="px-4 py-3 flex flex-col">
-                <div className="flex items-center justify-between">
-                  <span className="font-medium text-chaasms-dark">Framework</span>
-                  <ChevronDown size={16} className="text-gray-400" />
-                </div>
-                <div className="pl-4 mt-3 space-y-2 border-l border-chaasms-lightgray">
-                  <span 
-                    onClick={() => scrollToSection('challenges')}
-                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
-                  >
-                    The Channel Challenge
-                  </span>
-                  <span 
-                    onClick={() => scrollToSection('framework-overview')}
-                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
-                  >
-                    Framework Overview
-                  </span>
-                  <span
-                    onClick={() => navigateToRoute('/frameworks')}
-                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
-                  >
-                    Framework Layers
-                  </span>
-                  <span 
-                    onClick={() => scrollToSection('implementation')}
-                    className="block py-2 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
-                  >
-                    Implementation
-                  </span>
-                </div>
-              </div>
-              
               <span 
                 onClick={() => scrollToSection('services')}
                 className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
@@ -270,10 +163,17 @@ const Header = () => {
               </span>
               
               <span
+                onClick={() => navigateToRoute('/framework-overview')}
+                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
+              >
+                Framework Overview
+              </span>
+              
+              <span
                 onClick={() => navigateToRoute('/frameworks')}
                 className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
               >
-                CHAASMS Framework
+                Framework Layers
               </span>
               
               <span 
