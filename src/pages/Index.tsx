@@ -61,7 +61,9 @@ const Index = () => {
                 </p>
               </div>
               
-              <ChaasmsFrameworkSvg />
+              <div className="mb-16 pb-6"> {/* Added padding and margin at bottom */}
+                <ChaasmsFrameworkSvg />
+              </div>
             </div>
           </section>
           <SectionDivider position="bottom" color="white" />

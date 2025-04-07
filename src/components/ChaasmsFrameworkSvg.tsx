@@ -3,14 +3,15 @@ import React from 'react';
 
 const ChaasmsFrameworkSvg = () => {
   return (
-    <div className="w-full max-w-5xl mx-auto overflow-auto">
+    <div className="w-full max-w-5xl mx-auto overflow-visible">
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 800 600"
+        viewBox="0 0 800 620" // Increased height to ensure buttons are visible
         className="w-full h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         {/* Background */}
-        <rect width="800" height="600" fill="#f5f8ff" />
+        <rect width="800" height="620" fill="#f5f8ff" />
         
         {/* Title and Subtitle */}
         <text x="400" y="50" fontFamily="Arial, sans-serif" fontSize="28" fontWeight="bold" textAnchor="middle" fill="#1a4ca1">CHAASMS CHANNEL STRATEGY FRAMEWORK</text>
@@ -47,7 +48,7 @@ const ChaasmsFrameworkSvg = () => {
         <text x="400" y="125" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#ffffff">Layer 6: Measurement & Scaling</text>
         <text x="400" y="145" fontFamily="Arial, sans-serif" fontSize="14" textAnchor="middle" fill="#ffffff">KPIs, governance, optimization loop</text>
         
-        {/* Bottom navigation buttons */}
+        {/* Bottom navigation buttons - adjusted positions to ensure visibility */}
         <rect x="100" y="580" width="140" height="40" rx="20" fill="#3075fa" />
         <text x="170" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#ffffff">Hybrid Approach</text>
         
