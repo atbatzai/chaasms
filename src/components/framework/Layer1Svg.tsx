@@ -78,24 +78,24 @@ const Layer1Svg = () => {
           <text x="698" y="335" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">Executive sponsorship</text>
         </g>
         
-        {/* Key Elements Section - Fixed spacing between header and content */}
+        {/* Key Elements Section - Fixed spacing between header and content and increased space after colons */}
         <g>
           <rect x="100" y="400" width="420" height="255" rx="5" fill="#f0f9ff" stroke="#2563eb" strokeWidth="1.5" />
           <text x="310" y="430" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#1e3a8a">Key Elements</text>
           <line x1="170" y1="445" x2="450" y2="445" stroke="#2563eb" strokeWidth="1.5" />
           
-          {/* Content with increased spacing between header and content */}
+          {/* Content with increased spacing between header and bullets, and more space after colons */}
           <text x="130" y="485" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Channel Vision:</text>
-          <text x="235" y="485" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">Clear articulation of why</text>
-          <text x="235" y="510" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">partners are essential</text>
+          <text x="250" y="485" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">Clear articulation of why</text>
+          <text x="250" y="510" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">partners are essential</text>
           
-          <text x="130" y="545" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Executive Alignment:</text>
-          <text x="235" y="545" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">C-suite commitment to</text>
-          <text x="235" y="570" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">channel strategy</text>
+          <text x="130" y="550" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Executive Alignment:</text>
+          <text x="270" y="550" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">C-suite commitment to</text>
+          <text x="270" y="575" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">channel strategy</text>
           
-          <text x="130" y="605" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Org Readiness:</text>
-          <text x="235" y="605" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">Cross-functional readiness</text>
-          <text x="235" y="630" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">for partner engagement</text>
+          <text x="130" y="615" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Org Readiness:</text>
+          <text x="250" y="615" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">Cross-functional readiness</text>
+          <text x="250" y="640" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">for partner engagement</text>
         </g>
         
         {/* Core Metrics Section - Simplified with no sub-headers */}
