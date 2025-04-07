@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
 import Layer1Svg from '@/components/framework/Layer1Svg';
+import Layer2Svg from '@/components/framework/Layer2Svg';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -67,7 +68,7 @@ const Frameworks = () => {
             {/* Layer Content */}
             <div className="mb-16 overflow-hidden">
               {activeLayer === 1 && <Layer1Svg />}
-              {activeLayer === 2 && <div className="text-center py-12 text-gray-500">Layer 2 content coming soon...</div>}
+              {activeLayer === 2 && <Layer2Svg />}
               {activeLayer === 3 && <div className="text-center py-12 text-gray-500">Layer 3 content coming soon...</div>}
               {activeLayer === 4 && <div className="text-center py-12 text-gray-500">Layer 4 content coming soon...</div>}
               {activeLayer === 5 && <div className="text-center py-12 text-gray-500">Layer 5 content coming soon...</div>}
