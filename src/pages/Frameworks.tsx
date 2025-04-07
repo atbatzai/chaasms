@@ -9,6 +9,7 @@ import Layer2Svg from '@/components/framework/Layer2Svg';
 import Layer3Svg from '@/components/framework/Layer3Svg';
 import Layer4Svg from '@/components/framework/Layer4Svg';
 import Layer5Svg from '@/components/framework/Layer5Svg';
+import Layer6Svg from '@/components/framework/Layer6Svg';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -84,7 +85,7 @@ const Frameworks = () => {
               {activeLayer === 3 && <Layer3Svg />}
               {activeLayer === 4 && <Layer4Svg />}
               {activeLayer === 5 && <Layer5Svg />}
-              {activeLayer === 6 && <div className="text-center py-12 text-gray-500">Layer 6 content coming soon...</div>}
+              {activeLayer === 6 && <Layer6Svg />}
             </div>
 
             {/* Navigation Arrows - Consistent styling */}
