@@ -25,9 +25,29 @@ const FrameworkOverview = () => {
           <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6 font-playfair">
             The CHAASMS Framework
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-600 leading-relaxed mb-6">
             A structured, six-layer methodology for building successful channel programs in today's complex ecosystem landscape.
           </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              onClick={() => navigate('/framework-overview')}
+              className="flex items-center gap-2"
+              style={{ backgroundColor: '#0f4c81', color: 'white' }}
+            >
+              <span>Framework Overview</span>
+              <ArrowRight size={16} />
+            </Button>
+            
+            <Button
+              onClick={() => navigate('/frameworks')}
+              className="flex items-center gap-2"
+              variant="outline"
+            >
+              <span>Detailed Framework Layers</span>
+              <ArrowRight size={16} />
+            </Button>
+          </div>
         </div>
         
         <FrameworkSteps 
@@ -42,16 +62,27 @@ const FrameworkOverview = () => {
         
         <FrameworkBenefits benefits={benefits} />
         
-        {/* Add navigation button to detailed framework pages */}
+        {/* Navigation buttons to detailed framework pages */}
         <div className="text-center mt-12">
-          <Button
-            onClick={() => navigate('/framework-overview')}
-            className="flex items-center gap-2 mx-auto"
-            style={{ backgroundColor: '#0f4c81', color: 'white' }}
-          >
-            <span>Explore Full Framework</span>
-            <ArrowRight size={16} />
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              onClick={() => navigate('/framework-overview')}
+              className="flex items-center gap-2"
+              style={{ backgroundColor: '#0f4c81', color: 'white' }}
+            >
+              <span>Explore Framework Overview</span>
+              <ArrowRight size={16} />
+            </Button>
+            
+            <Button
+              onClick={() => navigate('/frameworks')}
+              className="flex items-center gap-2"
+              variant="outline"
+            >
+              <span>View Detailed Framework</span>
+              <ArrowRight size={16} />
+            </Button>
+          </div>
         </div>
       </div>
     </section>
