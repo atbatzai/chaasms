@@ -27,15 +27,15 @@ const Hero = () => {
                 Book a Consultation
               </Button>
               
-              <Button 
-                variant="outline" 
-                className="btn-secondary group rounded-md"
-                as={Link}
-                to="/frameworks"
-              >
-                Explore the Framework
-                <ChevronRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <Link to="/frameworks">
+                <Button 
+                  variant="outline" 
+                  className="btn-secondary group rounded-md"
+                >
+                  Explore the Framework
+                  <ChevronRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </div>
           </div>
           

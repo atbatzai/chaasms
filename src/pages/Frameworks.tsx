@@ -18,7 +18,7 @@ const Frameworks = () => {
     <div className="min-h-screen flex flex-col relative">
       <Header />
       <main className="flex-grow pt-32">
-        <section className="section-padding relative bg-white">
+        <section className="section-padding relative bg-white pb-24">
           <div className="chaasms-container">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">
@@ -50,7 +50,7 @@ const Frameworks = () => {
             </div>
 
             {/* Layer Content */}
-            <div className="mb-12 overflow-hidden">
+            <div className="mb-16 overflow-hidden">
               {activeLayer === 1 && <Layer1Svg />}
               {activeLayer === 2 && <div className="text-center py-12 text-gray-500">Layer 2 content coming soon...</div>}
               {activeLayer === 3 && <div className="text-center py-12 text-gray-500">Layer 3 content coming soon...</div>}
