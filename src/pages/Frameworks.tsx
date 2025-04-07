@@ -10,6 +10,12 @@ import Layer3Svg from '@/components/framework/Layer3Svg';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+// Define consistent color theme for the page
+const colors = {
+  primary: '#0f4c81',  // Deep blue for main elements
+  secondary: '#3498db' // Medium blue for secondary elements
+};
+
 const Frameworks = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -49,25 +55,28 @@ const Frameworks = () => {
               </p>
             </div>
 
-            {/* Layer Navigation */}
-            <div className="flex justify-center gap-3 mb-12">
+            {/* Layer Navigation - Consistent styling */}
+            <div className="flex justify-center flex-wrap gap-3 mb-12">
               {[1, 2, 3, 4, 5, 6].map(layer => (
                 <button
                   key={layer}
                   onClick={() => handleLayerChange(layer)}
                   className={`w-12 h-12 rounded-full text-white flex items-center justify-center font-bold transition-all ${
                     activeLayer === layer 
-                      ? 'transform scale-110 shadow-md bg-chaasms-blue' 
-                      : 'bg-chaasms-blue/70 hover:bg-chaasms-blue/90'
+                      ? 'transform scale-110 shadow-md' 
+                      : 'opacity-80 hover:opacity-100'
                   }`}
+                  style={{ 
+                    backgroundColor: activeLayer === layer ? colors.primary : colors.secondary,
+                  }}
                 >
                   {layer}
                 </button>
               ))}
             </div>
 
-            {/* Layer Content */}
-            <div className="mb-16 overflow-hidden">
+            {/* Layer Content - Consistent container */}
+            <div className="mb-16 overflow-hidden bg-white rounded-lg shadow-sm p-4">
               {activeLayer === 1 && <Layer1Svg />}
               {activeLayer === 2 && <Layer2Svg />}
               {activeLayer === 3 && <Layer3Svg />}
@@ -76,25 +85,31 @@ const Frameworks = () => {
               {activeLayer === 6 && <div className="text-center py-12 text-gray-500">Layer 6 content coming soon...</div>}
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Consistent styling */}
             <div className="flex justify-between items-center max-w-4xl mx-auto">
               <Button
-                variant="outline"
                 onClick={() => handleLayerChange(activeLayer > 1 ? activeLayer - 1 : 6)}
                 className="flex items-center gap-2"
+                style={{ 
+                  backgroundColor: colors.primary,
+                  color: 'white'
+                }}
               >
                 <ArrowLeft size={16} />
                 <span>Previous Layer</span>
               </Button>
 
-              <div className="text-center text-gray-500">
+              <div className="text-center font-medium" style={{ color: colors.primary }}>
                 Layer {activeLayer} of 6
               </div>
 
               <Button
-                variant="outline"
                 onClick={() => handleLayerChange(activeLayer < 6 ? activeLayer + 1 : 1)}
                 className="flex items-center gap-2"
+                style={{ 
+                  backgroundColor: colors.primary,
+                  color: 'white'
+                }}
               >
                 <span>Next Layer</span>
                 <ArrowRight size={16} />
