@@ -90,8 +90,8 @@ const Layer1Svg = () => {
           <text x="250" y="510" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">partners are essential</text>
           
           <text x="130" y="550" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Executive Alignment:</text>
-          <text x="270" y="550" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">C-suite commitment to</text>
-          <text x="270" y="575" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">channel strategy</text>
+          <text x="280" y="550" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">C-suite commitment to</text>
+          <text x="280" y="575" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">channel strategy</text>
           
           <text x="130" y="615" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#1e3a8a">Org Readiness:</text>
           <text x="250" y="615" fontFamily="Arial, sans-serif" fontSize="14" fill="#1e3a8a">Cross-functional readiness</text>
