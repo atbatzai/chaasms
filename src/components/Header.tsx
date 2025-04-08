@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -57,19 +58,19 @@ const Header = () => {
   return (
     <header 
       className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 
-        ${scrolled ? 'bg-white shadow-sm backdrop-blur-sm py-4' : 'bg-white py-6'}`}
+        ${scrolled ? 'bg-white shadow-sm backdrop-blur-sm py-2' : 'bg-white py-2'}`}
     >
       <div className="chaasms-container">
         <div className="flex justify-between items-center">
           <Link 
             to="/"
-            className="cursor-pointer"
+            className="cursor-pointer flex items-center"
             onClick={() => window.scrollTo(0, 0)}
           >
             <img 
               src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
               alt="CHAASMS Logo" 
-              className="h-24 w-auto" 
+              className="h-16 w-auto" 
               style={{ filter: 'none' }}
             />
           </Link>
