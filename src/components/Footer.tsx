@@ -1,4 +1,3 @@
-
 import { Facebook, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
@@ -141,7 +140,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-          <p>&copy; {currentYear} CHAASMS. All rights reserved.</p>
+          <p>&copy; {currentYear} CHAASMS, LLC. All rights reserved.</p>
         </div>
       </div>
     </footer>
