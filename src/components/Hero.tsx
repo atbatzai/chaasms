@@ -22,10 +22,6 @@ const Hero = () => {
       <div className="chaasms-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-block px-4 py-2 bg-soft-blue/50 rounded-full text-chaasms-blue text-sm mb-4 animate-fade-in">
-              Strategic Channel Framework
-            </div>
-            
             <h1 className="text-chaasms-dark leading-tight font-playfair">
               The Definitive Channel Strategy Framework for Modern ISVs
             </h1>
