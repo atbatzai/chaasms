@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -67,9 +68,10 @@ const Header = () => {
             onClick={() => window.scrollTo(0, 0)}
           >
             <img 
-              src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
+              src="/lovable-uploads/9721ab27-6aa9-4f77-8409-4e9175a7504c.png" 
               alt="CHAASMS Logo" 
-              className="h-24 w-auto" 
+              className="h-24 w-auto mix-blend-normal" 
+              style={{ filter: 'none' }}
             />
           </Link>
           
