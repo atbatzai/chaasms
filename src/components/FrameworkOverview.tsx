@@ -31,19 +31,16 @@ const FrameworkOverview = () => {
   return (
     <section id="framework-overview" className="section-padding relative overflow-hidden bg-white pt-6">
       <div className="chaasms-container relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12 px-2">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">Our Methodology</span>
-          <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-4 font-playfair">
-            The CHAASMS Framework
+          <h2 className="text-2xl md:text-4xl font-medium text-chaasms-dark mb-4 font-playfair">
+            Channel Strategy Framework
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed mb-6">
-            A structured, six-layer methodology for building successful channel programs in today's complex ecosystem landscape.
-          </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               onClick={navigateToFrameworkOverview}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 w-full sm:w-auto"
               style={{ backgroundColor: '#0f4c81', color: 'white' }}
             >
               <span>Framework Overview</span>
@@ -52,7 +49,7 @@ const FrameworkOverview = () => {
             
             <Button
               onClick={navigateToFrameworks}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 w-full sm:w-auto"
               variant="outline"
             >
               <span>Detailed Framework Layers</span>
@@ -61,10 +58,14 @@ const FrameworkOverview = () => {
           </div>
         </div>
         
-        <FrameworkSteps 
-          frameworkLayers={frameworkLayers} 
-          onLayerClick={handleLayerClick} 
-        />
+        <div className="overflow-x-auto px-1 py-4">
+          <div className="min-w-fit">
+            <FrameworkSteps 
+              frameworkLayers={frameworkLayers} 
+              onLayerClick={handleLayerClick} 
+            />
+          </div>
+        </div>
         
         <LayerDetailDialog 
           selectedLayer={selectedLayer} 
@@ -74,11 +75,11 @@ const FrameworkOverview = () => {
         <FrameworkBenefits benefits={benefits} />
         
         {/* Navigation buttons to detailed framework pages - Updated with scroll to top */}
-        <div className="text-center mt-10">
+        <div className="text-center mt-6 md:mt-10 px-2">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               onClick={navigateToFrameworkOverview}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 w-full sm:w-auto"
               style={{ backgroundColor: '#0f4c81', color: 'white' }}
             >
               <span>Explore Framework Overview</span>
@@ -87,7 +88,7 @@ const FrameworkOverview = () => {
             
             <Button
               onClick={navigateToFrameworks}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 w-full sm:w-auto"
               variant="outline"
             >
               <span>View Detailed Framework</span>

@@ -38,10 +38,10 @@ const FrameworkOverview = () => {
     <div className="min-h-screen flex flex-col relative">
       <Header />
       <main className="flex-grow pt-16">
-        <section className="section-padding relative bg-white pb-16">
+        <section className="section-padding relative bg-white pb-8 md:pb-16">
           <div className="chaasms-container">
             {/* Breadcrumb navigation */}
-            <Breadcrumb className="mb-4">
+            <Breadcrumb className="mb-4 overflow-x-auto pb-2">
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink onClick={navigateToHome} className="cursor-pointer">
@@ -55,23 +55,15 @@ const FrameworkOverview = () => {
               </BreadcrumbList>
             </Breadcrumb>
             
-            <div className="max-w-3xl mx-auto text-center mb-4">
-              <span className="inline-block px-3 py-0.5 rounded-full bg-blue-50 text-chaasms-blue text-xs mb-1 animate-fade-in">
-                CHAASMS Framework
-              </span>
-              <h2 className="text-2xl md:text-3xl font-medium text-chaasms-dark mb-2 font-playfair">
-                The CHAASMS Framework Overview
-              </h2>
-              <p className="text-base text-gray-600 leading-relaxed">
-                A comprehensive six-layer methodology for building successful channel programs.
-              </p>
+            {/* Framework Visualization - Optimized for mobile */}
+            <div className="w-full overflow-x-auto px-1 py-4">
+              <div className="min-w-fit">
+                <ChaasmsFrameworkClean />
+              </div>
             </div>
             
-            {/* The Interlocking Framework Visualization */}
-            <ChaasmsFrameworkClean />
-            
-            {/* Navigation to detailed framework pages */}
-            <div className="mt-8 text-center">
+            {/* Navigation to detailed framework pages - Mobile optimized */}
+            <div className="mt-4 md:mt-8 text-center px-2">
               <h3 className="text-xl font-medium text-chaasms-dark mb-2">
                 Explore Each Framework Layer
               </h3>
@@ -83,7 +75,7 @@ const FrameworkOverview = () => {
                 <Button
                   onClick={navigateToHome}
                   variant="outline"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 w-full sm:w-auto"
                 >
                   <ArrowLeft size={16} />
                   <span>Back to Home</span>
@@ -91,7 +83,7 @@ const FrameworkOverview = () => {
                 
                 <Button
                   onClick={navigateToFrameworks}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 w-full sm:w-auto"
                   style={{ backgroundColor: '#0f4c81', color: 'white' }}
                 >
                   <span>Explore Framework Details</span>
