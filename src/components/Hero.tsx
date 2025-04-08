@@ -1,15 +1,27 @@
 
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import TiltCard from "./TiltCard";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Hero = () => {
+  // Add useEffect to load Vimeo Player script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://player.vimeo.com/api/player.js";
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
-    <section className="pt-32 md:pt-36 pb-24 md:pb-36 bg-white">
+    <section className="pt-24 md:pt-28 pb-16 md:pb-24 bg-white">
       <div className="chaasms-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-          <div className="lg:col-span-7 space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-7 space-y-6">
             <div className="inline-block px-4 py-2 bg-soft-blue/50 rounded-full text-chaasms-blue text-sm mb-4 animate-fade-in">
               Strategic Channel Framework
             </div>
@@ -41,34 +53,17 @@ const Hero = () => {
           
           <div className="lg:col-span-5">
             <div className="relative mx-auto max-w-md lg:ml-auto">
-              <TiltCard className="relative bg-white p-8 rounded-lg shadow-md border border-chaasms-midgray/30">
-                <div className="space-y-6">
-                  <div className="text-xl font-normal text-center text-chaasms-dark mb-6 font-playfair">
-                    The CHAASMS Framework
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="bg-gradient-to-r from-chaasms-blue to-blue-700 text-white py-3 px-5 text-sm font-normal rounded-md shadow-sm">
-                      Measurement & Scaling
-                    </div>
-                    <div className="bg-gradient-to-r from-chaasms-blue/95 to-blue-600/95 text-white py-3 px-5 text-sm font-normal rounded-md shadow-sm">
-                      GTM Motion
-                    </div>
-                    <div className="bg-gradient-to-r from-chaasms-blue/90 to-blue-600/90 text-white py-3 px-5 text-sm font-normal rounded-md shadow-sm">
-                      Touchpoint & Segmentation
-                    </div>
-                    <div className="bg-gradient-to-r from-chaasms-blue/85 to-blue-600/85 text-white py-3 px-5 text-sm font-normal rounded-md shadow-sm">
-                      Ecosystem Strategy
-                    </div>
-                    <div className="bg-gradient-to-r from-chaasms-blue/80 to-blue-600/80 text-white py-3 px-5 text-sm font-normal rounded-md shadow-sm">
-                      Program Architecture
-                    </div>
-                    <div className="bg-gradient-to-r from-chaasms-blue/75 to-blue-600/75 text-white py-3 px-5 text-sm font-normal rounded-md shadow-sm">
-                      Foundational Strategy
-                    </div>
-                  </div>
+              <div className="rounded-lg overflow-hidden shadow-lg border border-chaasms-midgray/20">
+                <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
+                  <iframe 
+                    src="https://player.vimeo.com/video/1073421210?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                    frameBorder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                    style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
+                    title="Channel Ecosystem Success"
+                  ></iframe>
                 </div>
-              </TiltCard>
+              </div>
             </div>
           </div>
         </div>
