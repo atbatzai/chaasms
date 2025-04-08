@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Layer3Svg = () => {
@@ -44,8 +43,8 @@ const Layer3Svg = () => {
           {/* ERP Ecosystem */}
           <div className="rounded-lg shadow-md overflow-hidden border" style={{ borderColor: colors.secondary }}>
             <div className="py-3 px-4" style={{ backgroundColor: colors.primary }}>
-              <h3 className="font-bold" style={{ color: colors.text.light }}>ERP Ecosystem Strategy</h3>
-              <p className="text-sm italic" style={{ color: 'rgba(255,255,255,0.7)' }}>NetSuite, SAP, Oracle, Dynamics</p>
+              <h3 className="text-base font-bold" style={{ color: colors.text.light }}>ERP Ecosystem Strategy</h3>
+              <p className="text-xs italic" style={{ color: 'rgba(255,255,255,0.7)' }}>NetSuite, SAP, Oracle, Dynamics</p>
             </div>
             <div className="p-4" style={{ backgroundColor: colors.light }}>
               <div className="flex items-start mb-3">
@@ -86,8 +85,8 @@ const Layer3Svg = () => {
           {/* Cloud Platform Ecosystem */}
           <div className="rounded-lg shadow-md overflow-hidden border" style={{ borderColor: colors.secondary }}>
             <div className="py-3 px-4" style={{ backgroundColor: colors.primary }}>
-              <h3 className="font-bold" style={{ color: colors.text.light }}>Cloud Platform Ecosystem</h3>
-              <p className="text-sm italic" style={{ color: 'rgba(255,255,255,0.7)' }}>AWS, Azure, GCP</p>
+              <h3 className="text-base font-bold" style={{ color: colors.text.light }}>Cloud Platform Ecosystem</h3>
+              <p className="text-xs italic" style={{ color: 'rgba(255,255,255,0.7)' }}>AWS, Azure, GCP</p>
             </div>
             <div className="p-4" style={{ backgroundColor: colors.light }}>
               <div className="flex items-start mb-3">
@@ -128,8 +127,8 @@ const Layer3Svg = () => {
           {/* CRM Ecosystem */}
           <div className="rounded-lg shadow-md overflow-hidden border" style={{ borderColor: colors.secondary }}>
             <div className="py-3 px-4" style={{ backgroundColor: colors.primary }}>
-              <h3 className="font-bold" style={{ color: colors.text.light }}>CRM Ecosystem Strategy</h3>
-              <p className="text-sm italic" style={{ color: 'rgba(255,255,255,0.7)' }}>Salesforce, HubSpot, Dynamics</p>
+              <h3 className="text-base font-bold" style={{ color: colors.text.light }}>CRM Ecosystem Strategy</h3>
+              <p className="text-xs italic" style={{ color: 'rgba(255,255,255,0.7)' }}>Salesforce, HubSpot, Dynamics</p>
             </div>
             <div className="p-4" style={{ backgroundColor: colors.light }}>
               <div className="flex items-start mb-3">
@@ -170,8 +169,8 @@ const Layer3Svg = () => {
           {/* E-commerce Ecosystem */}
           <div className="rounded-lg shadow-md overflow-hidden border" style={{ borderColor: colors.secondary }}>
             <div className="py-3 px-4" style={{ backgroundColor: colors.primary }}>
-              <h3 className="font-bold" style={{ color: colors.text.light }}>E-commerce Ecosystem</h3>
-              <p className="text-sm italic" style={{ color: 'rgba(255,255,255,0.7)' }}>Shopify, Magento, BigCommerce</p>
+              <h3 className="text-base font-bold" style={{ color: colors.text.light }}>E-commerce Ecosystem</h3>
+              <p className="text-xs italic" style={{ color: 'rgba(255,255,255,0.7)' }}>Shopify, Magento, BigCommerce</p>
             </div>
             <div className="p-4" style={{ backgroundColor: colors.light }}>
               <div className="flex items-start mb-3">
