@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -69,10 +68,14 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <Link 
             to="/"
-            className="text-2xl font-normal text-chaasms-blue cursor-pointer"
+            className="cursor-pointer"
             onClick={() => window.scrollTo(0, 0)}
           >
-            CHAASMS
+            <img 
+              src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
+              alt="CHAASMS Logo" 
+              className="h-12 w-auto" 
+            />
           </Link>
           
           {/* Desktop Menu */}
@@ -106,8 +109,6 @@ const Header = () => {
               >
                 Framework Layers
               </span>
-              
-              {/* Removed Contact link */}
             </nav>
             
             <Button 
@@ -163,8 +164,6 @@ const Header = () => {
               >
                 Framework Layers
               </span>
-              
-              {/* Removed Contact link */}
               
               <div className="px-4 pt-4 pb-2">
                 <Button 
