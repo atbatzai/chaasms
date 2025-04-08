@@ -1,3 +1,4 @@
+
 import { Facebook, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
@@ -109,7 +110,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-medium mb-6">Contact</h4>
+            <h4 className="font-medium mb-6">Resources</h4>
             <ul className="space-y-3">
               <li>
                 <span 
@@ -127,14 +128,7 @@ const Footer = () => {
                   Assessment Tool
                 </span>
               </li>
-              <li>
-                <span 
-                  onClick={() => scrollToSection('contact')}
-                  className="text-gray-300 hover:text-white transition-colors text-sm cursor-pointer"
-                >
-                  Contact
-                </span>
-              </li>
+              {/* Removed Contact link */}
             </ul>
           </div>
         </div>

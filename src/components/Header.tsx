@@ -107,12 +107,7 @@ const Header = () => {
                 Framework Layers
               </span>
               
-              <span 
-                onClick={() => scrollToSection('contact')}
-                className={cn(navItemClasses, inactiveNavItemClasses)}
-              >
-                Contact
-              </span>
+              {/* Removed Contact link */}
             </nav>
             
             <Button 
@@ -169,12 +164,7 @@ const Header = () => {
                 Framework Layers
               </span>
               
-              <span 
-                onClick={() => scrollToSection('contact')}
-                className="px-4 py-3 text-chaasms-dark hover:text-chaasms-blue cursor-pointer"
-              >
-                Contact
-              </span>
+              {/* Removed Contact link */}
               
               <div className="px-4 pt-4 pb-2">
                 <Button 
