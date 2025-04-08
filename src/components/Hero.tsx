@@ -21,7 +21,7 @@ const Hero = () => {
     <section className="pt-40 md:pt-48 pb-16 md:pb-24 bg-white">
       <div className="chaasms-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-6 space-y-6">
             <h1 className="text-chaasms-dark leading-tight font-playfair">
               The Definitive Channel Strategy Framework for Modern ISVs
             </h1>
@@ -47,8 +47,8 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-md lg:ml-auto">
+          <div className="lg:col-span-6">
+            <div className="relative mx-auto max-w-full">
               <div className="rounded-lg overflow-hidden shadow-lg border border-chaasms-midgray/20">
                 <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
                   <iframe 
