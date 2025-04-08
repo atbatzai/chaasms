@@ -58,7 +58,7 @@ const Header = () => {
   return (
     <header 
       className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 
-        ${scrolled ? 'bg-white shadow-sm backdrop-blur-sm py-2' : 'bg-white py-2'}`}
+        ${scrolled ? 'bg-white shadow-sm backdrop-blur-sm py-3' : 'bg-white py-3'}`}
     >
       <div className="chaasms-container">
         <div className="flex justify-between items-center">
@@ -70,7 +70,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
               alt="CHAASMS Logo" 
-              className="h-16 w-auto" 
+              className="h-24 w-auto" 
               style={{ filter: 'none' }}
             />
           </Link>
