@@ -9,6 +9,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   
+  // Add scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -22,6 +23,7 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // Updated navigation function to ensure top-of-page when navigating to a new route
   const navigateToRoute = (route: string) => {
     navigate(route);
     window.scrollTo(0, 0);
@@ -29,12 +31,14 @@ const Header = () => {
   };
 
   const scrollToSection = (id: string) => {
+    // If we're on a different page, navigate to home first
     if (window.location.pathname !== '/') {
       navigate('/');
+      // Need a small timeout to allow navigation to complete before scrolling
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
-          const yOffset = -100;
+          const yOffset = -100; // Adjust for header height
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
@@ -42,14 +46,15 @@ const Header = () => {
     } else {
       const element = document.getElementById(id);
       if (element) {
-        const yOffset = -100;
+        const yOffset = -100; // Adjust for header height
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     }
     setMobileMenuOpen(false);
   };
-
+  
+  // Custom styles for navigation menu items
   const navItemClasses = "px-5 py-2 text-sm font-medium transition-colors cursor-pointer";
   const activeNavItemClasses = "text-chaasms-blue";
   const inactiveNavItemClasses = "text-chaasms-dark hover:text-chaasms-blue";
@@ -69,10 +74,11 @@ const Header = () => {
             <img 
               src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
               alt="CHAASMS Logo" 
-              className="h-24 w-auto" 
+              className="h-12 w-auto" 
             />
           </Link>
           
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-12">
             <nav className="flex items-center space-x-8">
               <Link 
@@ -113,6 +119,7 @@ const Header = () => {
             </Button>
           </div>
           
+          {/* Mobile Menu Button */}
           <button 
             className="md:hidden text-chaasms-dark focus:outline-none" 
             onClick={toggleMobileMenu}
@@ -122,6 +129,7 @@ const Header = () => {
           </button>
         </div>
         
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-6 mt-4 bg-white shadow-md border-t border-chaasms-lightgray animate-fade-in">
             <nav className="flex flex-col space-y-2">
