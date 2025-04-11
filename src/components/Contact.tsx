@@ -1,3 +1,4 @@
+
 import { Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,16 +52,22 @@ const Contact = () => {
       const templateId = 'template_chaasms';
       const publicKey = 'YOUR_PUBLIC_KEY';
       
+      // Send the email to both admins
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         company: formData.company,
         message: formData.message,
         to_name: "Jeff & Jennifer Turner",
-        to_email: "jeff.turner@chaasms.com, jennifer.turner@chaasms.com"
+        to_email: "jeff.turner@chaasms.com, jturner@chaasms.com" // Updated to include both email versions
       };
       
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      // Optional: Send an auto-reply to the submitter
+      // You can either:
+      // 1. Configure this in EmailJS directly (recommended)
+      // 2. Or add another emailjs.send here with a different template
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
       
