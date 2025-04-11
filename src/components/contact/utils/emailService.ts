@@ -31,18 +31,42 @@ export const submitContactForm = async (formData: ContactFormData) => {
     data.append('_subject', `Contact from ${formData.name} at ${formData.company}`);
     data.append('_replyto', formData.email); // Ensures reply-to is set correctly
     data.append('_template', 'box'); // Nice HTML template
-    data.append('_autoresponse', `Thank you for contacting CHAASMS, ${formData.name}!`); // Auto-reply subject
-    data.append('_autoresponse_message', `
-      <div style="font-family: system-ui, sans-serif, Arial; font-size: 16px; line-height: 1.5; color: #333;">
-        <div style="text-align: center; margin-bottom: 20px;">
-          <img src="https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" alt="CHAASMS Logo" style="max-width: 200px; height: auto;" />
-        </div>
-        <p>Thank you for reaching out to us! We have received your request and we'll be in touch soon.</p>
-        <p style="padding-top: 16px; border-top: 1px solid #eaeaea;">The CHAASMS Team</p>
-      </div>
-    `);
+    
+    // Auto-reply configuration - formatting for a proper HTML email
+    // The subject line for the auto-reply email
+    data.append('_autoresponse', `Thank you for contacting CHAASMS, ${formData.name}!`);
+    
+    // The HTML content of the auto-reply email - properly formatted
+    const autoReplyMessage = `
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+            .header { text-align: center; padding: 20px; }
+            .content { padding: 20px; }
+            .footer { padding-top: 15px; margin-top: 20px; border-top: 1px solid #eaeaea; font-size: 14px; color: #666; }
+            .logo { max-width: 200px; height: auto; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <img class="logo" src="https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" alt="CHAASMS Logo">
+          </div>
+          <div class="content">
+            <h2>Thank you for reaching out, ${formData.name}!</h2>
+            <p>We have received your inquiry regarding ${formData.company} and will review it shortly.</p>
+            <p>One of our team members will be in touch with you soon.</p>
+          </div>
+          <div class="footer">
+            <p>The CHAASMS Team</p>
+          </div>
+        </body>
+      </html>
+    `;
+    data.append('_autoresponse_message', autoReplyMessage);
     
     console.log("📨 Submitting form to FormSubmit.co...");
+    console.log("🔄 Auto-reply configured for: " + formData.email);
     
     // The email address to send notifications to
     // FormSubmit will send all form submissions to this address
@@ -53,6 +77,7 @@ export const submitContactForm = async (formData: ContactFormData) => {
     });
     
     console.log("✅ Form submitted successfully");
+    console.log("✉️ Auto-reply should be sent to: " + formData.email);
     return { success: true };
     
   } catch (error) {

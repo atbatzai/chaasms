@@ -66,9 +66,15 @@ const ContactForm = () => {
       const result = await submitContactForm(contactData);
       
       if (result.success) {
-        toast.success("Your message has been sent! We'll be in touch shortly.");
+        toast.success(
+          <div>
+            <p>Your message has been sent! We'll be in touch shortly.</p>
+            <p className="text-xs mt-1">A confirmation email has been sent to {formData.email}</p>
+          </div>
+        );
         reset();
         console.log("✅ Form submission completed and reset");
+        console.log("✉️ Auto-reply should be sent to: " + formData.email);
       } else {
         toast.error(result.error || "There was a problem sending your message. Please try again or email us directly.");
         console.error("❌ Form submission failed");
