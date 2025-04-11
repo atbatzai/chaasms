@@ -1,3 +1,4 @@
+
 import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
@@ -11,6 +12,7 @@ export interface ContactFormData {
   name: string;
   email: string;
   company: string;
+  website?: string;
   message: string;
 }
 
@@ -47,6 +49,8 @@ export const sendContactEmail = async (formData: ContactFormData) => {
     time: formattedTime,
     message: formData.message,
     email: formData.email,
+    website: formData.website || 'Not provided',
+    company: formData.company,
     from_name: formData.name,
     from_email: formData.email,
     reply_to: formData.email

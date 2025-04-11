@@ -10,6 +10,7 @@ const contactFormSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   company: z.string().min(2),
+  website: z.string().url().optional().or(z.literal('')),
   message: z.string().min(10)
 });
 
@@ -64,6 +65,20 @@ const FormFields = ({ register, errors }: FormFieldsProps) => {
         />
         {errors.company && (
           <p className="text-red-500 text-xs mt-1">{errors.company.message}</p>
+        )}
+      </div>
+      
+      <div>
+        <label htmlFor="website" className="block text-sm font-medium text-chaasms-dark mb-1">Website (optional)</label>
+        <Input
+          id="website"
+          className={`w-full rounded-md border ${errors.website ? 'border-red-500' : 'border-gray-300'} px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue`}
+          placeholder="https://yourcompany.com"
+          aria-invalid={errors.website ? "true" : "false"}
+          {...register("website")}
+        />
+        {errors.website && (
+          <p className="text-red-500 text-xs mt-1">{errors.website.message}</p>
         )}
       </div>
       

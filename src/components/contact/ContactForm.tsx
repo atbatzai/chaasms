@@ -14,6 +14,7 @@ const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   company: z.string().min(2, { message: "Company name is required" }),
+  website: z.string().url({ message: "Please enter a valid URL" }).optional().or(z.literal('')),
   message: z.string().min(10, { message: "Message must be at least 10 characters" })
 });
 
@@ -32,6 +33,7 @@ const ContactForm = () => {
       name: "",
       email: "",
       company: "",
+      website: "",
       message: ""
     }
   });
@@ -46,13 +48,22 @@ const ContactForm = () => {
         return;
       }
       
+      // Convert to ContactFormData type
+      const contactData: ContactFormData = {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        website: formData.website || '',
+        message: formData.message
+      };
+      
       // First, send the notification to the admin
-      const result = await sendContactEmail(formData);
+      const result = await sendContactEmail(contactData);
       
       if (result.status === 200) {
         try {
           // Then send the auto-reply to the user
-          await sendAutoReplyEmail(formData);
+          await sendAutoReplyEmail(contactData);
           console.log("📧 Auto-reply sent successfully");
         } catch (autoReplyError) {
           // Log auto-reply error but don't show to user since primary email was sent
