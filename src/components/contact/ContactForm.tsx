@@ -34,16 +34,17 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Make sure you're using valid template IDs from your EmailJS account
+      // Updated service ID and template IDs from screenshots
       const serviceId = 'service_mqewdu1'; 
-      const templateId = 'template_7yhdmys'; // Using just one template for simplicity
+      const templateId = 'template_7yhdmys'; // Contact Us template
+      const autoReplyTemplateId = 'template_9dvv0q6'; // Auto-Reply template
       const publicKey = 'CrKCIv7WnXCdRp3wY';
       
       // Get current time for the template
       const now = new Date();
       const formattedTime = now.toLocaleString();
       
-      // Simple email parameters - reduced complexity
+      // Email parameters
       const emailParams = {
         name: formData.name,
         email: formData.email,
@@ -57,9 +58,9 @@ const ContactForm = () => {
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
-      console.log("Email params:", emailParams);
-      console.log("Attempting to send email with template ID:", templateId);
+      console.log("Sending contact form to:", serviceId, templateId);
       
+      // Send primary notification email (Contact Us template)
       const result = await emailjs.send(
         serviceId,
         templateId,
@@ -67,9 +68,24 @@ const ContactForm = () => {
         publicKey
       );
       
-      console.log("Email send result:", result);
+      console.log("Contact email result:", result);
       
       if (result.status === 200) {
+        try {
+          // Send auto-reply email to the user
+          console.log("Sending auto-reply to:", serviceId, autoReplyTemplateId);
+          await emailjs.send(
+            serviceId,
+            autoReplyTemplateId,
+            emailParams,
+            publicKey
+          );
+          console.log("Auto-reply sent successfully");
+        } catch (autoReplyError) {
+          // Log auto-reply error but don't show to user since primary email was sent
+          console.error("Auto-reply sending failed:", autoReplyError);
+        }
+        
         toast.success("Your message has been sent! We'll be in touch shortly.");
         
         // Reset form
@@ -84,13 +100,20 @@ const ContactForm = () => {
     } catch (error: any) {
       console.error("Form submission error:", error);
       
-      // Handle the specific template not found error
-      if (error.text && error.text.includes("The template ID not found")) {
-        toast.error("Our contact system is currently having issues. Please email us directly at jeff.turner@chaasms.com");
-      } else {
-        toast.error(`Failed to send message. Please email us directly at jeff.turner@chaasms.com`);
+      let errorMessage = "Failed to send message. Please email us directly at jeff.turner@chaasms.com";
+      
+      // Provide specific error messages based on the error type
+      if (error.text) {
+        if (error.text.includes("template ID not found")) {
+          errorMessage = "Our contact system is temporarily unavailable. Please email us directly.";
+          console.error("Template ID not found error. Check if template_7yhdmys exists in your EmailJS account.");
+        } else if (error.text.includes("service ID not found")) {
+          errorMessage = "Our email service is temporarily unavailable. Please email us directly.";
+          console.error("Service ID not found error. Check if service_mqewdu1 exists in your EmailJS account.");
+        }
       }
       
+      toast.error(errorMessage);
       console.error("Full error details:", error);
     } finally {
       setIsSubmitting(false);
