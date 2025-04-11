@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import FrameworkPreview from '@/components/FrameworkPreview';
 import FrameworkOverview from '@/components/FrameworkOverview';
 import ChallengeSection from '@/components/ChallengeSection';
 import Implementation from '@/components/Implementation';
@@ -24,6 +25,9 @@ const Index = () => {
         <section id="hero">
           <Hero />
         </section>
+        
+        {/* Added Framework Preview right after the Hero section */}
+        <FrameworkPreview />
         
         <div className="relative">
           <SectionDivider position="top" color="#f7f7f7" />
