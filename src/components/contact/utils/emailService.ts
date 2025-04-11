@@ -37,7 +37,7 @@ export const submitContactForm = async (formData: ContactFormData) => {
     // The subject line for the auto-reply email
     data.append('_autoresponse_subject', `Thank you for contacting CHAASMS, ${formData.name}!`);
     
-    // The HTML content of the auto-reply email - properly formatted
+    // The HTML content of the auto-reply email - properly formatted with explicit width/height
     const autoReplyMessage = `
       <html>
         <head>
@@ -51,7 +51,7 @@ export const submitContactForm = async (formData: ContactFormData) => {
         </head>
         <body>
           <div class="header">
-            <img class="logo" src="https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" alt="CHAASMS Logo">
+            <img class="logo" src="https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" alt="CHAASMS Logo" width="200" height="auto">
           </div>
           <div class="content">
             <h2>Thank you for reaching out, ${formData.name}!</h2>

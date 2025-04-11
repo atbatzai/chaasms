@@ -53,7 +53,7 @@ const ContactForm = () => {
       
       // Ensure all required fields are present
       if (!formData.name || !formData.email || !formData.company || !formData.message) {
-        toast.dismiss();
+        toast.dismiss(loadingToast);
         toast.error("Please complete all required fields");
         console.error("❌ Missing required fields in form submission");
         return;
@@ -80,7 +80,8 @@ const ContactForm = () => {
           <div>
             <p>Your message has been sent! We'll be in touch shortly.</p>
             <p className="text-xs mt-1">A confirmation email has been sent to {formData.email}</p>
-          </div>
+          </div>,
+          { duration: 6000 }
         );
         reset();
         console.log("✅ Form submission completed and reset");
@@ -90,7 +91,8 @@ const ContactForm = () => {
           <div>
             <p>{result.error || "There was a problem sending your message."}</p>
             <p className="text-xs mt-1">Please email us directly at jeff.turner@chaasms.com</p>
-          </div>
+          </div>,
+          { duration: 8000 }
         );
         console.error("❌ Form submission failed");
       }
@@ -98,7 +100,7 @@ const ContactForm = () => {
     } catch (error: any) {
       toast.dismiss();
       const errorMessage = parseFormError(error);
-      toast.error(errorMessage);
+      toast.error(errorMessage, { duration: 8000 });
       console.error("❌ Form submission exception:", error);
     } finally {
       console.log("-------------------------------------");
