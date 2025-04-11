@@ -1,3 +1,4 @@
+
 import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
@@ -40,7 +41,8 @@ const sanitizeTemplateVariables = (data: Record<string, any>): Record<string, st
  */
 export const sendContactEmail = async (formData: ContactFormData) => {
   // Prepare template variables based on what's in the EmailJS template
-  // Based on the screenshots, the template uses {{name}}, {{message}}, {{time}}, {{email}}
+  // Based on your feedback, the template uses {{name}}, {{message}}, {{time}}, {{title}}
+  // But does NOT have {{email}} as a separate variable
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
@@ -48,11 +50,12 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   const rawParams = {
     // These are the exact variables used in the template
     name: formData.name,          // {{name}} in the template
-    email: formData.email,        // {{email}} in the template 
-    message: `${formData.message}
+    message: `Email: ${formData.email}
+
+${formData.message}
     
 Company: ${formData.company}
-Website: ${formData.website || 'Not provided'}`,    // {{message}} in the template with added details
+Website: ${formData.website || 'Not provided'}`,    // {{message}} in the template with email and added details
     time: formattedTime,          // {{time}} in the template
     
     // These are required by EmailJS for sending
