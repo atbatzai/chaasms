@@ -32,16 +32,20 @@ const ContactForm = () => {
       const templateId = 'template_chaasms';
       const publicKey = 'CrKCIv7WnXCdRp3wY';
       
-      // Prepare template parameters based on your EmailJS template
+      // Get current time for the template
+      const now = new Date();
+      const formattedTime = now.toLocaleString();
+      
+      // Prepare template parameters to match your EmailJS template
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
+        name: formData.name,
+        email: formData.email,
         company: formData.company,
         message: formData.message,
-        to_name: "CHAASMS Team",
-        to_email: "jennifer.turner@chaasms.com, jeff.turner@chaasms.com",
-        subject: "CHAASMS Website Inquiry",
+        time: formattedTime,
+        title: `New contact from ${formData.company}`,
         reply_to: formData.email,
+        from_name: formData.name,
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
