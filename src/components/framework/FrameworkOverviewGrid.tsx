@@ -60,7 +60,8 @@ const FrameworkOverviewGrid = () => {
                 </div>
               </div>
               
-              <p className="text-sm text-gray-700">{layer.description}</p>
+              <p className="text-sm text-gray-700 mb-2">{layer.description}</p>
+              <p className="text-xs text-gray-600">{layer.detailedDescription}</p>
             </motion.div>
             
             {/* Connection arrows and labels */}
