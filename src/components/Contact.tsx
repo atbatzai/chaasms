@@ -1,5 +1,5 @@
 
-import { Calendar } from 'lucide-react';
+import { Calendar, Mail, Phone } from 'lucide-react';
 import ContactItem from "./contact/ContactItem";
 import ContactForm from "./contact/ContactForm";
 import ContactInfo from "./contact/ContactInfo";
@@ -15,11 +15,16 @@ const Contact = () => {
           </p>
         </div>
         
-        <div className="max-w-xl mx-auto mb-8">
+        <div className="max-w-xl mx-auto mb-8 space-y-4">
           <ContactItem
             icon={Calendar}
             title="Book a Consultation"
             content={<span className="hover:text-chaasms-blue transition-colors">Fill out the form below for a free 30-minute discovery call</span>}
+          />
+          <ContactItem
+            icon={Mail}
+            title="Email Us Directly"
+            content={<a href="mailto:jeff.turner@chaasms.com" className="hover:text-chaasms-blue transition-colors">jeff.turner@chaasms.com</a>}
           />
         </div>
         

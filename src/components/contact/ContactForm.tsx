@@ -60,21 +60,6 @@ const ContactForm = () => {
       };
       
       console.log("Notification params:", notificationParams);
-      console.log("Sending notification using template:", notificationTemplateId);
-      
-      // Prepare template parameters for auto-reply email (to user)
-      const autoReplyParams = {
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        to_email: formData.email,
-        reply_to: "jeff.turner@chaasms.com",
-        from_name: "CHAASMS Channel Strategies", // Ensuring company name as sender
-        logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
-      };
-      
-      console.log("Auto-reply params:", autoReplyParams);
-      console.log("Sending auto-reply using template:", autoReplyTemplateId);
       
       // First, send the notification email to admin
       console.log("Sending notification email to admin...");
@@ -85,7 +70,21 @@ const ContactForm = () => {
           notificationParams, 
           publicKey
         );
+        
         console.log("Admin notification email status:", notificationResult.status, notificationResult.text);
+        
+        // Prepare template parameters for auto-reply email (to user)
+        const autoReplyParams = {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          to_email: formData.email,
+          reply_to: "jeff.turner@chaasms.com",
+          from_name: "CHAASMS Channel Strategies",
+          logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
+        };
+        
+        console.log("Auto-reply params:", autoReplyParams);
         
         // Then, send the auto-reply email to the user
         console.log("Sending auto-reply email to user...");
@@ -95,6 +94,7 @@ const ContactForm = () => {
           autoReplyParams,
           publicKey
         );
+        
         console.log("Auto-reply email status:", autoReplyResult.status, autoReplyResult.text);
         
         // Success message if both emails were sent
@@ -108,15 +108,20 @@ const ContactForm = () => {
         
       } catch (emailError: any) {
         console.error("Error sending email:", emailError);
-        if (emailError.text) {
-          console.error("EmailJS error details:", emailError.text);
+        console.error("Email error details:", emailError.text || "No error text available");
+        
+        // Show more specific error message
+        if (emailError.text && typeof emailError.text === 'string') {
+          toast.error(`Failed to send email: ${emailError.text}. Please try again or contact us directly.`);
+        } else {
+          toast.error("Failed to send message: Email service error. Please try again or contact us directly.");
         }
-        throw new Error(`Failed to send email: ${emailError.message || 'Unknown error'}`);
       }
       
     } catch (error: any) {
       console.error("Form submission error:", error);
-      toast.error(`Failed to send message: ${error.message}. Please try again or contact us directly.`);
+      console.error("Error stack:", error.stack);
+      toast.error(`Failed to send message: ${error.message || 'Unknown error'}. Please try again or contact us directly.`);
     } finally {
       setIsSubmitting(false);
     }
