@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import FrameworkOverviewGrid from '@/components/framework/FrameworkOverviewGrid';
-import FrameworkOverview from '@/components/FrameworkOverview';
 import ChallengeSection from '@/components/ChallengeSection';
 import Implementation from '@/components/Implementation';
 import Services from '@/components/Services';
@@ -39,14 +38,6 @@ const Index = () => {
           <SectionDivider position="bottom" color="white" />
         </div>
         
-        <div className="relative">
-          <SectionDivider position="top" color="#f7f7f7" />
-          <section id="framework-overview">
-            <FrameworkOverview />
-          </section>
-          <SectionDivider position="bottom" color="white" />
-        </div>
-
         <section id="implementation">
           <Implementation />
         </section>
