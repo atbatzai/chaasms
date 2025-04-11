@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -22,8 +22,6 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactForm = () => {
-  const [activationNeeded, setActivationNeeded] = useState(false);
-  
   const {
     register,
     handleSubmit,
@@ -84,17 +82,6 @@ const ContactForm = () => {
         reset();
         console.log("✅ Form submission completed and reset");
         console.log("✉️ Auto-reply should be sent to: " + formData.email);
-        setActivationNeeded(false);
-      } else if (result.needsActivation) {
-        // Show activation needed message
-        setActivationNeeded(true);
-        toast.error(
-          <div>
-            <p>{result.error}</p>
-            <p className="text-xs mt-1">Once activated, future submissions will work automatically.</p>
-          </div>
-        );
-        console.log("⚠️ Form needs activation");
       } else {
         toast.error(result.error || "There was a problem sending your message. Please try again or email us directly.");
         console.error("❌ Form submission failed");
@@ -112,24 +99,10 @@ const ContactForm = () => {
 
   return (
     <div className="bg-white p-5 rounded-lg shadow-sm">
-      {activationNeeded ? (
-        <div className="text-center p-4 bg-amber-50 border border-amber-200 rounded-md mb-4">
-          <h3 className="font-medium text-amber-800">Form Activation Required</h3>
-          <p className="text-amber-700 mt-2">
-            This form needs to be activated before it can send messages. Please check 
-            <strong> jeff.turner@chaasms.com </strong> 
-            for an activation email from FormSubmit.co.
-          </p>
-          <p className="text-amber-700 mt-2">
-            Click the activation link in the email, then refresh this page.
-          </p>
-        </div>
-      ) : (
-        <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
-          <FormFields register={register} errors={errors} />
-          <SubmitButton isSubmitting={isSubmitting} />
-        </form>
-      )}
+      <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+        <FormFields register={register} errors={errors} />
+        <SubmitButton isSubmitting={isSubmitting} />
+      </form>
       <DirectContact />
     </div>
   );

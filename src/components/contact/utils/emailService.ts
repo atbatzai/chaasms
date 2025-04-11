@@ -69,8 +69,8 @@ export const submitContactForm = async (formData: ContactFormData) => {
     console.log("📨 Submitting form to FormSubmit.co...");
     console.log("🔄 Auto-reply configured for: " + formData.email);
     
-    // The email address to send notifications to
-    const response = await fetch('https://formsubmit.co/ajax/jeff.turner@chaasms.com', {
+    // Using the activation code instead of the naked email address
+    const response = await fetch('https://formsubmit.co/ajax/263a0ebbdac6852db27aea1c4cc7ef9c', {
       method: 'POST',
       body: data,
       headers: {
@@ -86,14 +86,6 @@ export const submitContactForm = async (formData: ContactFormData) => {
       console.log("✅ Form submitted successfully");
       console.log("✉️ Auto-reply should be sent to: " + formData.email);
       return { success: true };
-    } else if (result.message && result.message.includes("needs Activation")) {
-      // This is the first submission that requires activation
-      console.log("⚠️ Form needs activation. Check your email for activation link.");
-      return { 
-        success: false, 
-        error: "Form needs activation. Please check jeff.turner@chaasms.com for an activation email from FormSubmit.co",
-        needsActivation: true
-      };
     } else {
       console.error("❌ Form submission failed with status:", response.status);
       console.error("Error details:", result);
