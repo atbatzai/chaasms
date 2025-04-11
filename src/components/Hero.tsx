@@ -19,6 +19,11 @@ const Hero = () => {
     script.src = "https://player.vimeo.com/api/player.js";
     script.async = true;
     
+    // Add error handling for script loading
+    script.onerror = () => {
+      console.debug('Failed to load Vimeo player script');
+    };
+    
     document.body.appendChild(script);
     
     return () => {
@@ -68,6 +73,7 @@ const Hero = () => {
                     title="Channel Ecosystem Success"
                     style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
                     allowFullScreen={true}
+                    onError={() => console.debug('Failed to load Vimeo iframe')}
                   ></iframe>
                 </div>
               </div>

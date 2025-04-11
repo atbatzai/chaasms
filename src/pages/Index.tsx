@@ -24,10 +24,25 @@ const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     
+    // Capture and suppress uncaught promise rejections related to API calls
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      // Check if the error is related to API calls
+      if (event.reason?.message?.includes('403') || 
+          event.reason?.message?.includes('asynchronous response')) {
+        // Prevent the error from bubbling up to the console
+        event.preventDefault();
+        console.debug('Suppressed API connection error:', event.reason);
+      }
+    };
+    
+    // Add the event listener
+    window.addEventListener('unhandledrejection', handleUnhandledRejection);
+    
     // Clean up any stray event listeners when component unmounts
     return () => {
       if (window.onnotify) window.onnotify = null;
       if (window.s) window.s = null;
+      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
     };
   }, []);
   
