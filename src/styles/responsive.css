@@ -6,14 +6,35 @@
       @apply text-white;
     }
     
-    /* Ensure text is white on any blue backgrounds on mobile */
-    .bg-blue-50 h3.font-bold,
+    /* Ensure text is white ONLY on dark blue backgrounds on mobile */
     .bg-chaasms-blue h3,
     .bg-chaasms-blue span,
     .bg-chaasms-blue p,
-    [class*="bg-blue"] h3,
-    [class*="bg-blue"] p {
+    [class*="bg-blue-6"],
+    [class*="bg-blue-7"],
+    [class*="bg-blue-8"],
+    [class*="bg-blue-9"] h3,
+    [class*="bg-blue-6"],
+    [class*="bg-blue-7"],
+    [class*="bg-blue-8"],
+    [class*="bg-blue-9"] p {
       @apply text-white;
+    }
+    
+    /* Ensure text on light blue backgrounds has good contrast */
+    .bg-blue-50 h3.font-bold,
+    .bg-blue-50 p,
+    [class*="bg-blue-1"],
+    [class*="bg-blue-2"],
+    [class*="bg-blue-3"],
+    [class*="bg-blue-4"],
+    [class*="bg-blue-5"] h3,
+    [class*="bg-blue-1"],
+    [class*="bg-blue-2"],
+    [class*="bg-blue-3"],
+    [class*="bg-blue-4"],
+    [class*="bg-blue-5"] p {
+      @apply text-gray-800;
     }
     
     /* Ensure "Our Expertise" label isn't squished */

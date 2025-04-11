@@ -8,10 +8,12 @@ import LayerDetailDialog from './framework/LayerDetailDialog';
 import FrameworkBenefits from './framework/FrameworkBenefits';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const FrameworkOverview = () => {
   const [selectedLayer, setSelectedLayer] = useState<FrameworkLayerType | null>(null);
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const handleLayerClick = (layer: FrameworkLayerType) => {
     setSelectedLayer(layer);
@@ -32,7 +34,9 @@ const FrameworkOverview = () => {
     <section id="framework-overview" className="section-padding relative overflow-hidden bg-white pt-6">
       <div className="chaasms-container relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12 px-2">
-          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">Our Methodology</span>
+          {!isMobile && (
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-4 animate-fade-in">Our Methodology</span>
+          )}
           <h2 className="text-2xl md:text-4xl font-medium text-chaasms-dark mb-4 font-playfair">
             Channel Strategy Framework
           </h2>

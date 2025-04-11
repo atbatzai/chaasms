@@ -1,6 +1,7 @@
 
 import { ShieldCheck, Zap, BarChart3, Globe } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ServiceCard = ({ 
   icon: Icon, 
@@ -30,6 +31,7 @@ const ServiceCard = ({
 };
 
 const Services = () => {
+  const isMobile = useIsMobile();
   const services = [
     {
       icon: Globe,
@@ -57,7 +59,9 @@ const Services = () => {
     <section id="services" className="py-10 md:py-16 bg-chaasms-lightgray">
       <div className="chaasms-container">
         <div className="max-w-3xl mx-auto text-center mb-8">
-          <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-2 whitespace-nowrap">Our Expertise</span>
+          {!isMobile && (
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-2 whitespace-nowrap">Our Expertise</span>
+          )}
           <h2 className="section-heading font-playfair">
             Our Services
           </h2>
