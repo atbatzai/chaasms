@@ -96,10 +96,13 @@ Website: ${formData.website || 'Not provided'}`,    // {{message}} in the templa
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // For auto-reply template
+  // For auto-reply template - the template expects {{name}} and {{title}} variables
   const rawParams = {
+    // Required template variables
     name: formData.name,
-    title: `Your inquiry about ${formData.company}`,
+    title: `Thank you for your inquiry about ${formData.company}`,
+    
+    // EmailJS sending requirements
     from_name: "CHAASMS Team",
     from_email: "jeff.turner@chaasms.com",
     reply_to: "jeff.turner@chaasms.com",
@@ -123,7 +126,7 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
       autoReplyParams,
       PUBLIC_KEY
     );
-    console.log("✅ Auto-reply sent successfully:", result.text);
+    console.log("✅ Auto-reply sent successfully:", result.status, result.text);
     return result;
   } catch (error) {
     console.error("❌ Auto-reply sending failed:", error);
