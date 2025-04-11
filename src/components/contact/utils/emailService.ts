@@ -86,6 +86,14 @@ export const submitContactForm = async (formData: ContactFormData) => {
       console.log("✅ Form submitted successfully");
       console.log("✉️ Auto-reply should be sent to: " + formData.email);
       return { success: true };
+    } else if (result.message && result.message.includes("needs Activation")) {
+      // This is the first submission that requires activation
+      console.log("⚠️ Form needs activation. Check your email for activation link.");
+      return { 
+        success: false, 
+        error: "Form needs activation. Please check jeff.turner@chaasms.com for an activation email from FormSubmit.co",
+        needsActivation: true
+      };
     } else {
       console.error("❌ Form submission failed with status:", response.status);
       console.error("Error details:", result);
