@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { useNavigate } from 'react-router-dom';
 
 const ChaasmsFrameworkClean = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -9,6 +10,13 @@ const ChaasmsFrameworkClean = () => {
 };
 
 const DesktopFramework = () => {
+  const navigate = useNavigate();
+  
+  const handleLayerClick = (layerNumber: number) => {
+    navigate(`/frameworks?layer=${layerNumber}`);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <div className="flex flex-col items-center w-full bg-white p-6 font-sans">
       {/* Header */}
@@ -25,18 +33,29 @@ const DesktopFramework = () => {
         {/* Layer 1: Foundational Strategy */}
         <div className="flex items-center mb-24 relative">
           <div className="w-5/12 pr-10 text-right">
-            <h3 className="text-2xl font-bold text-chaasms-blue mb-3">Layer 1: Foundational Strategy</h3>
+            <h3 
+              onClick={() => handleLayerClick(1)}
+              className="text-2xl font-bold text-chaasms-blue mb-3 cursor-pointer hover:underline transition-colors"
+            >
+              Layer 1: Foundational Strategy
+            </h3>
             <p className="text-chaasms-text text-lg">Sets the overall channel vision, objectives, and resource allocation approach</p>
           </div>
           
           <div className="w-2/12 flex justify-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md">
+            <div 
+              onClick={() => handleLayerClick(1)}
+              className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <span className="text-3xl font-bold text-chaasms-blue">1</span>
             </div>
           </div>
           
           <div className="w-5/12 pl-10">
-            <div className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm">
+            <div 
+              onClick={() => handleLayerClick(1)}
+              className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <ul className="space-y-2 text-chaasms-text text-lg">
                 {/* Using blue dots similar to the website */}
                 <li className="flex items-start">
@@ -59,18 +78,29 @@ const DesktopFramework = () => {
         {/* Layer 2: Program Architecture */}
         <div className="flex items-center mb-24 relative">
           <div className="w-5/12 pr-10 text-right">
-            <h3 className="text-2xl font-bold text-chaasms-blue mb-3">Layer 2: Program Architecture</h3>
+            <h3 
+              onClick={() => handleLayerClick(2)}
+              className="text-2xl font-bold text-chaasms-blue mb-3 cursor-pointer hover:underline transition-colors"
+            >
+              Layer 2: Program Architecture
+            </h3>
             <p className="text-chaasms-text text-lg">Establishes the structural elements and frameworks for the channel program</p>
           </div>
           
           <div className="w-2/12 flex justify-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md">
+            <div 
+              onClick={() => handleLayerClick(2)}
+              className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <span className="text-3xl font-bold text-chaasms-blue">2</span>
             </div>
           </div>
           
           <div className="w-5/12 pl-10">
-            <div className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm">
+            <div 
+              onClick={() => handleLayerClick(2)}
+              className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <ul className="space-y-2 text-chaasms-text text-lg">
                 <li className="flex items-start">
                   <div className="text-chaasms-blue mr-2 mt-1.5 text-lg">•</div>
@@ -104,18 +134,29 @@ const DesktopFramework = () => {
         {/* Layer 3: Ecosystem Strategy */}
         <div className="flex items-center mb-24 relative">
           <div className="w-5/12 pr-10 text-right">
-            <h3 className="text-2xl font-bold text-chaasms-blue mb-3">Layer 3: Ecosystem Strategy</h3>
+            <h3 
+              onClick={() => handleLayerClick(3)}
+              className="text-2xl font-bold text-chaasms-blue mb-3 cursor-pointer hover:underline transition-colors"
+            >
+              Layer 3: Ecosystem Strategy
+            </h3>
             <p className="text-chaasms-text text-lg">Identifies key ecosystems and platforms to prioritize for maximum impact</p>
           </div>
           
           <div className="w-2/12 flex justify-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md">
+            <div 
+              onClick={() => handleLayerClick(3)}
+              className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <span className="text-3xl font-bold text-chaasms-blue">3</span>
             </div>
           </div>
           
           <div className="w-5/12 pl-10">
-            <div className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm">
+            <div 
+              onClick={() => handleLayerClick(3)}
+              className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <ul className="space-y-2 text-chaasms-text text-lg">
                 <li className="flex items-start">
                   <div className="text-chaasms-blue mr-2 mt-1.5 text-lg">•</div>
@@ -149,18 +190,29 @@ const DesktopFramework = () => {
         {/* Layer 4: Touchpoint & Segmentation */}
         <div className="flex items-center mb-24 relative">
           <div className="w-5/12 pr-10 text-right">
-            <h3 className="text-2xl font-bold text-chaasms-blue mb-3">Layer 4: Touchpoint & Segmentation</h3>
+            <h3 
+              onClick={() => handleLayerClick(4)}
+              className="text-2xl font-bold text-chaasms-blue mb-3 cursor-pointer hover:underline transition-colors"
+            >
+              Layer 4: Touchpoint & Segmentation
+            </h3>
             <p className="text-chaasms-text text-lg">Defines partner experience journey and engagement approach by segment</p>
           </div>
           
           <div className="w-2/12 flex justify-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md">
+            <div 
+              onClick={() => handleLayerClick(4)}
+              className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <span className="text-3xl font-bold text-chaasms-blue">4</span>
             </div>
           </div>
           
           <div className="w-5/12 pl-10">
-            <div className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm">
+            <div 
+              onClick={() => handleLayerClick(4)}
+              className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <ul className="space-y-2 text-chaasms-text text-lg">
                 <li className="flex items-start">
                   <div className="text-chaasms-blue mr-2 mt-1.5 text-lg">•</div>
@@ -194,18 +246,29 @@ const DesktopFramework = () => {
         {/* Layer 5: GTM Motion */}
         <div className="flex items-center mb-24 relative">
           <div className="w-5/12 pr-10 text-right">
-            <h3 className="text-2xl font-bold text-chaasms-blue mb-3">Layer 5: GTM Motion</h3>
+            <h3 
+              onClick={() => handleLayerClick(5)}
+              className="text-2xl font-bold text-chaasms-blue mb-3 cursor-pointer hover:underline transition-colors"
+            >
+              Layer 5: GTM Motion
+            </h3>
             <p className="text-chaasms-text text-lg">Builds go-to-market execution framework for partners across ecosystems</p>
           </div>
           
           <div className="w-2/12 flex justify-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md">
+            <div 
+              onClick={() => handleLayerClick(5)}
+              className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <span className="text-3xl font-bold text-chaasms-blue">5</span>
             </div>
           </div>
           
           <div className="w-5/12 pl-10">
-            <div className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm">
+            <div 
+              onClick={() => handleLayerClick(5)}
+              className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <ul className="space-y-2 text-chaasms-text text-lg">
                 <li className="flex items-start">
                   <div className="text-chaasms-blue mr-2 mt-1.5 text-lg">•</div>
@@ -239,18 +302,29 @@ const DesktopFramework = () => {
         {/* Layer 6: Measurement & Scaling */}
         <div className="flex items-center relative">
           <div className="w-5/12 pr-10 text-right">
-            <h3 className="text-2xl font-bold text-chaasms-blue mb-3">Layer 6: Measurement & Scaling</h3>
+            <h3 
+              onClick={() => handleLayerClick(6)}
+              className="text-2xl font-bold text-chaasms-blue mb-3 cursor-pointer hover:underline transition-colors"
+            >
+              Layer 6: Measurement & Scaling
+            </h3>
             <p className="text-chaasms-text text-lg">Creates metrics framework and governance model for optimization</p>
           </div>
           
           <div className="w-2/12 flex justify-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md">
+            <div 
+              onClick={() => handleLayerClick(6)}
+              className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center border-4 border-chaasms-blue z-10 shadow-md cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <span className="text-3xl font-bold text-chaasms-blue">6</span>
             </div>
           </div>
           
           <div className="w-5/12 pl-10">
-            <div className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm">
+            <div 
+              onClick={() => handleLayerClick(6)}
+              className="bg-blue-50 p-5 rounded-lg border-t-4 border-chaasms-blue shadow-sm cursor-pointer hover:bg-blue-100 transition-colors"
+            >
               <ul className="space-y-2 text-chaasms-text text-lg">
                 <li className="flex items-start">
                   <div className="text-chaasms-blue mr-2 mt-1.5 text-lg">•</div>
@@ -296,6 +370,13 @@ const DesktopFramework = () => {
 };
 
 const MobileFramework = () => {
+  const navigate = useNavigate();
+  
+  const handleLayerClick = (layerNumber: number) => {
+    navigate(`/frameworks?layer=${layerNumber}`);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <div className="w-full bg-white px-2 py-6 font-sans">
       {/* Header */}
@@ -308,11 +389,17 @@ const MobileFramework = () => {
       <div className="w-full mb-6">
         {/* Layer 1 */}
         <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
-          <div className="flex items-center p-3 bg-chaasms-blue text-white">
+          <div 
+            className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
+            onClick={() => handleLayerClick(1)}
+          >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">1</div>
             <h3 className="font-bold">Foundational Strategy</h3>
           </div>
-          <div className="p-3">
+          <div 
+            className="p-3 cursor-pointer"
+            onClick={() => handleLayerClick(1)}
+          >
             <p className="text-sm text-gray-600 mb-2">Sets the overall channel vision</p>
             <ul className="space-y-1 text-sm">
               <li className="flex items-start">
@@ -341,11 +428,17 @@ const MobileFramework = () => {
         
         {/* Layer 2 */}
         <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
-          <div className="flex items-center p-3 bg-chaasms-blue text-white">
+          <div 
+            className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
+            onClick={() => handleLayerClick(2)}
+          >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">2</div>
             <h3 className="font-bold">Program Architecture</h3>
           </div>
-          <div className="p-3">
+          <div 
+            className="p-3 cursor-pointer"
+            onClick={() => handleLayerClick(2)}
+          >
             <p className="text-sm text-gray-600 mb-2">Establishes structural elements</p>
             <ul className="space-y-1 text-sm">
               <li className="flex items-start">
@@ -374,11 +467,17 @@ const MobileFramework = () => {
         
         {/* Layer 3 */}
         <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
-          <div className="flex items-center p-3 bg-chaasms-blue text-white">
+          <div 
+            className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
+            onClick={() => handleLayerClick(3)}
+          >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">3</div>
             <h3 className="font-bold">Ecosystem Strategy</h3>
           </div>
-          <div className="p-3">
+          <div 
+            className="p-3 cursor-pointer"
+            onClick={() => handleLayerClick(3)}
+          >
             <p className="text-sm text-gray-600 mb-2">Identifies key ecosystems</p>
             <ul className="space-y-1 text-sm">
               <li className="flex items-start">
@@ -407,11 +506,17 @@ const MobileFramework = () => {
         
         {/* Layer 4 */}
         <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
-          <div className="flex items-center p-3 bg-chaasms-blue text-white">
+          <div 
+            className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
+            onClick={() => handleLayerClick(4)}
+          >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">4</div>
             <h3 className="font-bold">Touchpoint & Segmentation</h3>
           </div>
-          <div className="p-3">
+          <div 
+            className="p-3 cursor-pointer"
+            onClick={() => handleLayerClick(4)}
+          >
             <p className="text-sm text-gray-600 mb-2">Defines partner experience</p>
             <ul className="space-y-1 text-sm">
               <li className="flex items-start">
@@ -440,11 +545,17 @@ const MobileFramework = () => {
         
         {/* Layer 5 */}
         <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
-          <div className="flex items-center p-3 bg-chaasms-blue text-white">
+          <div 
+            className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
+            onClick={() => handleLayerClick(5)}
+          >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">5</div>
             <h3 className="font-bold">GTM Motion</h3>
           </div>
-          <div className="p-3">
+          <div 
+            className="p-3 cursor-pointer"
+            onClick={() => handleLayerClick(5)}
+          >
             <p className="text-sm text-gray-600 mb-2">Builds go-to-market framework</p>
             <ul className="space-y-1 text-sm">
               <li className="flex items-start">
@@ -473,11 +584,17 @@ const MobileFramework = () => {
         
         {/* Layer 6 */}
         <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
-          <div className="flex items-center p-3 bg-chaasms-blue text-white">
+          <div 
+            className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
+            onClick={() => handleLayerClick(6)}
+          >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">6</div>
             <h3 className="font-bold">Measurement & Scaling</h3>
           </div>
-          <div className="p-3">
+          <div 
+            className="p-3 cursor-pointer"
+            onClick={() => handleLayerClick(6)}
+          >
             <p className="text-sm text-gray-600 mb-2">Creates metrics framework</p>
             <ul className="space-y-1 text-sm">
               <li className="flex items-start">
@@ -510,3 +627,4 @@ const MobileFramework = () => {
 };
 
 export default ChaasmsFrameworkClean;
+
