@@ -82,13 +82,23 @@ export const submitContactForm = async (formData: ContactFormData) => {
     const result = await response.json();
     console.log("🔍 FormSubmit response:", result);
     
-    if (response.ok && result.success === "true") {
+    // Important: FormSubmit returns "success":"true" as a string, not a boolean
+    if (result.success === "true") {
       console.log("✅ Form submitted successfully");
       console.log("✉️ Auto-reply should be sent to: " + formData.email);
       return { success: true };
     } else {
       console.error("❌ Form submission failed with status:", response.status);
       console.error("Error details:", result);
+      
+      // Check if there's a specific message from FormSubmit
+      if (result.message && result.message.includes("Activation")) {
+        return {
+          success: false,
+          error: "Form needs activation. Please check your email for the activation link from FormSubmit."
+        };
+      }
+      
       return { 
         success: false, 
         error: "Failed to send your message. Please email us directly."

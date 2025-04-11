@@ -45,8 +45,11 @@ const ContactForm = () => {
       console.log("📄 Form data:", formData);
       console.log("-------------------------------------");
       
+      // Clear any existing toasts first
+      toast.dismiss();
+      
       // Display loading toast to indicate submission is in progress
-      toast.loading("Sending your message...");
+      const loadingToast = toast.loading("Sending your message...");
       
       // Ensure all required fields are present
       if (!formData.name || !formData.email || !formData.company || !formData.message) {
@@ -70,7 +73,7 @@ const ContactForm = () => {
       const result = await submitContactForm(contactData);
       
       // Dismiss the loading toast
-      toast.dismiss();
+      toast.dismiss(loadingToast);
       
       if (result.success) {
         toast.success(
@@ -83,7 +86,12 @@ const ContactForm = () => {
         console.log("✅ Form submission completed and reset");
         console.log("✉️ Auto-reply should be sent to: " + formData.email);
       } else {
-        toast.error(result.error || "There was a problem sending your message. Please try again or email us directly.");
+        toast.error(
+          <div>
+            <p>{result.error || "There was a problem sending your message."}</p>
+            <p className="text-xs mt-1">Please email us directly at jeff.turner@chaasms.com</p>
+          </div>
+        );
         console.error("❌ Form submission failed");
       }
       
