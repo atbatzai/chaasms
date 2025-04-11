@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="pt-40 md:pt-48 pb-8 md:pb-16 bg-white">
+    <section className="pt-40 md:pt-48 pb-16 md:pb-24 bg-white">
       <div className="chaasms-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 space-y-6">
