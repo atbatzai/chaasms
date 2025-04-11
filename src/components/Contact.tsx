@@ -60,7 +60,7 @@ const Contact = () => {
         company: formData.company,
         message: formData.message,
         to_name: "Jeff & Jennifer Turner",
-        to_email: "jeff.turner@chaasms.com, jturner@chaasms.com",
+        to_email: "jennifer.turner@chaasms.com, jeff.turner@chaasms.com",
         subject: "URGENT CHAASMS INQUIRY"
       };
       
