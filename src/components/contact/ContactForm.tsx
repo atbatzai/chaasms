@@ -7,9 +7,9 @@ import { toast } from "sonner";
 import FormFields from "./FormFields";
 import SubmitButton from "./SubmitButton";
 import DirectContact from "./DirectContact";
-import { sendContactEmail, sendAutoReplyEmail, parseEmailError, ContactFormData } from "./utils/emailService";
+import { submitContactForm, parseFormError, ContactFormData } from "./utils/emailService";
 
-// Define the form schema with Zod - ensure it matches EmailJS template expectations
+// Define the form schema with Zod
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -52,7 +52,9 @@ const ContactForm = () => {
         return;
       }
       
-      // Prepare data for EmailJS - ensure it matches the ContactFormData interface
+      // Submit form data to FormSubmit.co service
+      console.log("📨 Submitting contact form...");
+      
       const contactData: ContactFormData = {
         name: formData.name,
         email: formData.email,
@@ -61,55 +63,23 @@ const ContactForm = () => {
         message: formData.message
       };
       
-      // First send the contact notification to the site owner
-      console.log("📨 Step 1: Sending main contact email to admin...");
-      const result = await sendContactEmail(contactData);
+      const result = await submitContactForm(contactData);
       
-      if (result.status === 200) {
-        console.log("✅ Step 1 complete: Main contact email sent successfully");
-        
-        // Now handle auto-reply as a separate operation
-        console.log("📨 Step 2: Sending auto-reply to customer:", contactData.email);
-        
-        try {
-          console.log("🔄 Initiating auto-reply process...");
-          const autoReplyResult = await sendAutoReplyEmail(contactData);
-          
-          console.log("📊 Auto-reply result received:", autoReplyResult.status);
-          
-          if (autoReplyResult.status === 200) {
-            console.log("✅ Step 2 complete: Auto-reply sent successfully");
-            toast.success("Your message has been sent! We'll be in touch shortly.");
-          } else {
-            // This branch should rarely execute as non-200 usually throws an error
-            console.warn("⚠️ Auto-reply sent but returned unexpected status:", autoReplyResult.status);
-            toast.success("Your message has been sent! We'll contact you soon.");
-          }
-        } catch (autoReplyError: any) {
-          // If auto-reply fails, log it but don't report to user since main email was sent
-          console.error("❌ Step 2 failed: Auto-reply sending error");
-          console.error("❌ Auto-reply recipient:", contactData.email);
-          console.error("❌ Error details:", autoReplyError);
-          
-          // Still show success for the main submission
-          toast.success("Your message has been received! We'll be in touch soon.");
-        }
-        
-        // Reset form regardless of auto-reply status
+      if (result.success) {
+        toast.success("Your message has been sent! We'll be in touch shortly.");
         reset();
-        console.log("✅ Form reset after successful submission");
-        console.log("-------------------------------------");
+        console.log("✅ Form submission completed and reset");
       } else {
-        // This branch should rarely execute as non-200 usually throws an error
-        console.error("❌ Unexpected main email response status:", result.status);
-        toast.error("There was an issue sending your message. Please email us directly.");
+        toast.error(result.error || "There was a problem sending your message. Please try again or email us directly.");
+        console.error("❌ Form submission failed");
       }
       
     } catch (error: any) {
-      const errorMessage = parseEmailError(error);
+      const errorMessage = parseFormError(error);
       toast.error(errorMessage);
-      console.error("❌ Contact form submission error:", error);
-      console.error("-------------------------------------");
+      console.error("❌ Form submission exception:", error);
+    } finally {
+      console.log("-------------------------------------");
     }
   };
 
