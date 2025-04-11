@@ -51,7 +51,7 @@ const Contact = () => {
       // Your EmailJS service, template, and public key
       const serviceId = 'service_mqewdu1';
       const templateId = 'template_chaasms';
-      const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your actual public key from EmailJS
+      const publicKey = 'CrKCIv7WnXCdRp3wY'; // Updated with your actual public key
       
       // Prepare template parameters based on your EmailJS template
       const templateParams = {
