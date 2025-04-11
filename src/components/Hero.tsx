@@ -39,7 +39,13 @@ const Hero = () => {
                 Book a Consultation
               </Button>
               
-              <Link to="/framework-overview">
+              <Link 
+                to="#framework-overview-grid"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('framework-overview-grid')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 <Button 
                   variant="outline" 
                   className="btn-secondary group rounded-md"

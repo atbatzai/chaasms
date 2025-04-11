@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import FrameworkOverviewGrid from '@/components/framework/FrameworkOverviewGrid';
 import FrameworkOverview from '@/components/FrameworkOverview';
 import ChallengeSection from '@/components/ChallengeSection';
 import Implementation from '@/components/Implementation';
@@ -23,6 +24,11 @@ const Index = () => {
       <main className="flex-grow">
         <section id="hero">
           <Hero />
+        </section>
+        
+        {/* New Framework Overview Grid section */}
+        <section id="framework-overview-grid" className="py-12 md:py-16 bg-white">
+          <FrameworkOverviewGrid />
         </section>
         
         <div className="relative">
