@@ -1,5 +1,7 @@
 
 import { CheckCircle } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 
 const ImplementationPhase = ({ 
   number, 
@@ -100,6 +102,47 @@ const Implementation = () => {
             />
           ))}
         </div>
+        
+        {/* Cost of Inaction section moved here */}
+        <motion.div 
+          className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="p-8">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-playfair text-chaasms-dark mb-4">The Cost of Inaction</h3>
+              <p className="text-chaasms-text max-w-2xl mx-auto">
+                Without a structured channel framework, ISVs risk:
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="border-t-2 border-red-400 bg-red-50/30">
+                <CardContent className="p-6">
+                  <h4 className="text-lg font-medium text-chaasms-dark mb-3">Lost Revenue Opportunities</h4>
+                  <p className="text-chaasms-text text-sm">Missing out on partner-influenced and partner-led revenue streams.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-t-2 border-red-400 bg-red-50/30">
+                <CardContent className="p-6">
+                  <h4 className="text-lg font-medium text-chaasms-dark mb-3">Competitive Disadvantage</h4>
+                  <p className="text-chaasms-text text-sm">Falling behind competitors with more mature partner ecosystems.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-t-2 border-red-400 bg-red-50/30">
+                <CardContent className="p-6">
+                  <h4 className="text-lg font-medium text-chaasms-dark mb-3">Wasted Investment</h4>
+                  <p className="text-chaasms-text text-sm">Resources allocated to channel activities without strategic returns.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </motion.div>
         
         <div className="premium-card bg-gradient-to-r from-chaasms-blue/5 to-chaasms-blue/10 mb-0">
           <div className="text-center mb-8">
