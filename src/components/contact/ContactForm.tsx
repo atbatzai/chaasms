@@ -44,27 +44,35 @@ const ContactForm = () => {
       const now = new Date();
       const formattedTime = now.toLocaleString();
       
-      // Email parameters
-      const emailParams = {
-        name: formData.name,
-        email: formData.email,
+      // Email parameters - simplified to match template variables exactly
+      const mainEmailParams = {
+        from_name: formData.name,
+        to_name: "CHAASMS Channel Strategies",
+        from_email: formData.email,
         company: formData.company,
         message: formData.message,
         time: formattedTime,
-        title: `New contact from ${formData.name} at ${formData.company}`,
         reply_to: formData.email,
-        from_name: formData.name,
-        to_name: "CHAASMS Channel Strategies",
-        logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
+      };
+      
+      // Auto-reply parameters - might need different parameters
+      const autoReplyParams = {
+        to_name: formData.name,
+        from_name: "CHAASMS Channel Strategies",
+        to_email: formData.email,
+        message: formData.message,
+        company: formData.company,
+        reply_to: "jeff.turner@chaasms.com",
       };
       
       console.log("Sending contact form to:", serviceId, templateId);
+      console.log("Main email params:", mainEmailParams);
       
       // Send primary notification email (Contact Us template)
       const result = await emailjs.send(
         serviceId,
         templateId,
-        emailParams,
+        mainEmailParams,
         publicKey
       );
       
@@ -74,10 +82,12 @@ const ContactForm = () => {
         try {
           // Send auto-reply email to the user
           console.log("Sending auto-reply to:", serviceId, autoReplyTemplateId);
+          console.log("Auto-reply params:", autoReplyParams);
+          
           await emailjs.send(
             serviceId,
             autoReplyTemplateId,
-            emailParams,
+            autoReplyParams,
             publicKey
           );
           console.log("Auto-reply sent successfully");
@@ -110,6 +120,9 @@ const ContactForm = () => {
         } else if (error.text.includes("service ID not found")) {
           errorMessage = "Our email service is temporarily unavailable. Please email us directly.";
           console.error("Service ID not found error. Check if service_mqewdu1 exists in your EmailJS account.");
+        } else if (error.text.includes("dynamic variables are corrupted")) {
+          errorMessage = "We're having technical issues with our contact form. Please email us directly.";
+          console.error("Template variables error. Variables don't match template expectations.");
         }
       }
       
