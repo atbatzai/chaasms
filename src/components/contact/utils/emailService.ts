@@ -22,13 +22,14 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // Simplified parameter object - using standard EmailJS naming convention
+  // Match EXACTLY with the variables shown in the template screenshot
   const mainEmailParams = {
-    user_name: formData.name,
-    user_email: formData.email,
-    user_company: formData.company,
+    name: formData.name,
+    email: formData.email,
+    time: formattedTime,
     message: formData.message,
-    timestamp: formattedTime,
+    // Include company in case it's used elsewhere in the template
+    company: formData.company
   };
   
   console.log("Sending contact form to:", SERVICE_ID, CONTACT_TEMPLATE_ID);
@@ -53,12 +54,12 @@ export const sendContactEmail = async (formData: ContactFormData) => {
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // Simplified parameter object - using standard EmailJS naming convention
+  // We don't have the exact template for auto-reply but using similar naming convention
   const autoReplyParams = {
-    user_name: formData.name,
-    user_email: formData.email,
-    user_company: formData.company,
+    name: formData.name,
+    email: formData.email,
     message: formData.message,
+    company: formData.company
   };
   
   console.log("Sending auto-reply to:", SERVICE_ID, AUTO_REPLY_TEMPLATE_ID);
@@ -97,7 +98,7 @@ export const parseEmailError = (error: any): string => {
       console.error("Template variables error. Check EmailJS template and ensure these variables exist:", error);
       // Log what we're sending to help debug
       console.log("We attempted to use these variables in our template:", 
-                 "user_name, user_email, user_company, message, timestamp");
+                 "name, email, time, message, company");
     }
   }
   
