@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 
+// Match the type definition in the ContactForm
 interface FormValues {
   name: string;
   email: string;
