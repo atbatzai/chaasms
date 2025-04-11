@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import FormFields from "./FormFields";
 import SubmitButton from "./SubmitButton";
 import DirectContact from "./DirectContact";
-import { sendContactEmail, sendAutoReplyEmail, parseEmailError } from "./utils/emailService";
+import { sendContactEmail, sendAutoReplyEmail, parseEmailError, ContactFormData } from "./utils/emailService";
 
 // Define the form schema with Zod
 const contactFormSchema = z.object({

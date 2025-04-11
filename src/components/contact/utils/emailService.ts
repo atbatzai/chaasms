@@ -1,4 +1,3 @@
-
 import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
@@ -62,9 +61,8 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   
   try {
     // Configure EmailJS to hide the "sent via EmailJS" footer
-    emailjs.init(PUBLIC_KEY, {
-      hidePostmarkBranding: true
-    });
+    // Using the correct init syntax with PUBLIC_KEY as first parameter
+    emailjs.init(PUBLIC_KEY);
     
     const result = await emailjs.send(
       SERVICE_ID,
@@ -103,9 +101,8 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   
   try {
     // Configure EmailJS to hide the "sent via EmailJS" footer
-    emailjs.init(PUBLIC_KEY, {
-      hidePostmarkBranding: true
-    });
+    // Using the correct init syntax with PUBLIC_KEY as first parameter
+    emailjs.init(PUBLIC_KEY);
     
     const result = await emailjs.send(
       SERVICE_ID,
