@@ -38,34 +38,45 @@ const ContactForm = () => {
   
   const onSubmit = async (formData: ContactFormValues) => {
     try {
-      console.log("Form submission started with data:", formData);
+      console.log("📝 Form submission started with data:", formData);
       
       // Send primary notification email
-      const result = await sendContactEmail(formData as ContactFormData);
+      const result = await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message
+      });
       
       if (result.status === 200) {
         try {
           // Send auto-reply email to the user
-          await sendAutoReplyEmail(formData as ContactFormData);
-          console.log("Auto-reply sent successfully");
+          await sendAutoReplyEmail({
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            message: formData.message
+          });
+          console.log("📧 Auto-reply sent successfully");
         } catch (autoReplyError) {
           // Log auto-reply error but don't show to user since primary email was sent
-          console.error("Auto-reply sending failed:", autoReplyError);
+          console.error("❌ Auto-reply sending failed:", autoReplyError);
         }
         
         toast.success("Your message has been sent! We'll be in touch shortly.");
         
         // Reset form
         reset();
+        console.log("✅ Form reset after successful submission");
       } else {
-        console.error("Unexpected response status:", result.status);
+        console.error("❌ Unexpected response status:", result.status);
         toast.error("There was an issue sending your message. Please email us directly.");
       }
       
     } catch (error: any) {
       const errorMessage = parseEmailError(error);
       toast.error(errorMessage);
-      console.error("Contact form submission error:", error);
+      console.error("❌ Contact form submission error:", error);
     }
   };
 
