@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
 const SERVICE_ID = 'service_mqewdu1';
-const CONTACT_TEMPLATE_ID = 'template_6mm1pxj'; // Updated template ID
+const CONTACT_TEMPLATE_ID = 'template_1s8irbc'; // Updated template ID
 const AUTO_REPLY_TEMPLATE_ID = 'template_9dvv0q6';
 const PUBLIC_KEY = 'CrKCIv7WnXCdRp3wY';
 
