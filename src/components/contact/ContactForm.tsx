@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -8,6 +8,7 @@ import { Mail, User, Building, Globe, MessageSquare, Send } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import FormConfirmationModal from "./FormConfirmationModal";
 
 // Define the form schema with Zod
 const contactFormSchema = z.object({
@@ -25,6 +26,9 @@ interface ContactFormProps {
 }
 
 const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
+  
   const {
     register,
     handleSubmit,
@@ -102,9 +106,18 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       
       // Handle response
       if (result.success === "true" || result.success === true) {
-        toast.success("Your message has been sent! We'll be in touch shortly.");
-        toast.info("A new activation email has been sent. Please check your inbox to activate your form.");
-        reset(); // Reset form after successful submission
+        // Save the submitted name for the confirmation modal
+        setSubmittedName(formData.name);
+        
+        // Show success toast (could be made less prominent since we have the modal)
+        toast.success("Your message has been sent!");
+        
+        // Show confirmation modal
+        setShowConfirmation(true);
+        
+        // Reset form after successful submission
+        reset();
+        
         if (onSubmitSuccess) {
           onSubmitSuccess();
         }
@@ -117,125 +130,138 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       console.error("Form submission error:", error);
     }
   };
+  
+  const handleCloseConfirmation = () => {
+    setShowConfirmation(false);
+  };
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-chaasms-dark mb-1">Name</label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <User className="h-4 w-4 text-gray-400" />
+    <>
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-chaasms-dark mb-1">Name</label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <User className="h-4 w-4 text-gray-400" />
+            </div>
+            <Input
+              id="name"
+              className={`pl-10 w-full rounded-md ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Your name"
+              {...register("name")}
+            />
           </div>
-          <Input
-            id="name"
-            className={`pl-10 w-full rounded-md ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-            placeholder="Your name"
-            {...register("name")}
-          />
+          {errors.name && (
+            <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+          )}
         </div>
-        {errors.name && (
-          <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
-        )}
-      </div>
-      
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-chaasms-dark mb-1">Email</label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Mail className="h-4 w-4 text-gray-400" />
+        
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-chaasms-dark mb-1">Email</label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Mail className="h-4 w-4 text-gray-400" />
+            </div>
+            <Input
+              id="email"
+              type="email"
+              className={`pl-10 w-full rounded-md ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="your@email.com"
+              {...register("email")}
+            />
           </div>
-          <Input
-            id="email"
-            type="email"
-            className={`pl-10 w-full rounded-md ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-            placeholder="your@email.com"
-            {...register("email")}
-          />
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+          )}
         </div>
-        {errors.email && (
-          <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-        )}
-      </div>
-      
-      <div>
-        <label htmlFor="company" className="block text-sm font-medium text-chaasms-dark mb-1">Company</label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Building className="h-4 w-4 text-gray-400" />
+        
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-chaasms-dark mb-1">Company</label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Building className="h-4 w-4 text-gray-400" />
+            </div>
+            <Input
+              id="company"
+              className={`pl-10 w-full rounded-md ${errors.company ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Your company"
+              {...register("company")}
+            />
           </div>
-          <Input
-            id="company"
-            className={`pl-10 w-full rounded-md ${errors.company ? 'border-red-500' : 'border-gray-300'}`}
-            placeholder="Your company"
-            {...register("company")}
-          />
+          {errors.company && (
+            <p className="text-red-500 text-xs mt-1">{errors.company.message}</p>
+          )}
         </div>
-        {errors.company && (
-          <p className="text-red-500 text-xs mt-1">{errors.company.message}</p>
-        )}
-      </div>
-      
-      <div>
-        <label htmlFor="website" className="block text-sm font-medium text-chaasms-dark mb-1">Website (optional)</label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Globe className="h-4 w-4 text-gray-400" />
+        
+        <div>
+          <label htmlFor="website" className="block text-sm font-medium text-chaasms-dark mb-1">Website (optional)</label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Globe className="h-4 w-4 text-gray-400" />
+            </div>
+            <Input
+              id="website"
+              className={`pl-10 w-full rounded-md ${errors.website ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="https://yourcompany.com"
+              {...register("website")}
+            />
           </div>
-          <Input
-            id="website"
-            className={`pl-10 w-full rounded-md ${errors.website ? 'border-red-500' : 'border-gray-300'}`}
-            placeholder="https://yourcompany.com"
-            {...register("website")}
-          />
+          {errors.website && (
+            <p className="text-red-500 text-xs mt-1">{errors.website.message}</p>
+          )}
         </div>
-        {errors.website && (
-          <p className="text-red-500 text-xs mt-1">{errors.website.message}</p>
-        )}
-      </div>
-      
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-chaasms-dark mb-1">Message</label>
-        <div className="relative">
-          <div className="absolute top-3 left-3 flex items-start pointer-events-none">
-            <MessageSquare className="h-4 w-4 text-gray-400" />
+        
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-chaasms-dark mb-1">Message</label>
+          <div className="relative">
+            <div className="absolute top-3 left-3 flex items-start pointer-events-none">
+              <MessageSquare className="h-4 w-4 text-gray-400" />
+            </div>
+            <Textarea
+              id="message"
+              rows={3}
+              className={`pl-10 w-full rounded-md ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Tell us about your channel challenges"
+              {...register("message")}
+            />
           </div>
-          <Textarea
-            id="message"
-            rows={3}
-            className={`pl-10 w-full rounded-md ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
-            placeholder="Tell us about your channel challenges"
-            {...register("message")}
-          />
+          {errors.message && (
+            <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+          )}
         </div>
-        {errors.message && (
-          <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
-        )}
-      </div>
-      
-      <Button 
-        type="submit" 
-        className="w-full"
-        style={{ backgroundColor: '#0066B3', color: 'white' }}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? "Submitting..." : (
-          <span className="flex items-center justify-center gap-2">
-            <Send className="h-4 w-4" />
-            Submit
-          </span>
-        )}
-      </Button>
-      
-      <div className="mt-4 text-center text-sm text-gray-500">
-        Having trouble with the form? Email us directly at{" "}
-        <a 
-          href="mailto:jeff.turner@chaasms.com" 
-          className="text-chaasms-blue hover:underline"
+        
+        <Button 
+          type="submit" 
+          className="w-full"
+          style={{ backgroundColor: '#0066B3', color: 'white' }}
+          disabled={isSubmitting}
         >
-          jeff.turner@chaasms.com
-        </a>
-      </div>
-    </form>
+          {isSubmitting ? "Submitting..." : (
+            <span className="flex items-center justify-center gap-2">
+              <Send className="h-4 w-4" />
+              Submit
+            </span>
+          )}
+        </Button>
+        
+        <div className="mt-4 text-center text-sm text-gray-500">
+          Having trouble with the form? Email us directly at{" "}
+          <a 
+            href="mailto:jeff.turner@chaasms.com" 
+            className="text-chaasms-blue hover:underline"
+          >
+            jeff.turner@chaasms.com
+          </a>
+        </div>
+      </form>
+
+      {/* Confirmation Modal */}
+      <FormConfirmationModal 
+        isOpen={showConfirmation} 
+        onClose={handleCloseConfirmation}
+        name={submittedName} 
+      />
+    </>
   );
 };
 
