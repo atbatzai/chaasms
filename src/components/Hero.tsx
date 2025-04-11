@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ArrowRight } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Hero = () => {
@@ -52,21 +52,7 @@ const Hero = () => {
                 <ArrowRight size={18} className="ml-2" />
               </Button>
               
-              <Link 
-                to="#framework-overview-grid"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('framework-overview-grid')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <Button 
-                  variant="outline" 
-                  className="btn-secondary group rounded-md"
-                >
-                  See the Framework
-                  <ChevronRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
+              {/* Removed the "See the Framework" button */}
             </div>
           </div>
           
