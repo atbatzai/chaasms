@@ -40,11 +40,15 @@ const ContactForm = () => {
   
   const onSubmit = async (formData: ContactFormValues) => {
     try {
-      console.log("📝 Form submission started with data:", formData);
+      console.log("-------------------------------------");
+      console.log("📝 NEW FORM SUBMISSION STARTED");
+      console.log("📄 Form data:", formData);
+      console.log("-------------------------------------");
       
       // Ensure all required fields are present
       if (!formData.name || !formData.email || !formData.company || !formData.message) {
         toast.error("Please complete all required fields");
+        console.error("❌ Missing required fields in form submission");
         return;
       }
       
@@ -57,39 +61,47 @@ const ContactForm = () => {
         message: formData.message
       };
       
-      // Send the contact notification to the site owner
-      console.log("📨 Sending main contact email...");
+      // First send the contact notification to the site owner
+      console.log("📨 Step 1: Sending main contact email to admin...");
       const result = await sendContactEmail(contactData);
       
       if (result.status === 200) {
-        console.log("📨 Main contact email sent successfully with status:", result.status);
-        console.log("📨 Now sending auto-reply email to:", contactData.email);
+        console.log("✅ Step 1 complete: Main contact email sent successfully");
+        
+        // Now handle auto-reply as a separate operation
+        console.log("📨 Step 2: Sending auto-reply to customer:", contactData.email);
         
         try {
-          // Send auto-reply to the user
+          console.log("🔄 Initiating auto-reply process...");
           const autoReplyResult = await sendAutoReplyEmail(contactData);
-          console.log("📧 Auto-reply result:", autoReplyResult);
+          
+          console.log("📊 Auto-reply result received:", autoReplyResult.status);
           
           if (autoReplyResult.status === 200) {
-            console.log("✅ Auto-reply sent successfully to:", contactData.email);
+            console.log("✅ Step 2 complete: Auto-reply sent successfully");
+            toast.success("Your message has been sent! We'll be in touch shortly.");
           } else {
-            console.warn("⚠️ Auto-reply had non-200 status:", autoReplyResult.status, autoReplyResult.text);
+            // This branch should rarely execute as non-200 usually throws an error
+            console.warn("⚠️ Auto-reply sent but returned unexpected status:", autoReplyResult.status);
+            toast.success("Your message has been sent! We'll contact you soon.");
           }
         } catch (autoReplyError: any) {
-          // Log auto-reply error but don't show to user since primary email was sent
-          console.error("❌ Auto-reply sending failed to:", contactData.email);
-          console.error("❌ Auto-reply error details:", autoReplyError);
-          if (autoReplyError.text) console.error("❌ Error text:", autoReplyError.text);
-          if (autoReplyError.message) console.error("❌ Error message:", autoReplyError.message);
+          // If auto-reply fails, log it but don't report to user since main email was sent
+          console.error("❌ Step 2 failed: Auto-reply sending error");
+          console.error("❌ Auto-reply recipient:", contactData.email);
+          console.error("❌ Error details:", autoReplyError);
+          
+          // Still show success for the main submission
+          toast.success("Your message has been received! We'll be in touch soon.");
         }
         
-        toast.success("Your message has been sent! We'll be in touch shortly.");
-        
-        // Reset form
+        // Reset form regardless of auto-reply status
         reset();
         console.log("✅ Form reset after successful submission");
+        console.log("-------------------------------------");
       } else {
-        console.error("❌ Unexpected response status:", result.status);
+        // This branch should rarely execute as non-200 usually throws an error
+        console.error("❌ Unexpected main email response status:", result.status);
         toast.error("There was an issue sending your message. Please email us directly.");
       }
       
@@ -97,6 +109,7 @@ const ContactForm = () => {
       const errorMessage = parseEmailError(error);
       toast.error(errorMessage);
       console.error("❌ Contact form submission error:", error);
+      console.error("-------------------------------------");
     }
   };
 

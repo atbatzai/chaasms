@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 // Constants for EmailJS configuration
 const SERVICE_ID = 'service_mqewdu1';
 const CONTACT_TEMPLATE_ID = 'template_1s8irbc';
-const AUTO_REPLY_TEMPLATE_ID = 'template_0mg1a6l'; // Updated template ID
+const AUTO_REPLY_TEMPLATE_ID = 'template_0mg1a6l'; // Confirmed template ID
 const PUBLIC_KEY = 'CrKCIv7WnXCdRp3wY';
 
 // Interface for form data - make this match exactly what's in our form
@@ -96,51 +96,58 @@ Website: ${formData.website || 'Not provided'}`,    // {{message}} in the templa
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // Auto-reply template variables - match exactly what's expected in the template
-  // The template expects {{name}} for recipient name and {{title}} for the subject/heading
+  // Fixed approach to match exactly what's in EmailJS directly
+  // EmailJS auto-reply template requires specific parameters
   const rawParams = {
-    // Template content variables
+    // Only send the exact variables expected by the template
     name: formData.name,
-    title: `Thank you for your inquiry about ${formData.company}`,
+    title: `Thank you for contacting CHAASMS`,
     
-    // EmailJS sending parameters
-    from_name: "CHAASMS Team",
-    from_email: "jeff.turner@chaasms.com", 
-    reply_to: "jeff.turner@chaasms.com",
+    // These parameters are required for EmailJS to send
+    to_name: formData.name,
     to_email: formData.email,
+    from_name: "CHAASMS Team",
+    from_email: "jeff.turner@chaasms.com",
+    reply_to: "jeff.turner@chaasms.com",
     
-    // Ensure the email is sent as HTML format
-    content_type: "text/html"
+    // Force HTML content type to ensure template renders correctly
+    content_type: "text/html",
+    
+    // Debug parameters to help track potential issues
+    _timestamp: new Date().getTime(),
+    _debug_info: "Sent from website form"
   };
   
   // Sanitize all variables to prevent corruption
   const autoReplyParams = sanitizeTemplateVariables(rawParams);
   
-  console.log("🔄 Sending auto-reply with params:", JSON.stringify(autoReplyParams));
-  console.log("📧 Service ID:", SERVICE_ID);
-  console.log("📝 Auto-reply Template ID:", AUTO_REPLY_TEMPLATE_ID);
-  console.log("📧 Sending to:", formData.email);
+  console.log("🔍 DEBUGGING AUTO-REPLY:");
+  console.log("📧 Auto-reply recipient:", formData.email);
+  console.log("📝 Auto-reply template ID:", AUTO_REPLY_TEMPLATE_ID);
+  console.log("📬 Service ID:", SERVICE_ID);
+  console.log("🔑 Parameters:", JSON.stringify(autoReplyParams, null, 2));
   
   try {
-    // Initialize EmailJS with the public key
+    // Re-initialize EmailJS with the public key for each request
     emailjs.init(PUBLIC_KEY);
     
+    // Use the direct template sending method
     const result = await emailjs.send(
-      SERVICE_ID,
+      SERVICE_ID, 
       AUTO_REPLY_TEMPLATE_ID,
-      autoReplyParams,
-      PUBLIC_KEY
+      autoReplyParams
     );
     
-    console.log("✅ Auto-reply status:", result.status);
-    console.log("✅ Auto-reply response:", result.text);
+    console.log("✅ Auto-reply send attempt complete");
+    console.log("📊 Status code:", result.status);
+    console.log("📄 Response text:", result.text);
     
     return result;
   } catch (error: any) {
-    console.error("❌ Auto-reply sending failed:", error);
-    if (error.text) {
-      console.error("❌ Error details:", error.text);
-    }
+    console.error("❌ Auto-reply sending failed with error");
+    if (error.text) console.error("📛 Error text:", error.text);
+    if (error.status) console.error("🔢 Error status:", error.status);
+    console.error("🔍 Full error:", error);
     throw error;
   }
 };
