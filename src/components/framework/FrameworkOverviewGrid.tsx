@@ -33,7 +33,17 @@ const FrameworkOverviewGrid = () => {
         <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-6">
           Six Interlocking Layers for Channel Strategy Success
         </p>
-        <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+        <div className="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
+        
+        {/* Added Detailed Framework button */}
+        <Button
+          onClick={handleNavigateToFramework}
+          className="mx-auto px-6 py-2.5"
+          style={{ backgroundColor: '#0f4c81', color: 'white' }}
+        >
+          Detailed Framework
+          <ArrowRight size={18} className="ml-2" />
+        </Button>
       </div>
       
       {/* Vertical Flow Layout */}

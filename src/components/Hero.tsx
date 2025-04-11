@@ -1,10 +1,18 @@
 
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
+  // Function to navigate to Framework Overview page
+  const navigateToFrameworkOverview = () => {
+    navigate('/framework-overview');
+    window.scrollTo(0, 0);
+  };
+
   // Add useEffect to load Vimeo Player script
   useEffect(() => {
     const script = document.createElement("script");
@@ -35,8 +43,12 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5 pt-4">
-              <Button className="btn-primary rounded-md shadow-md hover:shadow-lg transition-all">
-                Book a Consultation
+              {/* Replaced Book a Consultation with Detailed Framework button */}
+              <Button 
+                className="btn-primary rounded-md shadow-md hover:shadow-lg transition-all"
+                onClick={navigateToFrameworkOverview}
+              >
+                Detailed Framework
               </Button>
               
               <Link 
