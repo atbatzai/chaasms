@@ -58,10 +58,12 @@ const ContactForm = () => {
       };
       
       // Send the contact notification to the site owner
+      console.log("📨 Sending main contact email...");
       const result = await sendContactEmail(contactData);
       
       if (result.status === 200) {
-        console.log("📨 Main contact email sent successfully. Now sending auto-reply...");
+        console.log("📨 Main contact email sent successfully with status:", result.status);
+        console.log("📨 Now sending auto-reply email to:", contactData.email);
         
         try {
           // Send auto-reply to the user
@@ -69,14 +71,16 @@ const ContactForm = () => {
           console.log("📧 Auto-reply result:", autoReplyResult);
           
           if (autoReplyResult.status === 200) {
-            console.log("✅ Auto-reply sent successfully");
+            console.log("✅ Auto-reply sent successfully to:", contactData.email);
           } else {
             console.warn("⚠️ Auto-reply had non-200 status:", autoReplyResult.status, autoReplyResult.text);
           }
         } catch (autoReplyError: any) {
           // Log auto-reply error but don't show to user since primary email was sent
-          console.error("❌ Auto-reply sending failed:", autoReplyError);
-          console.error("❌ Auto-reply error details:", autoReplyError.text || autoReplyError.message);
+          console.error("❌ Auto-reply sending failed to:", contactData.email);
+          console.error("❌ Auto-reply error details:", autoReplyError);
+          if (autoReplyError.text) console.error("❌ Error text:", autoReplyError.text);
+          if (autoReplyError.message) console.error("❌ Error message:", autoReplyError.message);
         }
         
         toast.success("Your message has been sent! We'll be in touch shortly.");

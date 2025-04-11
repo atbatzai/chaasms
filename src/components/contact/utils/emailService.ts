@@ -96,17 +96,21 @@ Website: ${formData.website || 'Not provided'}`,    // {{message}} in the templa
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // For auto-reply template - the template expects {{name}} and {{title}} variables
+  // Auto-reply template variables - match exactly what's expected in the template
+  // The template expects {{name}} for recipient name and {{title}} for the subject/heading
   const rawParams = {
-    // Required template variables
+    // Template content variables
     name: formData.name,
     title: `Thank you for your inquiry about ${formData.company}`,
     
-    // EmailJS sending requirements
+    // EmailJS sending parameters
     from_name: "CHAASMS Team",
-    from_email: "jeff.turner@chaasms.com",
+    from_email: "jeff.turner@chaasms.com", 
     reply_to: "jeff.turner@chaasms.com",
-    to_email: formData.email
+    to_email: formData.email,
+    
+    // Ensure the email is sent as HTML format
+    content_type: "text/html"
   };
   
   // Sanitize all variables to prevent corruption
@@ -115,6 +119,7 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   console.log("🔄 Sending auto-reply with params:", JSON.stringify(autoReplyParams));
   console.log("📧 Service ID:", SERVICE_ID);
   console.log("📝 Auto-reply Template ID:", AUTO_REPLY_TEMPLATE_ID);
+  console.log("📧 Sending to:", formData.email);
   
   try {
     // Initialize EmailJS with the public key
@@ -126,10 +131,16 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
       autoReplyParams,
       PUBLIC_KEY
     );
-    console.log("✅ Auto-reply sent successfully:", result.status, result.text);
+    
+    console.log("✅ Auto-reply status:", result.status);
+    console.log("✅ Auto-reply response:", result.text);
+    
     return result;
-  } catch (error) {
+  } catch (error: any) {
     console.error("❌ Auto-reply sending failed:", error);
+    if (error.text) {
+      console.error("❌ Error details:", error.text);
+    }
     throw error;
   }
 };
