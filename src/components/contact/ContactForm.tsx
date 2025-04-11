@@ -45,8 +45,12 @@ const ContactForm = () => {
       console.log("📄 Form data:", formData);
       console.log("-------------------------------------");
       
+      // Display loading toast to indicate submission is in progress
+      toast.loading("Sending your message...");
+      
       // Ensure all required fields are present
       if (!formData.name || !formData.email || !formData.company || !formData.message) {
+        toast.dismiss();
         toast.error("Please complete all required fields");
         console.error("❌ Missing required fields in form submission");
         return;
@@ -65,6 +69,9 @@ const ContactForm = () => {
       
       const result = await submitContactForm(contactData);
       
+      // Dismiss the loading toast
+      toast.dismiss();
+      
       if (result.success) {
         toast.success(
           <div>
@@ -81,6 +88,7 @@ const ContactForm = () => {
       }
       
     } catch (error: any) {
+      toast.dismiss();
       const errorMessage = parseFormError(error);
       toast.error(errorMessage);
       console.error("❌ Form submission exception:", error);

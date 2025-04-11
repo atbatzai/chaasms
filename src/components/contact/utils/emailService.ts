@@ -31,10 +31,11 @@ export const submitContactForm = async (formData: ContactFormData) => {
     data.append('_subject', `Contact from ${formData.name} at ${formData.company}`);
     data.append('_replyto', formData.email); // Ensures reply-to is set correctly
     data.append('_template', 'box'); // Nice HTML template
+    data.append('_captcha', 'false'); // Disable CAPTCHA for better user experience
     
     // Auto-reply configuration - formatting for a proper HTML email
     // The subject line for the auto-reply email
-    data.append('_autoresponse', `Thank you for contacting CHAASMS, ${formData.name}!`);
+    data.append('_autoresponse_subject', `Thank you for contacting CHAASMS, ${formData.name}!`);
     
     // The HTML content of the auto-reply email - properly formatted
     const autoReplyMessage = `
@@ -68,9 +69,8 @@ export const submitContactForm = async (formData: ContactFormData) => {
     console.log("📨 Submitting form to FormSubmit.co...");
     console.log("🔄 Auto-reply configured for: " + formData.email);
     
-    // The email address to send notifications to (use your actual recipient email)
-    // Important: This form endpoint must be activated first by submitting the form once manually
-    const response = await fetch('https://formsubmit.co/jeff.turner@chaasms.com', {
+    // The email address to send notifications to
+    const response = await fetch('https://formsubmit.co/ajax/jeff.turner@chaasms.com', {
       method: 'POST',
       body: data,
       headers: {
@@ -78,9 +78,22 @@ export const submitContactForm = async (formData: ContactFormData) => {
       }
     });
     
-    console.log("✅ Form submitted successfully");
-    console.log("✉️ Auto-reply should be sent to: " + formData.email);
-    return { success: true };
+    // Parse the JSON response to check for success
+    const result = await response.json();
+    console.log("🔍 FormSubmit response:", result);
+    
+    if (response.ok && result.success === "true") {
+      console.log("✅ Form submitted successfully");
+      console.log("✉️ Auto-reply should be sent to: " + formData.email);
+      return { success: true };
+    } else {
+      console.error("❌ Form submission failed with status:", response.status);
+      console.error("Error details:", result);
+      return { 
+        success: false, 
+        error: "Failed to send your message. Please email us directly."
+      };
+    }
     
   } catch (error) {
     console.error("❌ Form submission error:", error);
