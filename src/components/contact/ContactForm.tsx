@@ -38,6 +38,8 @@ const ContactForm = () => {
   
   const onSubmit = async (formData: ContactFormValues) => {
     try {
+      console.log("Form submission started with data:", formData);
+      
       // Send primary notification email
       const result = await sendContactEmail(formData as ContactFormData);
       
@@ -56,12 +58,14 @@ const ContactForm = () => {
         // Reset form
         reset();
       } else {
+        console.error("Unexpected response status:", result.status);
         toast.error("There was an issue sending your message. Please email us directly.");
       }
       
     } catch (error: any) {
       const errorMessage = parseEmailError(error);
       toast.error(errorMessage);
+      console.error("Contact form submission error:", error);
     }
   };
 

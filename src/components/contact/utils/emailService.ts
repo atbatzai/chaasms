@@ -17,23 +17,25 @@ export interface ContactFormData {
 
 /**
  * Sends the contact email notification to the admin
+ * Ensures params exactly match template variables
  */
 export const sendContactEmail = async (formData: ContactFormData) => {
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // Match EXACTLY with the variables shown in the template screenshot
+  // These parameter names MUST EXACTLY match the template variables
   const mainEmailParams = {
     name: formData.name,
     email: formData.email,
     time: formattedTime,
     message: formData.message,
-    // Include company in case it's used elsewhere in the template
+    // No title in our form data, but company is available if needed elsewhere
     company: formData.company
   };
   
-  console.log("Sending contact form to:", SERVICE_ID, CONTACT_TEMPLATE_ID);
-  console.log("Main email params:", mainEmailParams);
+  console.log("Sending contact form with params:", mainEmailParams);
+  console.log("Using service ID:", SERVICE_ID);
+  console.log("Using template ID:", CONTACT_TEMPLATE_ID);
   
   try {
     const result = await emailjs.send(
@@ -54,7 +56,7 @@ export const sendContactEmail = async (formData: ContactFormData) => {
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // We don't have the exact template for auto-reply but using similar naming convention
+  // We'll use the same parameter naming convention for consistency
   const autoReplyParams = {
     name: formData.name,
     email: formData.email,
@@ -62,8 +64,9 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
     company: formData.company
   };
   
-  console.log("Sending auto-reply to:", SERVICE_ID, AUTO_REPLY_TEMPLATE_ID);
-  console.log("Auto-reply params:", autoReplyParams);
+  console.log("Sending auto-reply with params:", autoReplyParams);
+  console.log("Using service ID:", SERVICE_ID);
+  console.log("Using template ID:", AUTO_REPLY_TEMPLATE_ID);
   
   try {
     const result = await emailjs.send(
@@ -86,7 +89,9 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
 export const parseEmailError = (error: any): string => {
   let errorMessage = "Failed to send message. Please email us directly at jeff.turner@chaasms.com";
   
-  if (error.text) {
+  if (error && error.text) {
+    console.error("EmailJS error text:", error.text);
+    
     if (error.text.includes("template ID not found")) {
       errorMessage = "Our contact system is temporarily unavailable. Please email us directly.";
       console.error("Template ID not found error. Check if template IDs exist in your EmailJS account.");
@@ -97,8 +102,10 @@ export const parseEmailError = (error: any): string => {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
       console.error("Template variables error. Check EmailJS template and ensure these variables exist:", error);
       // Log what we're sending to help debug
-      console.log("We attempted to use these variables in our template:", 
-                 "name, email, time, message, company");
+      console.log("Template expects these variables:", 
+                 "name, email, time, message, and possibly title");
+      console.log("We are sending these variables:", 
+                 Object.keys(error?.data || {}).join(", "));
     }
   }
   
