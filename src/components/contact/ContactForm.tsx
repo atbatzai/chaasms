@@ -65,7 +65,7 @@ const ContactForm = () => {
         company: formData.company,
         to_email: formData.email, // Ensure this matches the "To Email" parameter in your template
         reply_to: "support@chaasms.com", // Your support email
-        from_name: "CHAASMS Team",
+        from_name: "CHAASMS Channel Strategies", // Updated from "CHAASMS Team" to "CHAASMS Channel Strategies"
         from_email: "support@chaasms.com", // This helps identify where the email is coming from
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
