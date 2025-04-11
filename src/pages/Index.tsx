@@ -11,6 +11,14 @@ import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
 import { Toaster } from "sonner";
 
+// Extend the Window interface to include our custom properties
+declare global {
+  interface Window {
+    onnotify?: any;
+    s?: any;
+  }
+}
+
 const Index = () => {
   // Ensure page starts at the top when navigating to this route
   useEffect(() => {
@@ -18,8 +26,8 @@ const Index = () => {
     
     // Clean up any stray event listeners when component unmounts
     return () => {
-      window.onnotify = null;
-      window.s = null;
+      if (window.onnotify) window.onnotify = null;
+      if (window.s) window.s = null;
     };
   }, []);
   
