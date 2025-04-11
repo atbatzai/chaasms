@@ -1,6 +1,5 @@
 
 import React from "react";
-import ProcessSteps from "./ProcessSteps";
 
 const ContactInfo = () => {
   return (
@@ -10,7 +9,28 @@ const ContactInfo = () => {
         Fill out the form to tell us about your channel challenges, and we'll get back to you within 24 hours.
       </p>
       
-      <ProcessSteps />
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-chaasms-blue rounded-full flex items-center justify-center">
+            <span className="text-white text-xs font-bold">1</span>
+          </div>
+          <p className="text-chaasms-dark text-sm">Discovery Call</p>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-chaasms-blue rounded-full flex items-center justify-center">
+            <span className="text-white text-xs font-bold">2</span>
+          </div>
+          <p className="text-chaasms-dark text-sm">Needs Assessment</p>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-chaasms-blue rounded-full flex items-center justify-center">
+            <span className="text-white text-xs font-bold">3</span>
+          </div>
+          <p className="text-chaasms-dark text-sm">Proposal & Engagement</p>
+        </div>
+      </div>
     </div>
   );
 };
