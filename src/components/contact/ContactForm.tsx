@@ -1,38 +1,42 @@
 
-import React, { useState, useRef } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { toast } from "sonner";
 import FormFields from "./FormFields";
 import SubmitButton from "./SubmitButton";
 import DirectContact from "./DirectContact";
-import { ContactFormData, sendContactEmail, sendAutoReplyEmail, parseEmailError } from "./utils/emailService";
+import { sendContactEmail, sendAutoReplyEmail, parseEmailError } from "./utils/emailService";
+
+// Define the form schema with Zod
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  company: z.string().min(2, { message: "Company name is required" }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters" })
+});
+
+// Define the type from our schema
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    company: "",
-    message: ""
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      message: ""
+    }
   });
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate form data before proceeding
-    if (!formData.name || !formData.email || !formData.company || !formData.message) {
-      toast.error("Please fill in all fields");
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
+  const onSubmit = async (formData: ContactFormValues) => {
     try {
       // Send primary notification email
       const result = await sendContactEmail(formData);
@@ -50,10 +54,7 @@ const ContactForm = () => {
         toast.success("Your message has been sent! We'll be in touch shortly.");
         
         // Reset form
-        if (formRef.current) {
-          formRef.current.reset();
-        }
-        setFormData({ name: "", email: "", company: "", message: "" });
+        reset();
       } else {
         toast.error("There was an issue sending your message. Please email us directly.");
       }
@@ -61,15 +62,13 @@ const ContactForm = () => {
     } catch (error: any) {
       const errorMessage = parseEmailError(error);
       toast.error(errorMessage);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="bg-white p-5 rounded-lg shadow-sm">
-      <form className="space-y-3" onSubmit={handleSubmit} ref={formRef}>
-        <FormFields formData={formData} handleChange={handleChange} />
+      <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+        <FormFields register={register} errors={errors} />
         <SubmitButton isSubmitting={isSubmitting} />
       </form>
       <DirectContact />
