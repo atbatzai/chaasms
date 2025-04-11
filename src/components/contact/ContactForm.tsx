@@ -85,33 +85,25 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
 </html>
       `);
       
-      // Using new FormSubmit activation code 
-      // This is a placeholder - user will need to activate a new form
-      const endpoint = 'https://formsubmit.co/ajax/your-new-activation-code';
+      // PRODUCTION ENDPOINT - This should be your activated FormSubmit endpoint
+      // Note: You need to replace this with your actual activated endpoint from FormSubmit
+      const productionEndpoint = 'https://formsubmit.co/jeff.turner@chaasms.com';
       
-      // For testing purposes, we'll use the existing endpoint
-      const testEndpoint = 'https://formsubmit.co/ajax/jeff.turner@chaasms.com';
-      
-      // Send the submission
-      const response = await fetch(testEndpoint, {
+      // Send the submission to the production endpoint (not the ajax/test endpoint)
+      const response = await fetch(productionEndpoint, {
         method: 'POST',
         body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
       });
-      
-      const result = await response.json();
       
       // Dismiss loading toast
       toast.dismiss();
       
-      // Handle response
-      if (result.success === "true" || result.success === true) {
+      // Handle successful submission
+      if (response.ok) {
         // Save the submitted name for the confirmation modal
         setSubmittedName(formData.name);
         
-        // Show success toast (could be made less prominent since we have the modal)
+        // Show success toast
         toast.success("Your message has been sent!");
         
         // Show confirmation modal
