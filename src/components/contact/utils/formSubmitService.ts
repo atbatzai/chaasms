@@ -1,6 +1,9 @@
 
-// Using FormSubmit.co service instead of EmailJS
-// This service handles both notification emails and auto-replies without API keys
+/**
+ * FormSubmit Service
+ * Handles contact form submissions using FormSubmit.co
+ * This service handles both notification emails and auto-replies without API keys
+ */
 
 export interface ContactFormData {
   name: string;
@@ -19,7 +22,7 @@ export const submitContactForm = async (formData: ContactFormData) => {
     console.log("📝 Preparing form submission with FormSubmit.co");
     console.log("📄 Form data:", formData);
     
-    // Build form data for submission - using a proper HTML form approach
+    // Build form data for submission - using FormData for proper handling
     const data = new FormData();
     
     // Basic contact information
@@ -84,7 +87,7 @@ export const submitContactForm = async (formData: ContactFormData) => {
     // FormSubmit API endpoint with activation code
     const endpoint = 'https://formsubmit.co/ajax/263a0ebbdac6852db27aea1c4cc7ef9c';
     
-    // Log the full endpoint for debugging
+    // Log the endpoint for debugging
     console.log("🔌 Using FormSubmit endpoint:", endpoint);
     
     // Send the submission with the proper content type

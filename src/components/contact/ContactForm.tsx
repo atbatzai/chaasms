@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import FormFields from "./FormFields";
 import SubmitButton from "./SubmitButton";
 import DirectContact from "./DirectContact";
-import { submitContactForm, parseFormError, ContactFormData } from "./utils/emailService";
+import { submitContactForm, parseFormError, ContactFormData } from "./utils/formSubmitService";
 
 // Define the form schema with Zod
 const contactFormSchema = z.object({
@@ -59,8 +59,8 @@ const ContactForm = () => {
         return;
       }
       
-      // Submit form data to FormSubmit.co service
-      console.log("📨 Submitting contact form...");
+      // Submit form data to FormSubmit service
+      console.log("📨 Submitting contact form to FormSubmit...");
       
       const contactData: ContactFormData = {
         name: formData.name,
