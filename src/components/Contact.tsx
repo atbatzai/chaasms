@@ -48,26 +48,27 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
+      // Your EmailJS service, template, and public key
       const serviceId = 'service_mqewdu1';
       const templateId = 'template_chaasms';
-      const publicKey = 'YOUR_PUBLIC_KEY';
+      const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your actual public key from EmailJS
       
-      // Send the email to both admins
+      // Prepare template parameters based on your EmailJS template
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         company: formData.company,
         message: formData.message,
         to_name: "Jeff & Jennifer Turner",
-        to_email: "jeff.turner@chaasms.com, jturner@chaasms.com" // Updated to include both email versions
+        to_email: "jeff.turner@chaasms.com, jturner@chaasms.com",
+        subject: "URGENT CHAASMS INQUIRY"
       };
       
+      // Send email via EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
-      // Optional: Send an auto-reply to the submitter
-      // You can either:
-      // 1. Configure this in EmailJS directly (recommended)
-      // 2. Or add another emailjs.send here with a different template
+      // Auto-reply is handled by EmailJS template configuration
+      // Make sure you've set up the "Reply To" field in your template
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
       
