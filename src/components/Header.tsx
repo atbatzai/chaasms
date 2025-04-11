@@ -66,6 +66,7 @@ const Header = () => {
             to="/"
             className="cursor-pointer flex items-center"
             onClick={() => window.scrollTo(0, 0)}
+            aria-label="CHAASMS Home"
           >
             <img 
               src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
