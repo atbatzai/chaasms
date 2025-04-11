@@ -38,7 +38,7 @@ export const submitContactForm = async (formData: ContactFormData) => {
     data.append('_template', 'box'); // Nice HTML template
     data.append('_captcha', 'false'); // Disable CAPTCHA for better UX
     
-    // Enable auto-response
+    // Enable auto-response - updated parameter names for clarity
     data.append('_autoresponse', 'true'); // Explicitly enable auto-response
     data.append('_autoresponse_subject', `Thank you for contacting CHAASMS, ${formData.name}!`);
     
@@ -80,6 +80,16 @@ export const submitContactForm = async (formData: ContactFormData) => {
 </html>
     `;
     data.append('_autoresponse_message', autoReplyMessage);
+    
+    // DEBUGGING: Log all form data keys and values to validate auto-response fields
+    console.log("🔍 Form submission data check:");
+    for (const [key, value] of data.entries()) {
+      if (key === '_autoresponse_message') {
+        console.log(`${key}: [HTML Content]`);
+      } else {
+        console.log(`${key}: ${value}`);
+      }
+    }
     
     console.log("📨 Submitting form to FormSubmit.co...");
     console.log("🔄 Auto-reply configured for: " + formData.email);
