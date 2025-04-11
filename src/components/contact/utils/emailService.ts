@@ -36,30 +36,36 @@ const sanitizeTemplateVariables = (data: Record<string, any>): Record<string, st
 
 /**
  * Sends the contact email notification to the admin
- * Simplified to match the new template with only name, time, and message
+ * Simplified to match the new template with name, time, and message
  */
 export const sendContactEmail = async (formData: ContactFormData) => {
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // Simplified parameters to match the new template variables
-  // Only using name, time, and message as per the new template
+  // Parameters for the contact template
   const rawParams = {
     name: formData.name,
     time: formattedTime,
     message: formData.message,
-    // Include email in case it's still needed for addressing the email
-    email: formData.email
+    email: formData.email,
+    from_name: formData.name,
+    from_email: formData.email,
+    reply_to: formData.email
   };
   
   // Sanitize all variables to prevent corruption
   const templateParams = sanitizeTemplateVariables(rawParams);
   
-  console.log("📨 Sending contact email with simplified params:", JSON.stringify(templateParams));
+  console.log("📨 Sending contact email with params:", JSON.stringify(templateParams));
   console.log("📧 Service ID:", SERVICE_ID);
   console.log("📝 Template ID:", CONTACT_TEMPLATE_ID);
   
   try {
+    // Configure EmailJS to hide the "sent via EmailJS" footer
+    emailjs.init(PUBLIC_KEY, {
+      hidePostmarkBranding: true
+    });
+    
     const result = await emailjs.send(
       SERVICE_ID,
       CONTACT_TEMPLATE_ID,
@@ -76,15 +82,16 @@ export const sendContactEmail = async (formData: ContactFormData) => {
 
 /**
  * Sends an auto-reply email to the user
- * Keeping this implementation for now, but might need to be updated
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // For auto-reply template - simplified to match expectations
+  // For auto-reply template
   const rawParams = {
     name: formData.name,
     message: "Thank you for contacting CHAASMS. We will get back to you shortly.",
-    // Include email as it's likely needed for addressing
-    email: formData.email
+    email: formData.email,
+    from_name: "CHAASMS Team",
+    from_email: "jeff.turner@chaasms.com",
+    reply_to: "jeff.turner@chaasms.com"
   };
   
   // Sanitize all variables to prevent corruption
@@ -95,6 +102,11 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   console.log("📝 Auto-reply Template ID:", AUTO_REPLY_TEMPLATE_ID);
   
   try {
+    // Configure EmailJS to hide the "sent via EmailJS" footer
+    emailjs.init(PUBLIC_KEY, {
+      hidePostmarkBranding: true
+    });
+    
     const result = await emailjs.send(
       SERVICE_ID,
       AUTO_REPLY_TEMPLATE_ID,

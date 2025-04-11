@@ -46,23 +46,13 @@ const ContactForm = () => {
         return;
       }
       
-      // Send primary notification email with the simplified template
-      const result = await sendContactEmail({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        message: formData.message
-      });
+      // First, send the notification to the admin
+      const result = await sendContactEmail(formData);
       
       if (result.status === 200) {
         try {
-          // Send auto-reply email to the user
-          await sendAutoReplyEmail({
-            name: formData.name,
-            email: formData.email,
-            company: formData.company,
-            message: formData.message
-          });
+          // Then send the auto-reply to the user
+          await sendAutoReplyEmail(formData);
           console.log("📧 Auto-reply sent successfully");
         } catch (autoReplyError) {
           // Log auto-reply error but don't show to user since primary email was sent
