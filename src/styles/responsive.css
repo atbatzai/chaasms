@@ -60,5 +60,13 @@
     #services .card p {
       @apply text-gray-800 !important;
     }
+    
+    /* Fix for Services heading text clipping issue on mobile */
+    #services h2.section-heading {
+      @apply py-1 leading-normal;
+      line-height: 1.3;
+      padding-top: 0.35rem;
+      margin-top: 0.25rem;
+    }
   }
 }
