@@ -1,5 +1,5 @@
 
-import { Calendar, Mail, Phone } from 'lucide-react';
+import { Calendar, Mail } from 'lucide-react';
 import ContactItem from "./contact/ContactItem";
 import ContactForm from "./contact/ContactForm";
 import ContactInfo from "./contact/ContactInfo";
