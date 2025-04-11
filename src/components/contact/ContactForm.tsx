@@ -29,15 +29,16 @@ const ContactForm = () => {
     try {
       // Your EmailJS service, template, and public key
       const serviceId = 'service_mqewdu1';
-      const templateId = 'template_chaasms';
+      const notificationTemplateId = 'template_chaasms'; // Template for admin notification
+      const autoReplyTemplateId = 'template_autoreply'; // Template for user auto-reply
       const publicKey = 'CrKCIv7WnXCdRp3wY';
       
       // Get current time for the template
       const now = new Date();
       const formattedTime = now.toLocaleString();
       
-      // Prepare template parameters to match your EmailJS template
-      const templateParams = {
+      // Prepare template parameters for notification email
+      const notificationParams = {
         name: formData.name,
         email: formData.email,
         company: formData.company,
@@ -49,9 +50,33 @@ const ContactForm = () => {
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
-      // Send email via EmailJS
-      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      console.log("EmailJS result:", result);
+      // Prepare template parameters for auto-reply email
+      const autoReplyParams = {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        reply_to: "support@chaasms.com", // Your support email
+        from_name: "CHAASMS Team",
+        logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
+      };
+      
+      // Send notification email to admin
+      const notificationResult = await emailjs.send(
+        serviceId, 
+        notificationTemplateId, 
+        notificationParams, 
+        publicKey
+      );
+      console.log("Admin notification email sent:", notificationResult);
+      
+      // Send auto-reply email to user
+      const autoReplyResult = await emailjs.send(
+        serviceId,
+        autoReplyTemplateId,
+        autoReplyParams,
+        publicKey
+      );
+      console.log("Auto-reply email sent:", autoReplyResult);
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
       
