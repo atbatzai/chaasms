@@ -37,6 +37,14 @@ const ContactForm = () => {
       const now = new Date();
       const formattedTime = now.toLocaleString();
       
+      console.log("Sending notification email with params:", {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        messageLength: formData.message.length,
+        time: formattedTime
+      });
+      
       // Prepare template parameters for notification email
       const notificationParams = {
         name: formData.name,
@@ -44,7 +52,7 @@ const ContactForm = () => {
         company: formData.company,
         message: formData.message,
         time: formattedTime,
-        title: `New contact from ${formData.company}`,
+        title: `New contact from ${formData.name} at ${formData.company}`,
         reply_to: formData.email,
         from_name: formData.name,
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
@@ -55,6 +63,7 @@ const ContactForm = () => {
         name: formData.name,
         email: formData.email,
         company: formData.company,
+        to_email: formData.email, // Ensure this matches the "To Email" parameter in your template
         reply_to: "support@chaasms.com", // Your support email
         from_name: "CHAASMS Team",
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
