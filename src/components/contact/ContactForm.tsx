@@ -35,9 +35,9 @@ const ContactForm = () => {
     
     try {
       // EmailJS service configuration
-      const serviceId = 'service_mqewdu1';
-      const notificationTemplateId = 'template_chaasms'; // Template for admin notification
-      const autoReplyTemplateId = 'template_autoreply'; // Template for user auto-reply
+      const serviceId = 'service_mqewdu1'; // This matches what's in your screenshot
+      const notificationTemplateId = 'template_7yhdmys'; // From your Contact Us template ID screenshot
+      const autoReplyTemplateId = 'template_9dv0q6'; // From your Auto-Reply template ID screenshot
       const publicKey = 'CrKCIv7WnXCdRp3wY';
       
       // Get current time for the template
@@ -59,17 +59,22 @@ const ContactForm = () => {
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
+      console.log("Notification params:", notificationParams);
+      console.log("Sending notification using template:", notificationTemplateId);
+      
       // Prepare template parameters for auto-reply email (to user)
       const autoReplyParams = {
         name: formData.name,
         email: formData.email,
         company: formData.company,
         to_email: formData.email,
-        reply_to: "support@chaasms.com",
+        reply_to: "jeff.turner@chaasms.com", // This is based on your screenshot
         from_name: "CHAASMS Channel Strategies", // Company name as sender
-        from_email: "support@chaasms.com", // Helps identify where the email is from
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
+      
+      console.log("Auto-reply params:", autoReplyParams);
+      console.log("Sending auto-reply using template:", autoReplyTemplateId);
       
       // First, send the notification email to admin
       console.log("Sending notification email to admin...");
@@ -101,14 +106,17 @@ const ContactForm = () => {
         }
         setFormData({ name: "", email: "", company: "", message: "" });
         
-      } catch (emailError) {
-        console.error("Error sending notification email:", emailError);
-        throw new Error("Failed to send notification email");
+      } catch (emailError: any) {
+        console.error("Error sending email:", emailError);
+        if (emailError.text) {
+          console.error("EmailJS error details:", emailError.text);
+        }
+        throw new Error(`Failed to send email: ${emailError.message || 'Unknown error'}`);
       }
       
-    } catch (error) {
+    } catch (error: any) {
       console.error("Form submission error:", error);
-      toast.error("Failed to send message. Please try again or contact us directly.");
+      toast.error(`Failed to send message: ${error.message}. Please try again or contact us directly.`);
     } finally {
       setIsSubmitting(false);
     }
