@@ -1,0 +1,27 @@
+
+@layer components {
+  /* Enhanced component classes */
+  .hover-card {
+    @apply hover:bg-white hover:shadow-md transform transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-chaasms-blue to-blue-700 bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-lg;
+  }
+  
+  .wave-shape {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  
+  .neo-morphism {
+    @apply bg-white shadow-[8px_8px_16px_#dedede,_-8px_-8px_16px_#ffffff] border-none;
+  }
+  
+  .blob-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}

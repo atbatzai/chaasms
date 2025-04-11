@@ -1,0 +1,24 @@
+
+@layer components {
+  /* Mobile-specific fixes */
+  @media (max-width: 768px) {
+    .bg-chaasms-blue * {
+      @apply text-white;
+    }
+    
+    /* Ensure text is white on any blue backgrounds on mobile */
+    .bg-blue-50 h3.font-bold,
+    .bg-chaasms-blue h3,
+    .bg-chaasms-blue span,
+    .bg-chaasms-blue p,
+    [class*="bg-blue"] h3,
+    [class*="bg-blue"] p {
+      @apply text-white;
+    }
+    
+    /* Ensure "Our Expertise" label isn't squished */
+    .rounded-full {
+      @apply whitespace-nowrap;
+    }
+  }
+}
