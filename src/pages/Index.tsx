@@ -15,6 +15,12 @@ const Index = () => {
   // Ensure page starts at the top when navigating to this route
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Clean up any stray event listeners when component unmounts
+    return () => {
+      window.onnotify = null;
+      window.s = null;
+    };
   }, []);
   
   return (

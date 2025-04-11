@@ -64,15 +64,15 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <Link 
             to="/"
-            className="cursor-pointer flex items-center"
             onClick={() => window.scrollTo(0, 0)}
             aria-label="CHAASMS Home"
+            className="inline-block"
           >
             <img 
               src="/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png" 
               alt="CHAASMS Logo" 
               className="h-24 w-auto" 
-              style={{ filter: 'none' }}
+              style={{ filter: 'none', pointerEvents: 'none' }}
             />
           </Link>
           

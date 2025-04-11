@@ -18,10 +18,13 @@ const Hero = () => {
     const script = document.createElement("script");
     script.src = "https://player.vimeo.com/api/player.js";
     script.async = true;
+    
     document.body.appendChild(script);
     
     return () => {
-      document.body.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
@@ -51,8 +54,6 @@ const Hero = () => {
                 See Detailed Framework
                 <ArrowRight size={18} className="ml-2" />
               </Button>
-              
-              {/* Removed the "See the Framework" button */}
             </div>
           </div>
           
