@@ -152,7 +152,8 @@ const Contact = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-chaasms-blue hover:bg-blue-700"
+                  className="w-full"
+                  style={{ backgroundColor: '#0066B3', color: 'white' }}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}

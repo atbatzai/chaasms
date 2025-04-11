@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { frameworkLayers } from '@/data/frameworkData';
@@ -37,7 +38,7 @@ const FrameworkOverviewGrid = () => {
         <Button
           onClick={handleNavigateToFramework}
           className="mx-auto px-6 py-2.5 flex items-center"
-          style={{ backgroundColor: '#0f4c81', color: 'white' }}
+          style={{ backgroundColor: '#0066B3', color: 'white' }}
         >
           See Detailed Framework
           <ArrowRight size={18} className="ml-2" />
@@ -94,7 +95,7 @@ const FrameworkOverviewGrid = () => {
         <Button
           onClick={handleNavigateToFramework}
           className="px-6 py-3 text-base flex items-center"
-          style={{ backgroundColor: '#0f4c81', color: 'white' }}
+          style={{ backgroundColor: '#0066B3', color: 'white' }}
         >
           See Detailed Framework
           <ArrowRight size={18} className="ml-2" />

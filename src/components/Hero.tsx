@@ -46,7 +46,7 @@ const Hero = () => {
               <Button 
                 className="btn-primary rounded-md shadow-md hover:shadow-lg transition-all flex items-center"
                 onClick={navigateToFrameworkOverview}
-                style={{ backgroundColor: '#0f4c81', color: 'white' }}
+                style={{ backgroundColor: '#0066B3', color: 'white' }}
               >
                 See Detailed Framework
                 <ArrowRight size={18} className="ml-2" />

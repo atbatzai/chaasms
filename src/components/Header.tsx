@@ -109,6 +109,7 @@ const Header = () => {
             
             <Button 
               className="btn-primary"
+              style={{ backgroundColor: '#0066B3', color: 'white' }}
               onClick={() => scrollToSection('contact')}
             >
               Book a Consultation
@@ -162,6 +163,7 @@ const Header = () => {
               <div className="px-4 pt-4 pb-2">
                 <Button 
                   className="w-full btn-primary"
+                  style={{ backgroundColor: '#0066B3', color: 'white' }}
                   onClick={() => scrollToSection('contact')}
                 >
                   Book a Consultation
