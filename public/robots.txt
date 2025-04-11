@@ -1,14 +1,29 @@
+
+User-agent: *
+Allow: /
+
+# Specific permissions for common crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
 User-agent: Twitterbot
 Allow: /
 
-User-agent: facebookexternalhit
-Allow: /
+# Sitemap helps crawlers discover pages
+Sitemap: https://chaasms.com/sitemap.xml
 
-User-agent: *
-Allow: /
