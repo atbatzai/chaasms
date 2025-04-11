@@ -35,9 +35,9 @@ const ContactForm = () => {
     
     try {
       // EmailJS service configuration
-      const serviceId = 'service_mqewdu1'; // This matches what's in your screenshot
-      const notificationTemplateId = 'template_7yhdmys'; // From your Contact Us template ID screenshot
-      const autoReplyTemplateId = 'template_9dv0q6'; // From your Auto-Reply template ID screenshot
+      const serviceId = 'service_mqewdu1'; 
+      const notificationTemplateId = 'template_7yhdmys';
+      const autoReplyTemplateId = 'template_9dv0q6';
       const publicKey = 'CrKCIv7WnXCdRp3wY';
       
       // Get current time for the template
@@ -68,8 +68,8 @@ const ContactForm = () => {
         email: formData.email,
         company: formData.company,
         to_email: formData.email,
-        reply_to: "jeff.turner@chaasms.com", // This is based on your screenshot
-        from_name: "CHAASMS Channel Strategies", // Company name as sender
+        reply_to: "jeff.turner@chaasms.com",
+        from_name: "CHAASMS Channel Strategies", // Ensuring company name as sender
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
