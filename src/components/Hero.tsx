@@ -22,12 +22,16 @@ const Hero = () => {
       <div className="chaasms-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 space-y-6">
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-50 text-chaasms-blue text-sm mb-2 animate-fade-in">
+              Channel Strategy Innovation
+            </div>
+            
             <h1 className="text-chaasms-dark leading-tight font-playfair">
-              The Definitive Channel Strategy Framework for Modern ISVs
+              The First Structured Framework for Multi-Ecosystem Channel Success
             </h1>
             
             <p className="text-xl text-chaasms-text max-w-2xl leading-relaxed">
-              Navigate the complex world of channel partnerships, ecosystems, and marketplace strategies with clarity and structure.
+              From foundational strategy to scalable execution, CHAASMS provides ISVs with a complete system to build channel programs that thrive across today's complex ecosystem landscape.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5 pt-4">
@@ -40,7 +44,7 @@ const Hero = () => {
                   variant="outline" 
                   className="btn-secondary group rounded-md"
                 >
-                  Explore the Framework
+                  See the Framework
                   <ChevronRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
