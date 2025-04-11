@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { frameworkLayers } from '@/data/frameworkData';
@@ -35,13 +34,12 @@ const FrameworkOverviewGrid = () => {
         </p>
         <div className="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
         
-        {/* Added Detailed Framework button */}
         <Button
           onClick={handleNavigateToFramework}
-          className="mx-auto px-6 py-2.5"
+          className="mx-auto px-6 py-2.5 flex items-center"
           style={{ backgroundColor: '#0f4c81', color: 'white' }}
         >
-          Detailed Framework
+          See Detailed Framework
           <ArrowRight size={18} className="ml-2" />
         </Button>
       </div>
@@ -95,10 +93,10 @@ const FrameworkOverviewGrid = () => {
       <div className="text-center">
         <Button
           onClick={handleNavigateToFramework}
-          className="px-6 py-3 text-base"
+          className="px-6 py-3 text-base flex items-center"
           style={{ backgroundColor: '#0f4c81', color: 'white' }}
         >
-          Explore Each Framework Layer
+          See Detailed Framework
           <ArrowRight size={18} className="ml-2" />
         </Button>
       </div>

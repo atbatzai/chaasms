@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -43,12 +43,13 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5 pt-4">
-              {/* Replaced Book a Consultation with Detailed Framework button */}
               <Button 
-                className="btn-primary rounded-md shadow-md hover:shadow-lg transition-all"
+                className="btn-primary rounded-md shadow-md hover:shadow-lg transition-all flex items-center"
                 onClick={navigateToFrameworkOverview}
+                style={{ backgroundColor: '#0f4c81', color: 'white' }}
               >
-                Detailed Framework
+                See Detailed Framework
+                <ArrowRight size={18} className="ml-2" />
               </Button>
               
               <Link 
