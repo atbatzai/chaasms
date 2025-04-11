@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useNavigate } from 'react-router-dom';
@@ -393,7 +394,7 @@ const MobileFramework = () => {
             onClick={() => handleLayerClick(1)}
           >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">1</div>
-            <h3 className="font-bold">Foundational Strategy</h3>
+            <h3 className="font-bold text-white">Foundational Strategy</h3>
           </div>
           <div 
             className="p-3 cursor-pointer"
@@ -432,7 +433,7 @@ const MobileFramework = () => {
             onClick={() => handleLayerClick(2)}
           >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">2</div>
-            <h3 className="font-bold">Program Architecture</h3>
+            <h3 className="font-bold text-white">Program Architecture</h3>
           </div>
           <div 
             className="p-3 cursor-pointer"
@@ -471,7 +472,7 @@ const MobileFramework = () => {
             onClick={() => handleLayerClick(3)}
           >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">3</div>
-            <h3 className="font-bold">Ecosystem Strategy</h3>
+            <h3 className="font-bold text-white">Ecosystem Strategy</h3>
           </div>
           <div 
             className="p-3 cursor-pointer"
@@ -510,7 +511,7 @@ const MobileFramework = () => {
             onClick={() => handleLayerClick(4)}
           >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">4</div>
-            <h3 className="font-bold">Touchpoint & Segmentation</h3>
+            <h3 className="font-bold text-white">Touchpoint & Segmentation</h3>
           </div>
           <div 
             className="p-3 cursor-pointer"
@@ -549,7 +550,7 @@ const MobileFramework = () => {
             onClick={() => handleLayerClick(5)}
           >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">5</div>
-            <h3 className="font-bold">GTM Motion</h3>
+            <h3 className="font-bold text-white">GTM Motion</h3>
           </div>
           <div 
             className="p-3 cursor-pointer"
@@ -588,7 +589,7 @@ const MobileFramework = () => {
             onClick={() => handleLayerClick(6)}
           >
             <div className="w-8 h-8 rounded-full bg-white text-chaasms-blue flex items-center justify-center font-bold mr-2">6</div>
-            <h3 className="font-bold">Measurement & Scaling</h3>
+            <h3 className="font-bold text-white">Measurement & Scaling</h3>
           </div>
           <div 
             className="p-3 cursor-pointer"

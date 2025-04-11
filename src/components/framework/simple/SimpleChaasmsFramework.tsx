@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import FrameworkHeader from './FrameworkHeader';
 import FrameworkNavigation from './FrameworkNavigation';
 import LayerContent from './LayerContent';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const SimpleChaasmsFramework = () => {
   const [activeLayer, setActiveLayer] = useState(0);
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   
   const layers = [
     { title: "Foundational Strategy", description: "Channel philosophy, ecosystem orientation, GTM alignment" },
@@ -35,7 +37,7 @@ const SimpleChaasmsFramework = () => {
       />
       
       <div className="bg-white p-6 border rounded-lg shadow-sm">
-        <h2 className="text-lg font-bold mb-3 text-chaasms-blue">
+        <h2 className={`text-lg font-bold mb-3 ${isMobile ? "text-white" : "text-chaasms-blue"} bg-chaasms-blue inline-block px-3 py-1 rounded`}>
           Layer {activeLayer + 1}: {layers[activeLayer].title}
         </h2>
         <p className="mb-6 text-gray-600">{layers[activeLayer].description}</p>
