@@ -57,7 +57,7 @@ const Contact = () => {
       data.append('_replyto', formData.email);
       data.append('_template', 'box');
       
-      // Add autoresponse configuration
+      // New configuration for auto-response - make sure HTML is not minified
       data.append('_autoresponse', 'Thank you for contacting CHAASMS');
       data.append('_autoresponse_subject', `Thank you for reaching out, ${formData.name}`);
       data.append('_autoresponse_message', `
@@ -75,11 +75,15 @@ const Contact = () => {
         </html>
       `);
       
-      // FormSubmit endpoint with activation code
-      const endpoint = 'https://formsubmit.co/ajax/263a0ebbdac6852db27aea1c4cc7ef9c';
+      // Using new FormSubmit activation code 
+      // This is a placeholder - user will need to activate a new form
+      const endpoint = 'https://formsubmit.co/ajax/your-new-activation-code';
+      
+      // For testing purposes, we'll temporarily use a different endpoint that will generate an activation email
+      const testEndpoint = 'https://formsubmit.co/ajax/jeff.turner@chaasms.com';
       
       // Send the submission
-      const response = await fetch(endpoint, {
+      const response = await fetch(testEndpoint, {
         method: 'POST',
         body: data,
         headers: {
@@ -95,6 +99,7 @@ const Contact = () => {
       // Handle response
       if (result.success === "true" || result.success === true) {
         toast.success("Your message has been sent! We'll be in touch shortly.");
+        toast.info("A new activation email has been sent. Please check your inbox to activate your form.");
         reset(); // Reset form after successful submission
       } else {
         toast.error("There was a problem sending your message. Please try again or email us directly.");
