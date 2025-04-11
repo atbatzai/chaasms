@@ -39,12 +39,12 @@ const ContactForm = () => {
   const onSubmit = async (formData: ContactFormValues) => {
     try {
       // Send primary notification email
-      const result = await sendContactEmail(formData);
+      const result = await sendContactEmail(formData as ContactFormData);
       
       if (result.status === 200) {
         try {
           // Send auto-reply email to the user
-          await sendAutoReplyEmail(formData);
+          await sendAutoReplyEmail(formData as ContactFormData);
           console.log("Auto-reply sent successfully");
         } catch (autoReplyError) {
           // Log auto-reply error but don't show to user since primary email was sent

@@ -1,4 +1,3 @@
-
 import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
@@ -7,7 +6,7 @@ const CONTACT_TEMPLATE_ID = 'template_7yhdmys';
 const AUTO_REPLY_TEMPLATE_ID = 'template_9dvv0q6';
 const PUBLIC_KEY = 'CrKCIv7WnXCdRp3wY';
 
-// Interface for form data
+// Interface for form data - making sure it matches the form schema
 export interface ContactFormData {
   name: string;
   email: string;

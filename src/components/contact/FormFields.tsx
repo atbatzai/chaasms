@@ -3,14 +3,18 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { z } from "zod";
 
-// Match the type definition in the ContactForm
-interface FormValues {
-  name: string;
-  email: string;
-  company: string;
-  message: string;
-}
+// Match the schema from ContactForm.tsx
+const contactFormSchema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  company: z.string().min(2),
+  message: z.string().min(10)
+});
+
+// Use the inferred type from the schema
+export type FormValues = z.infer<typeof contactFormSchema>;
 
 interface FormFieldsProps {
   register: UseFormRegister<FormValues>;
