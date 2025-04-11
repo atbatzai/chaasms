@@ -65,29 +65,31 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       data.append('_replyto', formData.email);
       data.append('_template', 'box');
       
-      // New configuration for auto-response - make sure HTML is not minified
-      data.append('_autoresponse', 'Thank you for contacting CHAASMS');
+      // Fix auto-response configuration
       data.append('_autoresponse_subject', `Thank you for reaching out, ${formData.name}`);
       data.append('_autoresponse_message', `
-        <html>
-          <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #0066B3;">Thank you for contacting CHAASMS</h2>
-              <p>Dear ${formData.name},</p>
-              <p>We've received your inquiry and will get back to you within 24 hours.</p>
-              <p>In the meantime, feel free to explore our framework documentation on our website.</p>
-              <p>Best regards,</p>
-              <p>The CHAASMS Team</p>
-            </div>
-          </body>
-        </html>
+<html>
+<head>
+  <title>Thank you for contacting CHAASMS</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+    <h2 style="color: #0066B3;">Thank you for contacting CHAASMS</h2>
+    <p>Dear ${formData.name},</p>
+    <p>We've received your inquiry and will get back to you within 24 hours.</p>
+    <p>In the meantime, feel free to explore our framework documentation on our website.</p>
+    <p>Best regards,</p>
+    <p>The CHAASMS Team</p>
+  </div>
+</body>
+</html>
       `);
       
       // Using new FormSubmit activation code 
       // This is a placeholder - user will need to activate a new form
       const endpoint = 'https://formsubmit.co/ajax/your-new-activation-code';
       
-      // For testing purposes, we'll temporarily use a different endpoint that will generate an activation email
+      // For testing purposes, we'll use the existing endpoint
       const testEndpoint = 'https://formsubmit.co/ajax/jeff.turner@chaasms.com';
       
       // Send the submission
