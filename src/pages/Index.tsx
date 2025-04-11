@@ -26,7 +26,7 @@ const Index = () => {
           <Hero />
         </section>
         
-        {/* New Framework Overview Grid section */}
+        {/* Framework Overview Grid section */}
         <section id="framework-overview-grid" className="py-12 md:py-16 bg-white">
           <FrameworkOverviewGrid />
         </section>
