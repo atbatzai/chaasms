@@ -1,4 +1,3 @@
-
 import { Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,13 +47,10 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // EmailJS service configuration
-      // You'll need to replace these values with your actual EmailJS credentials
-      const serviceId = 'service_chaasms'; // Replace with your service ID
-      const templateId = 'template_chaasms'; // Replace with your template ID
-      const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your public key
+      const serviceId = 'service_mqewdu1';
+      const templateId = 'template_chaasms';
+      const publicKey = 'YOUR_PUBLIC_KEY';
       
-      // Create template parameters including both email addresses
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -64,12 +60,10 @@ const Contact = () => {
         to_email: "jeff.turner@chaasms.com, jennifer.turner@chaasms.com"
       };
       
-      // Send the email using EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
       
-      // Reset form
       if (formRef.current) {
         formRef.current.reset();
       }
