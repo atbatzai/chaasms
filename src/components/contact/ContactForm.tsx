@@ -40,23 +40,19 @@ const ContactForm = () => {
     try {
       console.log("📝 Form submission started with data:", formData);
       
+      // Validate all form data before sending to prevent empty or invalid values
+      if (!formData.name || !formData.email || !formData.company || !formData.message) {
+        toast.error("Please complete all required fields");
+        return;
+      }
+      
       // Send primary notification email
-      const result = await sendContactEmail({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        message: formData.message
-      });
+      const result = await sendContactEmail(formData);
       
       if (result.status === 200) {
         try {
           // Send auto-reply email to the user
-          await sendAutoReplyEmail({
-            name: formData.name,
-            email: formData.email,
-            company: formData.company,
-            message: formData.message
-          });
+          await sendAutoReplyEmail(formData);
           console.log("📧 Auto-reply sent successfully");
         } catch (autoReplyError) {
           // Log auto-reply error but don't show to user since primary email was sent
