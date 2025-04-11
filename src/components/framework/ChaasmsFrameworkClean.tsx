@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useNavigate } from 'react-router-dom';
@@ -627,4 +626,3 @@ const MobileFramework = () => {
 };
 
 export default ChaasmsFrameworkClean;
-

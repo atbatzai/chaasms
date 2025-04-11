@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -176,6 +175,18 @@
   
   .blob-shape {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  /* Mobile-specific fixes */
+  @media (max-width: 768px) {
+    .bg-chaasms-blue * {
+      @apply text-white;
+    }
+    
+    /* Ensure "Our Expertise" label isn't squished */
+    .rounded-full {
+      @apply whitespace-nowrap;
+    }
   }
 }
 
