@@ -1,6 +1,5 @@
 
 import { Calendar } from 'lucide-react';
-import { useState } from "react";
 import ContactItem from "./contact/ContactItem";
 import ContactForm from "./contact/ContactForm";
 import ContactInfo from "./contact/ContactInfo";

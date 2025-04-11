@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,10 +24,17 @@ const ContactForm = () => {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form data before proceeding
+    if (!formData.name || !formData.email || !formData.company || !formData.message) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
-      // Your EmailJS service, template, and public key
+      // EmailJS service configuration
       const serviceId = 'service_mqewdu1';
       const notificationTemplateId = 'template_chaasms'; // Template for admin notification
       const autoReplyTemplateId = 'template_autoreply'; // Template for user auto-reply
@@ -36,9 +44,9 @@ const ContactForm = () => {
       const now = new Date();
       const formattedTime = now.toLocaleString();
       
-      console.log("Preparing to send form submission for:", formData.name);
+      console.log("Starting form submission process for:", formData.name);
       
-      // Prepare template parameters for notification email
+      // Prepare template parameters for notification email (to admin)
       const notificationParams = {
         name: formData.name,
         email: formData.email,
@@ -51,48 +59,56 @@ const ContactForm = () => {
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
-      // Prepare template parameters for auto-reply email
+      // Prepare template parameters for auto-reply email (to user)
       const autoReplyParams = {
         name: formData.name,
         email: formData.email,
         company: formData.company,
-        to_email: formData.email, // Ensure this matches the "To Email" parameter in your template
-        reply_to: "support@chaasms.com", // Your support email
-        from_name: "CHAASMS Channel Strategies", // Updated from "CHAASMS Team" to "CHAASMS Channel Strategies"
-        from_email: "support@chaasms.com", // This helps identify where the email is coming from
+        to_email: formData.email,
+        reply_to: "support@chaasms.com",
+        from_name: "CHAASMS Channel Strategies", // Company name as sender
+        from_email: "support@chaasms.com", // Helps identify where the email is from
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
-      // Send notification email to admin using direct sendForm method
+      // First, send the notification email to admin
       console.log("Sending notification email to admin...");
-      const notificationResult = await emailjs.send(
-        serviceId, 
-        notificationTemplateId, 
-        notificationParams, 
-        publicKey
-      );
-      console.log("Admin notification email sent successfully:", notificationResult.status, notificationResult.text);
-      
-      // Send auto-reply email to user
-      console.log("Sending auto-reply email to user...");
-      const autoReplyResult = await emailjs.send(
-        serviceId,
-        autoReplyTemplateId,
-        autoReplyParams,
-        publicKey
-      );
-      console.log("Auto-reply email sent successfully:", autoReplyResult.status, autoReplyResult.text);
-      
-      toast.success("Your message has been sent! We'll be in touch shortly.");
-      
-      if (formRef.current) {
-        formRef.current.reset();
+      try {
+        const notificationResult = await emailjs.send(
+          serviceId, 
+          notificationTemplateId, 
+          notificationParams, 
+          publicKey
+        );
+        console.log("Admin notification email status:", notificationResult.status, notificationResult.text);
+        
+        // Then, send the auto-reply email to the user
+        console.log("Sending auto-reply email to user...");
+        const autoReplyResult = await emailjs.send(
+          serviceId,
+          autoReplyTemplateId,
+          autoReplyParams,
+          publicKey
+        );
+        console.log("Auto-reply email status:", autoReplyResult.status, autoReplyResult.text);
+        
+        // Success message if both emails were sent
+        toast.success("Your message has been sent! We'll be in touch shortly.");
+        
+        // Reset form
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+        setFormData({ name: "", email: "", company: "", message: "" });
+        
+      } catch (emailError) {
+        console.error("Error sending notification email:", emailError);
+        throw new Error("Failed to send notification email");
       }
-      setFormData({ name: "", email: "", company: "", message: "" });
       
     } catch (error) {
-      console.error("Error sending email:", error);
-      toast.error("Failed to send message. Please try again later.");
+      console.error("Form submission error:", error);
+      toast.error("Failed to send message. Please try again or contact us directly.");
     } finally {
       setIsSubmitting(false);
     }
