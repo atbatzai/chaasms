@@ -3,11 +3,11 @@ import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
 const SERVICE_ID = 'service_mqewdu1';
-const CONTACT_TEMPLATE_ID = 'template_1s8irbc'; // Updated template ID
+const CONTACT_TEMPLATE_ID = 'template_1s8irbc';
 const AUTO_REPLY_TEMPLATE_ID = 'template_9dvv0q6';
 const PUBLIC_KEY = 'CrKCIv7WnXCdRp3wY';
 
-// Interface for form data
+// Interface for form data - make this match exactly what's in our form
 export interface ContactFormData {
   name: string;
   email: string;
@@ -37,23 +37,33 @@ const sanitizeTemplateVariables = (data: Record<string, any>): Record<string, st
 
 /**
  * Sends the contact email notification to the admin
- * Simplified to match the new template with name, time, and message
+ * Maps our form fields to the template variables in EmailJS
  */
 export const sendContactEmail = async (formData: ContactFormData) => {
+  // Prepare template variables based on what's in the EmailJS template
+  // Based on the screenshots, the template uses {{name}}, {{message}}, {{time}}, {{email}}
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // Parameters for the contact template
+  // Parameters for the contact template - map our form data to the template variables
   const rawParams = {
-    name: formData.name,
-    time: formattedTime,
-    message: formData.message,
-    email: formData.email,
-    website: formData.website || 'Not provided',
+    // These are the exact variables used in the template
+    name: formData.name,          // {{name}} in the template
+    email: formData.email,        // {{email}} in the template 
+    message: formData.message,    // {{message}} in the template
+    time: formattedTime,          // {{time}} in the template
+    
+    // Additional info we collect - we'll add these to the message
     company: formData.company,
+    website: formData.website || 'Not provided',
+    
+    // These are required by EmailJS for sending
     from_name: formData.name,
     from_email: formData.email,
-    reply_to: formData.email
+    reply_to: formData.email,
+    
+    // Adding a title parameter for subject line which appears to use {{title}}
+    title: `Contact from ${formData.name} at ${formData.company}`
   };
   
   // Sanitize all variables to prevent corruption
@@ -64,8 +74,7 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   console.log("📝 Template ID:", CONTACT_TEMPLATE_ID);
   
   try {
-    // Configure EmailJS to hide the "sent via EmailJS" footer
-    // Using the correct init syntax with PUBLIC_KEY as first parameter
+    // Initialize EmailJS with the public key
     emailjs.init(PUBLIC_KEY);
     
     const result = await emailjs.send(
@@ -89,8 +98,8 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   // For auto-reply template
   const rawParams = {
     name: formData.name,
-    message: "Thank you for contacting CHAASMS. We will get back to you shortly.",
     email: formData.email,
+    message: "Thank you for contacting CHAASMS. We will get back to you shortly.",
     from_name: "CHAASMS Team",
     from_email: "jeff.turner@chaasms.com",
     reply_to: "jeff.turner@chaasms.com"
@@ -104,8 +113,7 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   console.log("📝 Auto-reply Template ID:", AUTO_REPLY_TEMPLATE_ID);
   
   try {
-    // Configure EmailJS to hide the "sent via EmailJS" footer
-    // Using the correct init syntax with PUBLIC_KEY as first parameter
+    // Initialize EmailJS with the public key
     emailjs.init(PUBLIC_KEY);
     
     const result = await emailjs.send(
@@ -143,9 +151,8 @@ export const parseEmailError = (error: any): string => {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
       
       // Log detailed information to help debug template variable issues
-      console.error("❌ Template variables error. Expected variables from simplified template:");
-      console.error("- Main template: name, time, message");
-      console.error("- Template variable types detected:");
+      console.error("❌ Template variables error. Expected variables from template:");
+      console.error("- Main template variables: name, email, message, time, title");
       
       // Log exactly what was sent to help debug
       if (error.data) {

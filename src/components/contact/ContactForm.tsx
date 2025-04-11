@@ -9,7 +9,7 @@ import SubmitButton from "./SubmitButton";
 import DirectContact from "./DirectContact";
 import { sendContactEmail, sendAutoReplyEmail, parseEmailError, ContactFormData } from "./utils/emailService";
 
-// Define the form schema with Zod
+// Define the form schema with Zod - ensure it matches EmailJS template expectations
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -42,13 +42,13 @@ const ContactForm = () => {
     try {
       console.log("📝 Form submission started with data:", formData);
       
-      // Validate all form data before sending to prevent empty or invalid values
+      // Ensure all required fields are present
       if (!formData.name || !formData.email || !formData.company || !formData.message) {
         toast.error("Please complete all required fields");
         return;
       }
       
-      // Convert to ContactFormData type
+      // Prepare data for EmailJS - ensure it matches the ContactFormData interface
       const contactData: ContactFormData = {
         name: formData.name,
         email: formData.email,
@@ -57,12 +57,12 @@ const ContactForm = () => {
         message: formData.message
       };
       
-      // First, send the notification to the admin
+      // Send the contact notification to the site owner
       const result = await sendContactEmail(contactData);
       
       if (result.status === 200) {
         try {
-          // Then send the auto-reply to the user
+          // Send auto-reply to the user
           await sendAutoReplyEmail(contactData);
           console.log("📧 Auto-reply sent successfully");
         } catch (autoReplyError) {
