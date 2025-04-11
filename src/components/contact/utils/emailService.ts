@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 // Constants for EmailJS configuration
 const SERVICE_ID = 'service_mqewdu1';
 const CONTACT_TEMPLATE_ID = 'template_1s8irbc';
-const AUTO_REPLY_TEMPLATE_ID = 'template_9dvv0q6';
+const AUTO_REPLY_TEMPLATE_ID = 'template_0mg1a6l'; // Updated template ID
 const PUBLIC_KEY = 'CrKCIv7WnXCdRp3wY';
 
 // Interface for form data - make this match exactly what's in our form
@@ -99,11 +99,11 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   // For auto-reply template
   const rawParams = {
     name: formData.name,
-    email: formData.email,
-    message: "Thank you for contacting CHAASMS. We will get back to you shortly.",
+    title: `Your inquiry about ${formData.company}`,
     from_name: "CHAASMS Team",
     from_email: "jeff.turner@chaasms.com",
-    reply_to: "jeff.turner@chaasms.com"
+    reply_to: "jeff.turner@chaasms.com",
+    to_email: formData.email
   };
   
   // Sanitize all variables to prevent corruption
