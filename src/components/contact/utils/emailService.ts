@@ -29,15 +29,14 @@ export const sendContactEmail = async (formData: ContactFormData) => {
     name: formData.name,
     email: formData.email,
     time: formattedTime,
-    message: formData.message,
-    // The template checks for title with {{#if title}}, but we don't have it in our form
-    // We'll omit it entirely rather than sending undefined or null
-    company: formData.company // Not used in main template but kept for reference
+    message: formData.message
+    // No title parameter as it's optional in the template
+    // Note: company is not used in the email template, so we don't include it here
   };
   
-  console.log("⭐ Sending contact form with exact params:", JSON.stringify(templateParams));
-  console.log("⭐ Using service ID:", SERVICE_ID);
-  console.log("⭐ Using template ID:", CONTACT_TEMPLATE_ID);
+  console.log("🔍 Sending email with EXACT template params:", JSON.stringify(templateParams));
+  console.log("📧 Service ID:", SERVICE_ID);
+  console.log("📝 Template ID:", CONTACT_TEMPLATE_ID);
   
   try {
     const result = await emailjs.send(
@@ -58,17 +57,17 @@ export const sendContactEmail = async (formData: ContactFormData) => {
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // For auto-reply template - adjust if needed based on its template variables
+  // For auto-reply template - adjust params to match its template variables
   const autoReplyParams = {
     name: formData.name,
     email: formData.email,
-    message: formData.message
-    // Not sending company unless the auto-reply template specifically needs it
+    message: "Thank you for contacting CHAASMS. We will get back to you shortly."
+    // We don't include other fields unless they're needed in the auto-reply template
   };
   
-  console.log("⭐ Sending auto-reply with params:", JSON.stringify(autoReplyParams));
-  console.log("⭐ Using service ID:", SERVICE_ID);
-  console.log("⭐ Using template ID:", AUTO_REPLY_TEMPLATE_ID);
+  console.log("🔄 Sending auto-reply with params:", JSON.stringify(autoReplyParams));
+  console.log("📧 Service ID:", SERVICE_ID);
+  console.log("📝 Auto-reply Template ID:", AUTO_REPLY_TEMPLATE_ID);
   
   try {
     const result = await emailjs.send(
@@ -99,7 +98,7 @@ export const parseEmailError = (error: any): string => {
       console.error("❌ Template ID not found error. Check if template IDs exist in your EmailJS account.");
     } else if (error.text.includes("service ID not found")) {
       errorMessage = "Our email service is temporarily unavailable. Please email us directly.";
-      console.error("❌ Service ID not found error. Check if service_mqewdu1 exists in your EmailJS account.");
+      console.error("❌ Service ID not found error. Check if service ID exists in your EmailJS account.");
     } else if (error.text.includes("dynamic variables are corrupted")) {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
       
