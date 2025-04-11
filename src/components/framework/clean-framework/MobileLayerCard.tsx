@@ -17,7 +17,7 @@ const MobileLayerCard: React.FC<MobileLayerCardProps> = ({
   onLayerClick
 }) => {
   return (
-    <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm">
+    <div className="mb-3 border-l-4 border-chaasms-blue bg-blue-50 rounded-r-lg overflow-hidden shadow-sm mobile-framework-card">
       <div 
         className="flex items-center p-3 bg-chaasms-blue text-white cursor-pointer"
         onClick={() => onLayerClick(layer)}

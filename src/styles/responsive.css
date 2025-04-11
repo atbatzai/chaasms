@@ -41,5 +41,10 @@
     .rounded-full {
       @apply whitespace-nowrap;
     }
+
+    /* Fix for framework overview mobile card headers */
+    .mobile-framework-card .bg-chaasms-blue h3 {
+      @apply text-white !important;
+    }
   }
 }
