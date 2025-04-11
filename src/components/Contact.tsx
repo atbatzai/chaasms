@@ -49,18 +49,22 @@ const Contact = () => {
     
     try {
       // EmailJS service configuration
-      // Note: In a production environment, these should be environment variables
-      const serviceId = 'service_chaasms';
-      const templateId = 'template_chaasms';
-      const publicKey = 'your_public_key';
+      // You'll need to replace these values with your actual EmailJS credentials
+      const serviceId = 'service_chaasms'; // Replace with your service ID
+      const templateId = 'template_chaasms'; // Replace with your template ID
+      const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your public key
       
-      // Add recipient emails to the template parameters
+      // Create template parameters including both email addresses
       const templateParams = {
-        ...formData,
-        to_email: 'jeff.turner@chaasms.com, jennifer.turner@chaasms.com',
-        reply_to: formData.email
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        to_name: "Jeff & Jennifer Turner",
+        to_email: "jeff.turner@chaasms.com, jennifer.turner@chaasms.com"
       };
       
+      // Send the email using EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
