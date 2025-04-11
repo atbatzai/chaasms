@@ -30,11 +30,10 @@ export const sendContactEmail = async (formData: ContactFormData) => {
     email: formData.email,
     time: formattedTime,
     message: formData.message
-    // No title parameter as it's optional in the template
-    // Note: company is not used in the email template, so we don't include it here
+    // title is optional and not included in our form
   };
   
-  console.log("🔍 Sending email with EXACT template params:", JSON.stringify(templateParams));
+  console.log("📨 Sending contact email with params:", JSON.stringify(templateParams));
   console.log("📧 Service ID:", SERVICE_ID);
   console.log("📝 Template ID:", CONTACT_TEMPLATE_ID);
   
@@ -45,10 +44,10 @@ export const sendContactEmail = async (formData: ContactFormData) => {
       templateParams,
       PUBLIC_KEY
     );
-    console.log("✅ Email sent successfully:", result);
+    console.log("✅ Contact email sent successfully:", result.text);
     return result;
   } catch (error) {
-    console.error("❌ Email sending failed:", error);
+    console.error("❌ Contact email sending failed:", error);
     throw error;
   }
 };
@@ -58,11 +57,12 @@ export const sendContactEmail = async (formData: ContactFormData) => {
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
   // For auto-reply template - adjust params to match its template variables
+  // Make sure these match EXACTLY what's in the template
   const autoReplyParams = {
     name: formData.name,
     email: formData.email,
+    // For auto-reply we use a standard thank you message
     message: "Thank you for contacting CHAASMS. We will get back to you shortly."
-    // We don't include other fields unless they're needed in the auto-reply template
   };
   
   console.log("🔄 Sending auto-reply with params:", JSON.stringify(autoReplyParams));
@@ -76,7 +76,7 @@ export const sendAutoReplyEmail = async (formData: ContactFormData) => {
       autoReplyParams,
       PUBLIC_KEY
     );
-    console.log("✅ Auto-reply sent successfully:", result);
+    console.log("✅ Auto-reply sent successfully:", result.text);
     return result;
   } catch (error) {
     console.error("❌ Auto-reply sending failed:", error);
@@ -95,15 +95,18 @@ export const parseEmailError = (error: any): string => {
     
     if (error.text.includes("template ID not found")) {
       errorMessage = "Our contact system is temporarily unavailable. Please email us directly.";
-      console.error("❌ Template ID not found error. Check if template IDs exist in your EmailJS account.");
+      console.error("❌ Template ID not found. Verify template IDs in EmailJS account:");
+      console.error(`- Contact template ID: ${CONTACT_TEMPLATE_ID}`);
+      console.error(`- Auto-reply template ID: ${AUTO_REPLY_TEMPLATE_ID}`);
     } else if (error.text.includes("service ID not found")) {
       errorMessage = "Our email service is temporarily unavailable. Please email us directly.";
-      console.error("❌ Service ID not found error. Check if service ID exists in your EmailJS account.");
+      console.error(`❌ Service ID not found. Verify service ID: ${SERVICE_ID}`);
     } else if (error.text.includes("dynamic variables are corrupted")) {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
       
-      // Log detailed information to help debug
-      console.error("❌ Template variables error. Expected variables: name, email, time, message (optional: title)");
+      // Log detailed information to help debug template variable issues
+      console.error("❌ Template variables error. Expected variables from HTML template:");
+      console.error("- Main template: name, email, time, message, (optional: title)");
       
       // Log exactly what was sent to help debug
       if (error.data) {
