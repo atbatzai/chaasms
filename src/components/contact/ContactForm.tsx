@@ -81,9 +81,9 @@ const ContactForm = () => {
             <p>Your message has been sent! We'll be in touch shortly.</p>
             <p className="text-xs mt-1">A confirmation email has been sent to {formData.email}</p>
           </div>,
-          { duration: 6000 }
+          { duration: 10000 } // Extended duration for more visibility
         );
-        reset();
+        reset(); // Reset form after successful submission
         console.log("✅ Form submission completed and reset");
         console.log("✉️ Auto-reply should be sent to: " + formData.email);
       } else {
@@ -92,7 +92,7 @@ const ContactForm = () => {
             <p>{result.error || "There was a problem sending your message."}</p>
             <p className="text-xs mt-1">Please email us directly at jeff.turner@chaasms.com</p>
           </div>,
-          { duration: 8000 }
+          { duration: 10000 } // Extended duration for error message
         );
         console.error("❌ Form submission failed");
       }
@@ -100,7 +100,7 @@ const ContactForm = () => {
     } catch (error: any) {
       toast.dismiss();
       const errorMessage = parseFormError(error);
-      toast.error(errorMessage, { duration: 8000 });
+      toast.error(errorMessage, { duration: 10000 });
       console.error("❌ Form submission exception:", error);
     } finally {
       console.log("-------------------------------------");
