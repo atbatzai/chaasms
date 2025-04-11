@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { frameworkLayers } from '@/data/frameworkData';
 import { motion } from "framer-motion";
