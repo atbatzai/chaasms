@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import FormFields from "./FormFields";
 import SubmitButton from "./SubmitButton";
 import DirectContact from "./DirectContact";
-import { sendContactEmail, sendAutoReplyEmail, parseEmailError, ContactFormData } from "./utils/emailService";
+import { sendContactEmail, sendAutoReplyEmail, parseEmailError } from "./utils/emailService";
 
 // Define the form schema with Zod
 const contactFormSchema = z.object({
@@ -46,13 +46,23 @@ const ContactForm = () => {
         return;
       }
       
-      // Send primary notification email
-      const result = await sendContactEmail(formData);
+      // Send primary notification email with the simplified template
+      const result = await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message
+      });
       
       if (result.status === 200) {
         try {
           // Send auto-reply email to the user
-          await sendAutoReplyEmail(formData);
+          await sendAutoReplyEmail({
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            message: formData.message
+          });
           console.log("📧 Auto-reply sent successfully");
         } catch (autoReplyError) {
           // Log auto-reply error but don't show to user since primary email was sent

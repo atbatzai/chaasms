@@ -3,11 +3,11 @@ import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
 const SERVICE_ID = 'service_mqewdu1';
-const CONTACT_TEMPLATE_ID = 'template_7yhdmys';
+const CONTACT_TEMPLATE_ID = 'template_6mm1pxj'; // Updated template ID
 const AUTO_REPLY_TEMPLATE_ID = 'template_9dvv0q6';
 const PUBLIC_KEY = 'CrKCIv7WnXCdRp3wY';
 
-// Interface for form data - making sure it matches the form schema
+// Interface for form data
 export interface ContactFormData {
   name: string;
   email: string;
@@ -36,29 +36,26 @@ const sanitizeTemplateVariables = (data: Record<string, any>): Record<string, st
 
 /**
  * Sends the contact email notification to the admin
- * Ensures params EXACTLY match template variables from the HTML template
+ * Simplified to match the new template with only name, time, and message
  */
 export const sendContactEmail = async (formData: ContactFormData) => {
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // These parameter names MUST EXACTLY match the template variables from HTML
-  // From the template: {{name}}, {{email}}, {{time}}, {{message}}, {{title}} (optional)
+  // Simplified parameters to match the new template variables
+  // Only using name, time, and message as per the new template
   const rawParams = {
     name: formData.name,
-    email: formData.email,
     time: formattedTime,
     message: formData.message,
-    // Include company if it's expected in the template
-    company: formData.company,
-    // Include title with empty string even if optional to ensure it's defined
-    title: ''
+    // Include email in case it's still needed for addressing the email
+    email: formData.email
   };
   
   // Sanitize all variables to prevent corruption
   const templateParams = sanitizeTemplateVariables(rawParams);
   
-  console.log("📨 Sending contact email with params:", JSON.stringify(templateParams));
+  console.log("📨 Sending contact email with simplified params:", JSON.stringify(templateParams));
   console.log("📧 Service ID:", SERVICE_ID);
   console.log("📝 Template ID:", CONTACT_TEMPLATE_ID);
   
@@ -79,20 +76,15 @@ export const sendContactEmail = async (formData: ContactFormData) => {
 
 /**
  * Sends an auto-reply email to the user
+ * Keeping this implementation for now, but might need to be updated
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // For auto-reply template - adjust params to match its template variables
-  // Make sure these match EXACTLY what's in the template
+  // For auto-reply template - simplified to match expectations
   const rawParams = {
     name: formData.name,
-    email: formData.email,
-    // For auto-reply we use a standard thank you message
     message: "Thank you for contacting CHAASMS. We will get back to you shortly.",
-    // Include company and time in case they're expected by the template
-    company: formData.company,
-    time: new Date().toLocaleString(),
-    // Include title with empty string to ensure it's defined
-    title: ''
+    // Include email as it's likely needed for addressing
+    email: formData.email
   };
   
   // Sanitize all variables to prevent corruption
@@ -138,8 +130,8 @@ export const parseEmailError = (error: any): string => {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
       
       // Log detailed information to help debug template variable issues
-      console.error("❌ Template variables error. Expected variables from HTML template:");
-      console.error("- Main template: name, email, time, message, company, (optional: title)");
+      console.error("❌ Template variables error. Expected variables from simplified template:");
+      console.error("- Main template: name, time, message");
       console.error("- Template variable types detected:");
       
       // Log exactly what was sent to help debug
