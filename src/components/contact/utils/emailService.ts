@@ -22,15 +22,13 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // Parameters for the main notification email - making sure keys match exactly with EmailJS template variables
+  // Simplified parameter object - using standard EmailJS naming convention
   const mainEmailParams = {
-    from_name: formData.name,
-    from_email: formData.email,
-    company: formData.company,
+    user_name: formData.name,
+    user_email: formData.email,
+    user_company: formData.company,
     message: formData.message,
-    to_name: "CHAASMS Channel Strategies",
-    time: formattedTime,
-    reply_to: formData.email,
+    timestamp: formattedTime,
   };
   
   console.log("Sending contact form to:", SERVICE_ID, CONTACT_TEMPLATE_ID);
@@ -55,14 +53,12 @@ export const sendContactEmail = async (formData: ContactFormData) => {
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // Parameters for the auto-reply email - making sure keys match exactly with EmailJS template variables
+  // Simplified parameter object - using standard EmailJS naming convention
   const autoReplyParams = {
-    to_name: formData.name,
-    to_email: formData.email,
+    user_name: formData.name,
+    user_email: formData.email,
+    user_company: formData.company,
     message: formData.message,
-    company: formData.company,
-    from_name: "CHAASMS Channel Strategies",
-    reply_to: "jeff.turner@chaasms.com",
   };
   
   console.log("Sending auto-reply to:", SERVICE_ID, AUTO_REPLY_TEMPLATE_ID);
@@ -98,7 +94,10 @@ export const parseEmailError = (error: any): string => {
       console.error("Service ID not found error. Check if service_mqewdu1 exists in your EmailJS account.");
     } else if (error.text.includes("dynamic variables are corrupted")) {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
-      console.error("Template variables error. Variables don't match template expectations:", error);
+      console.error("Template variables error. Check EmailJS template and ensure these variables exist:", error);
+      // Log what we're sending to help debug
+      console.log("We attempted to use these variables in our template:", 
+                 "user_name, user_email, user_company, message, timestamp");
     }
   }
   
