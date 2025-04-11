@@ -38,13 +38,16 @@ const ContactForm = () => {
         from_email: formData.email,
         company: formData.company,
         message: formData.message,
-        to_name: "Jeff & Jennifer Turner",
+        to_name: "CHAASMS Team",
         to_email: "jennifer.turner@chaasms.com, jeff.turner@chaasms.com",
-        subject: "URGENT CHAASMS INQUIRY"
+        subject: "CHAASMS Website Inquiry",
+        reply_to: formData.email,
+        logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
       // Send email via EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log("EmailJS result:", result);
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
       
