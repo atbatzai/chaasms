@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,13 +36,7 @@ const ContactForm = () => {
       const now = new Date();
       const formattedTime = now.toLocaleString();
       
-      console.log("Sending notification email with params:", {
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        messageLength: formData.message.length,
-        time: formattedTime
-      });
+      console.log("Preparing to send form submission for:", formData.name);
       
       // Prepare template parameters for notification email
       const notificationParams = {
@@ -70,7 +63,7 @@ const ContactForm = () => {
         logo_url: "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png"
       };
       
-      // Send notification email to admin
+      // Send notification email to admin using direct sendForm method
       console.log("Sending notification email to admin...");
       const notificationResult = await emailjs.send(
         serviceId, 
@@ -78,7 +71,7 @@ const ContactForm = () => {
         notificationParams, 
         publicKey
       );
-      console.log("Admin notification email sent:", notificationResult);
+      console.log("Admin notification email sent successfully:", notificationResult.status, notificationResult.text);
       
       // Send auto-reply email to user
       console.log("Sending auto-reply email to user...");
@@ -88,7 +81,7 @@ const ContactForm = () => {
         autoReplyParams,
         publicKey
       );
-      console.log("Auto-reply email sent:", autoReplyResult);
+      console.log("Auto-reply email sent successfully:", autoReplyResult.status, autoReplyResult.text);
       
       toast.success("Your message has been sent! We'll be in touch shortly.");
       
