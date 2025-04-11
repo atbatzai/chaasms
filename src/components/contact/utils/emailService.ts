@@ -68,12 +68,14 @@ export const submitContactForm = async (formData: ContactFormData) => {
     console.log("📨 Submitting form to FormSubmit.co...");
     console.log("🔄 Auto-reply configured for: " + formData.email);
     
-    // The email address to send notifications to
-    // FormSubmit will send all form submissions to this address
+    // The email address to send notifications to (use your actual recipient email)
+    // Important: This form endpoint must be activated first by submitting the form once manually
     const response = await fetch('https://formsubmit.co/jeff.turner@chaasms.com', {
       method: 'POST',
       body: data,
-      mode: 'no-cors' // Important for cross-origin requests
+      headers: {
+        'Accept': 'application/json'
+      }
     });
     
     console.log("✅ Form submitted successfully");
