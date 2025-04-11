@@ -3,8 +3,9 @@ import { Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
+import emailjs from '@emailjs/browser';
 
 const ContactItem = ({ 
   icon: Icon, 
@@ -35,19 +36,47 @@ const Contact = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // EmailJS service configuration
+      // Note: In a production environment, these should be environment variables
+      const serviceId = 'service_chaasms';
+      const templateId = 'template_chaasms';
+      const publicKey = 'your_public_key';
+      
+      // Add recipient emails to the template parameters
+      const templateParams = {
+        ...formData,
+        to_email: 'jeff.turner@chaasms.com, jennifer.turner@chaasms.com',
+        reply_to: formData.email
+      };
+      
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
       toast.success("Your message has been sent! We'll be in touch shortly.");
+      
       // Reset form
-      const form = e.target as HTMLFormElement;
-      form.reset();
-    }, 1500);
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+      setFormData({ name: "", email: "", company: "", message: "" });
+      
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -101,7 +130,7 @@ const Contact = () => {
             </div>
             
             <div className="bg-white p-5 rounded-lg shadow-sm">
-              <form className="space-y-3" onSubmit={handleSubmit}>
+              <form className="space-y-3" onSubmit={handleSubmit} ref={formRef}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-chaasms-dark mb-1">Name</label>
                   <Input
@@ -111,6 +140,8 @@ const Contact = () => {
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Your name"
                     required
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                 </div>
                 
@@ -123,6 +154,8 @@ const Contact = () => {
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="your@email.com"
                     required
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                 </div>
                 
@@ -135,6 +168,8 @@ const Contact = () => {
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Your company"
                     required
+                    value={formData.company}
+                    onChange={handleChange}
                   />
                 </div>
                 
@@ -147,7 +182,9 @@ const Contact = () => {
                     className="w-full rounded-md border border-gray-300 px-3 py-2 text-chaasms-dark focus:outline-none focus:ring-2 focus:ring-chaasms-blue"
                     placeholder="Tell us about your channel challenges"
                     required
-                  ></Textarea>
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
                 </div>
                 
                 <Button 
