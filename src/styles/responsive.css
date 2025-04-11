@@ -46,5 +46,19 @@
     .mobile-framework-card .bg-chaasms-blue h3 {
       @apply text-white !important;
     }
+    
+    /* Fix for Services section text color on mobile */
+    #services h2.section-heading,
+    #services p.text-lg,
+    #services h3.text-lg,
+    #services p.text-sm {
+      @apply text-gray-800;
+    }
+    
+    /* Specifically target service cards on mobile */
+    #services .card h3,
+    #services .card p {
+      @apply text-gray-800 !important;
+    }
   }
 }

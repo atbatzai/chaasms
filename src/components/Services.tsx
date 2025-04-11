@@ -15,7 +15,7 @@ const ServiceCard = ({
   index: number;
 }) => {
   return (
-    <Card className="shadow-sm border border-gray-200 bg-white h-full hover:shadow-md transition-all duration-300">
+    <Card className="shadow-sm border border-gray-200 bg-white h-full hover:shadow-md transition-all duration-300 card">
       <CardContent className="p-5">
         <div className="flex flex-col h-full">
           <div className="p-2 rounded-full bg-gray-100 w-10 h-10 flex items-center justify-center mb-3">
