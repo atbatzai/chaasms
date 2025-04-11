@@ -1,3 +1,4 @@
+
 import emailjs from '@emailjs/browser';
 
 // Constants for EmailJS configuration
@@ -21,13 +22,13 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   const now = new Date();
   const formattedTime = now.toLocaleString();
   
-  // Parameters for the main notification email
+  // Parameters for the main notification email - making sure keys match exactly with EmailJS template variables
   const mainEmailParams = {
     from_name: formData.name,
-    to_name: "CHAASMS Channel Strategies",
     from_email: formData.email,
     company: formData.company,
     message: formData.message,
+    to_name: "CHAASMS Channel Strategies",
     time: formattedTime,
     reply_to: formData.email,
   };
@@ -35,37 +36,51 @@ export const sendContactEmail = async (formData: ContactFormData) => {
   console.log("Sending contact form to:", SERVICE_ID, CONTACT_TEMPLATE_ID);
   console.log("Main email params:", mainEmailParams);
   
-  return emailjs.send(
-    SERVICE_ID,
-    CONTACT_TEMPLATE_ID,
-    mainEmailParams,
-    PUBLIC_KEY
-  );
+  try {
+    const result = await emailjs.send(
+      SERVICE_ID,
+      CONTACT_TEMPLATE_ID,
+      mainEmailParams,
+      PUBLIC_KEY
+    );
+    console.log("Email sent successfully:", result);
+    return result;
+  } catch (error) {
+    console.error("Email sending failed:", error);
+    throw error;
+  }
 };
 
 /**
  * Sends an auto-reply email to the user
  */
 export const sendAutoReplyEmail = async (formData: ContactFormData) => {
-  // Parameters for the auto-reply email
+  // Parameters for the auto-reply email - making sure keys match exactly with EmailJS template variables
   const autoReplyParams = {
     to_name: formData.name,
-    from_name: "CHAASMS Channel Strategies",
     to_email: formData.email,
     message: formData.message,
     company: formData.company,
+    from_name: "CHAASMS Channel Strategies",
     reply_to: "jeff.turner@chaasms.com",
   };
   
   console.log("Sending auto-reply to:", SERVICE_ID, AUTO_REPLY_TEMPLATE_ID);
   console.log("Auto-reply params:", autoReplyParams);
   
-  return emailjs.send(
-    SERVICE_ID,
-    AUTO_REPLY_TEMPLATE_ID,
-    autoReplyParams,
-    PUBLIC_KEY
-  );
+  try {
+    const result = await emailjs.send(
+      SERVICE_ID,
+      AUTO_REPLY_TEMPLATE_ID,
+      autoReplyParams,
+      PUBLIC_KEY
+    );
+    console.log("Auto-reply sent successfully:", result);
+    return result;
+  } catch (error) {
+    console.error("Auto-reply sending failed:", error);
+    throw error;
+  }
 };
 
 /**
@@ -83,7 +98,7 @@ export const parseEmailError = (error: any): string => {
       console.error("Service ID not found error. Check if service_mqewdu1 exists in your EmailJS account.");
     } else if (error.text.includes("dynamic variables are corrupted")) {
       errorMessage = "We're having technical issues with our contact form. Please email us directly.";
-      console.error("Template variables error. Variables don't match template expectations.");
+      console.error("Template variables error. Variables don't match template expectations:", error);
     }
   }
   
