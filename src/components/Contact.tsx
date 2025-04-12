@@ -1,12 +1,14 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,22 +25,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/jeff.turner@chaasms.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          ...formData,
-          _subject: "New contact form submission",
-          _template: "table"
-        })
-      });
+      // Initialize EmailJS with your public key (this is safe to include in client-side code)
+      emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace with your actual EmailJS public key
+      
+      const result = await emailjs.send(
+        "YOUR_SERVICE_ID", // Replace with your service ID 
+        "YOUR_TEMPLATE_ID", // Replace with your template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        }
+      );
 
-      const result = await response.json();
-
-      if (result.success === "true") {
+      if (result.text === "OK") {
+        // Show success toast
         toast({
           title: "Message Sent",
           description: "Thank you! We'll get back to you soon.",
@@ -46,10 +47,12 @@ const Contact = () => {
         
         // Reset form after successful submission
         setFormData({ name: "", email: "", message: "" });
+        formRef.current?.reset();
       } else {
         throw new Error("Submission failed");
       }
     } catch (error) {
+      console.error("Error sending email:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -71,7 +74,7 @@ const Contact = () => {
         </div>
         
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg max-w-lg mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
