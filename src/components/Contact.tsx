@@ -18,38 +18,10 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // No need to prevent default as we want the form to actually submit
     setIsSubmitting(true);
-    
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/jeff.turner@chaasms.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-      
-      if (response.ok) {
-        toast({
-          title: "Message Sent",
-          description: "Thank you! We'll get back to you soon.",
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        throw new Error("Something went wrong");
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // FormSubmit will handle the redirection back to the page
   };
 
   return (
@@ -63,7 +35,19 @@ const Contact = () => {
         </div>
         
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg max-w-lg mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form 
+            action="https://formsubmit.co/jeff.turner@chaasms.com" 
+            method="POST"
+            onSubmit={handleSubmit} 
+            className="space-y-6"
+          >
+            {/* FormSubmit configuration */}
+            <input type="hidden" name="_next" value={window.location.href} />
+            <input type="hidden" name="_subject" value="New contact form submission" />
+            <input type="text" name="_honey" style={{ display: 'none' }} />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
