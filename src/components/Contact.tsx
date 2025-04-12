@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -148,7 +149,8 @@ const Contact = () => {
                 type="text"
                 value={formData.company}
                 onChange={handleChange}
-                placeholder="Your company name (optional)"
+                placeholder="Your company name"
+                required
                 className="w-full"
               />
             </div>
@@ -163,7 +165,8 @@ const Contact = () => {
                 type="text"
                 value={formData.website}
                 onChange={handleChange}
-                placeholder="website.com (optional)"
+                placeholder="website.com"
+                required
                 className="w-full"
               />
             </div>
