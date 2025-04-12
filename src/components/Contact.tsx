@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,7 +18,16 @@ const Contact = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    if (name === 'website') {
+      const normalizedWebsite = value
+        .replace(/^(https?:\/\/)?(www\.)?/i, '')
+        .trim();
+      
+      setFormData(prev => ({ ...prev, [name]: normalizedWebsite }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,15 +35,12 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Initialize EmailJS with your public key
       emailjs.init("CrKCIv7WnXCdRp3wY");
       
-      // Format current date and time
       const now = new Date();
       const formattedDate = now.toLocaleDateString();
       const formattedTime = now.toLocaleTimeString();
       
-      // Send the contact message to you
       const contactResult = await emailjs.send(
         "service_qusffho",
         "template_x4sbavd",
@@ -50,7 +55,6 @@ const Contact = () => {
         }
       );
 
-      // Send an auto-reply to the user
       const autoReplyResult = await emailjs.send(
         "service_qusffho",
         "template_yafe18g",
@@ -65,13 +69,11 @@ const Contact = () => {
       console.log("Auto-reply result:", autoReplyResult);
 
       if (contactResult.text === "OK") {
-        // Show success toast regardless of auto-reply result
         toast({
           title: "Message Sent",
           description: "Thank you! We'll get back to you soon.",
         });
         
-        // Reset form after successful submission
         setFormData({ name: "", email: "", company: "", website: "", message: "" });
         formRef.current?.reset();
       } else {
