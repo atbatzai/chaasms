@@ -25,12 +25,13 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Initialize EmailJS with your public key (this is safe to include in client-side code)
-      emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace with your actual EmailJS public key
+      // Initialize EmailJS with your public key
+      emailjs.init("CrKCIv7WnXCdRp3wY");
       
-      const result = await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your service ID 
-        "YOUR_TEMPLATE_ID", // Replace with your template ID
+      // Send the contact message to you
+      const contactResult = await emailjs.send(
+        "service_qusffho",
+        "template_x4sbavd",
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -38,7 +39,18 @@ const Contact = () => {
         }
       );
 
-      if (result.text === "OK") {
+      // Send an auto-reply to the user
+      const autoReplyResult = await emailjs.send(
+        "service_qusffho",
+        "template_yafe18g",
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          message: formData.message,
+        }
+      );
+
+      if (contactResult.text === "OK" && autoReplyResult.text === "OK") {
         // Show success toast
         toast({
           title: "Message Sent",
