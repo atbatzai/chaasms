@@ -37,7 +37,8 @@ const Contact = () => {
           </p>
         </div>
         
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg max-w-lg mx-auto">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg max-w-lg mx-auto"
+             itemScope itemType="https://schema.org/ContactPage">
           {isSubmitted ? (
             <SubmissionSuccess onReset={handleReset} />
           ) : (

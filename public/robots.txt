@@ -24,6 +24,15 @@ Allow: /
 User-agent: Twitterbot
 Allow: /
 
+# AI-specific crawlers
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Bard-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
 # Sitemap helps crawlers discover pages
 Sitemap: https://chaasms.com/sitemap.xml
-

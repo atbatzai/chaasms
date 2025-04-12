@@ -10,6 +10,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
 import { Toaster } from "sonner";
+import { Helmet } from "react-helmet";
 
 // Extend the Window interface to include our custom properties
 declare global {
@@ -46,40 +47,66 @@ const Index = () => {
     };
   }, []);
   
+  // JSON-LD structured data for better search engine understanding
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CHAASMS",
+    "url": "https://chaasms.com",
+    "logo": "https://chaasms.com/lovable-uploads/26c0451b-72e8-4bb2-9a58-202300301688.png",
+    "description": "The first structured framework for ISVs to build channel programs that thrive across today's complex ecosystem landscape",
+    "sameAs": [
+      "https://www.linkedin.com/company/chaasms",
+      "https://twitter.com/chaasms"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "name": "Channel Strategy Framework",
+      "description": "End-to-end consulting to implement the CHAASMS framework for your specific business needs"
+    }
+  };
+  
   return (
     <div className="min-h-screen flex flex-col relative">
+      <Helmet>
+        <title>CHAASMS - The First Structured Multi-Ecosystem Channel Framework</title>
+        <meta name="description" content="The first structured framework for ISVs to build channel programs that thrive across today's complex ecosystem landscape" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
       <Header />
       <main className="flex-grow">
-        <section id="hero">
+        <section id="hero" aria-label="Introduction to CHAASMS Framework">
           <Hero />
         </section>
         
         {/* Framework Overview Grid section */}
-        <section id="framework-overview-grid" className="py-12 md:py-16 bg-white">
+        <section id="framework-overview-grid" className="py-12 md:py-16 bg-white" aria-label="Framework Overview">
           <FrameworkOverviewGrid />
         </section>
         
         <div className="relative">
           <SectionDivider position="top" color="#f7f7f7" />
-          <section id="challenges">
+          <section id="challenges" aria-label="Industry Challenges">
             <ChallengeSection />
           </section>
           <SectionDivider position="bottom" color="white" />
         </div>
         
-        <section id="implementation">
+        <section id="implementation" aria-label="Framework Implementation">
           <Implementation />
         </section>
         
         <div className="relative">
           <SectionDivider position="top" color="#f7f7f7" />
-          <section id="services">
+          <section id="services" aria-label="Our Services">
             <Services />
           </section>
           <SectionDivider position="bottom" color="white" />
         </div>
         
-        <section id="contact">
+        <section id="contact" aria-label="Contact Us">
           <Contact />
         </section>
       </main>
