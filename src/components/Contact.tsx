@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import ContactForm from "./contact/ContactForm";
 import SubmissionSuccess from "./contact/SubmissionSuccess";
@@ -57,26 +58,31 @@ const Contact = () => {
           {/* Right side form */}
           <div className="flex-1 w-full max-w-md bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg">
             {isSubmitted ? (
-              <SubmissionSuccess onReset={() => setIsSubmitted(false)} />
+              <SubmissionSuccess onReset={handleReset} />
             ) : (
-              <ContactForm onSubmitSuccess={() => setIsSubmitted(true)} />
+              <ContactForm onSubmitSuccess={handleSubmissionSuccess} />
             )}
           </div>
         </div>
         
         {/* Schema.org structured data */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "name": "CHAASMS Contact Information",
-          "description": "Get in touch with CHAASMS to learn more about our channel strategy framework",
-          "url": "https://chaasms.com/#contact",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer support",
-            "availableLanguage": ["English"]
-          }
-        })} />
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ 
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "name": "CHAASMS Contact Information",
+              "description": "Get in touch with CHAASMS to learn more about our channel strategy framework",
+              "url": "https://chaasms.com/#contact",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "availableLanguage": ["English"]
+              }
+            }) 
+          }} 
+        />
       </div>
     </section>
   );
