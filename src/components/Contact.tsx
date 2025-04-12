@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -234,15 +233,7 @@ const Contact = () => {
             </form>
           )}
           
-          <div className="mt-6 pt-6 border-t border-gray-200 text-center text-gray-600 text-sm">
-            <p>Or reach us directly at:</p>
-            <a 
-              href="mailto:jeff.turner@chaasms.com" 
-              className="text-chaasms-blue hover:underline text-base font-medium mt-1 block"
-            >
-              jeff.turner@chaasms.com
-            </a>
-          </div>
+          {/* Removed the email section completely */}
         </div>
       </div>
     </section>
