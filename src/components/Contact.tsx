@@ -163,7 +163,7 @@ const Contact = () => {
                 type="text"
                 value={formData.website}
                 onChange={handleChange}
-                placeholder="sams.com (optional)"
+                placeholder="website.com (optional)"
                 className="w-full"
               />
             </div>
