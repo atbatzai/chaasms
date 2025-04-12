@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import ContactForm from "./contact/ContactForm";
 import SubmissionSuccess from "./contact/SubmissionSuccess";
@@ -35,7 +34,7 @@ const Contact = () => {
           <div className="flex-1 max-w-md">
             <h2 className="text-3xl md:text-4xl font-light text-chaasms-dark mb-6">Contact Us</h2>
             <p className="text-lg text-chaasms-text mb-6">
-              Fill out the form to tell us about your channel changes, and we'll get back to you within 24 hours.
+              Fill out the form to tell us about your channel challenges, and we'll get back to you within 24 hours.
             </p>
             
             {/* Process steps */}
@@ -56,7 +55,7 @@ const Contact = () => {
           </div>
 
           {/* Right side form */}
-          <div className="flex-1 w-full max-w-md bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg">
+          <div className="flex-1 w-full max-w-md bg-blue-50 p-6 md:p-8 rounded-lg">
             {isSubmitted ? (
               <SubmissionSuccess onReset={handleReset} />
             ) : (

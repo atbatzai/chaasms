@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,7 +120,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           onChange={handleChange}
           placeholder="Your name"
           required
-          className="w-full"
+          className="w-full bg-white border-gray-300"
         />
       </div>
       
@@ -135,7 +136,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           onChange={handleChange}
           placeholder="your.email@example.com"
           required
-          className="w-full"
+          className="w-full bg-white border-gray-300"
         />
       </div>
       
@@ -151,7 +152,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           onChange={handleChange}
           placeholder="Your company name"
           required
-          className="w-full"
+          className="w-full bg-white border-gray-300"
         />
       </div>
       
@@ -166,7 +167,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           value={formData.website}
           onChange={handleChange}
           placeholder="https://yourcompany.com"
-          className="w-full"
+          className="w-full bg-white border-gray-300"
         />
       </div>
       
@@ -181,7 +182,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           onChange={handleChange}
           placeholder="Tell us about your channel challenges"
           required
-          className="w-full min-h-[120px]"
+          className="w-full min-h-[120px] bg-white border-gray-300"
         />
       </div>
       
