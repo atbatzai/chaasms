@@ -59,6 +59,10 @@ const Index = () => {
       "https://www.linkedin.com/company/chaasms",
       "https://twitter.com/chaasms"
     ],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://chaasms.com/"
+    },
     "offers": {
       "@type": "Offer",
       "name": "Channel Strategy Framework",
@@ -71,6 +75,9 @@ const Index = () => {
       <Helmet>
         <title>CHAASMS - The First Structured Multi-Ecosystem Channel Framework</title>
         <meta name="description" content="The first structured framework for ISVs to build channel programs that thrive across today's complex ecosystem landscape" />
+        <meta name="keywords" content="channel strategy, partner ecosystem, ISV framework, channel program, partner enablement, marketplace strategy, CHAASMS" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://chaasms.com/" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>

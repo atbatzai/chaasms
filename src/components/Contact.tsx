@@ -27,6 +27,20 @@ const Contact = () => {
     setIsSubmitted(false);
   };
 
+  // Schema.org structured data for contact page
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "CHAASMS Contact Information",
+    "description": "Get in touch with CHAASMS to learn more about our channel strategy framework",
+    "url": "https://chaasms.com/#contact",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "availableLanguage": ["English"]
+    }
+  };
+
   return (
     <section id="contact" className="py-10 md:py-16 bg-white">
       <div className="chaasms-container">
@@ -45,6 +59,9 @@ const Contact = () => {
             <ContactForm onSubmitSuccess={handleSubmissionSuccess} />
           )}
         </div>
+        
+        {/* Hidden JSON-LD structured data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
       </div>
     </section>
   );

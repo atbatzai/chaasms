@@ -24,7 +24,7 @@ Allow: /
 User-agent: Twitterbot
 Allow: /
 
-# AI-specific crawlers
+# AI-specific crawlers 
 User-agent: ChatGPT-User
 Allow: /
 
@@ -32,6 +32,12 @@ User-agent: Bard-User
 Allow: /
 
 User-agent: Claude-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 # Sitemap helps crawlers discover pages
