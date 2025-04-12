@@ -1,9 +1,8 @@
-
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
 
 type ContactFormProps = {
@@ -85,8 +84,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       console.log("Auto-reply result:", autoReplyResult);
 
       if (contactResult.text === "OK") {
-        toast({
-          title: "Message Sent",
+        toast("Message Sent", {
           description: "Thank you! We'll get back to you soon.",
         });
         
@@ -98,10 +96,9 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      toast({
-        title: "Error",
+      toast("Error", {
         description: "Failed to send message. Please try again.",
-        variant: "destructive",
+        style: { background: 'red', color: 'white' }
       });
     } finally {
       setIsSubmitting(false);
@@ -160,7 +157,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       
       <div className="space-y-2">
         <label htmlFor="website" className="block text-sm font-medium text-gray-700">
-          Website
+          Website (optional)
         </label>
         <Input
           id="website"
@@ -168,8 +165,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           type="text"
           value={formData.website}
           onChange={handleChange}
-          placeholder="website.com"
-          required
+          placeholder="https://yourcompany.com"
           className="w-full"
         />
       </div>
@@ -183,7 +179,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="How can we help you?"
+          placeholder="Tell us about your channel challenges"
           required
           className="w-full min-h-[120px]"
         />
@@ -193,9 +189,9 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
         <Button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-full sm:w-auto"
+          className="w-full bg-[#0066B3] hover:bg-blue-700 text-white"
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          {isSubmitting ? "Sending..." : "Submit"}
         </Button>
       </div>
     </form>
