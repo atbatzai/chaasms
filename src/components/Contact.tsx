@@ -39,19 +39,22 @@ const Contact = () => {
         }
       );
 
-      // Send an auto-reply to the user
+      // Send an auto-reply to the user - modified to match template parameters
       const autoReplyResult = await emailjs.send(
         "service_qusffho",
         "template_yafe18g",
         {
-          to_name: formData.name,
-          to_email: formData.email,
-          message: formData.message,
+          name: formData.name, // Changed from to_name to name
+          email: formData.email, // Changed from to_email to email
+          title: "Contact Form Submission", // Added title parameter
         }
       );
 
-      if (contactResult.text === "OK" && autoReplyResult.text === "OK") {
-        // Show success toast
+      console.log("Contact result:", contactResult);
+      console.log("Auto-reply result:", autoReplyResult);
+
+      if (contactResult.text === "OK") {
+        // Show success toast regardless of auto-reply result
         toast({
           title: "Message Sent",
           description: "Thank you! We'll get back to you soon.",
