@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,9 +21,12 @@ const Contact = () => {
     const { name, value } = e.target;
     
     if (name === 'website') {
+      // More aggressive normalization
       const normalizedWebsite = value
-        .replace(/^(https?:\/\/)?(www\.)?/i, '')
-        .trim();
+        .replace(/^(https?:\/\/)?(www\.)?/i, '')  // Remove protocol and www
+        .replace(/\/.*$/, '')  // Remove paths after domain
+        .trim()  // Remove leading/trailing whitespace
+        .toLowerCase();  // Convert to lowercase
       
       setFormData(prev => ({ ...prev, [name]: normalizedWebsite }));
     } else {
