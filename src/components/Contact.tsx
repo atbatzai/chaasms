@@ -28,25 +28,32 @@ const Contact = () => {
       // Initialize EmailJS with your public key
       emailjs.init("CrKCIv7WnXCdRp3wY");
       
+      // Format current date and time
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString();
+      const formattedTime = now.toLocaleTimeString();
+      
       // Send the contact message to you
       const contactResult = await emailjs.send(
         "service_qusffho",
         "template_x4sbavd",
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
           message: formData.message,
+          date: formattedDate,
+          time: formattedTime
         }
       );
 
-      // Send an auto-reply to the user - modified to match template parameters
+      // Send an auto-reply to the user
       const autoReplyResult = await emailjs.send(
         "service_qusffho",
         "template_yafe18g",
         {
-          name: formData.name, // Changed from to_name to name
-          email: formData.email, // Changed from to_email to email
-          title: "Contact Form Submission", // Added title parameter
+          name: formData.name,
+          email: formData.email,
+          title: "Contact Form Submission",
         }
       );
 
