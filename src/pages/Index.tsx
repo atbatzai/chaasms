@@ -10,7 +10,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SectionDivider from '@/components/SectionDivider';
 import { Toaster } from "sonner";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 // Extend the Window interface to include our custom properties
 declare global {
