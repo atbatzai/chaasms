@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,7 +20,6 @@ const Contact = () => {
     const { name, value } = e.target;
     
     if (name === 'website') {
-      // More aggressive normalization
       const normalizedWebsite = value
         .replace(/^(https?:\/\/)?(www\.)?/i, '')  // Remove protocol and www
         .replace(/\/.*$/, '')  // Remove paths after domain
@@ -45,15 +43,16 @@ const Contact = () => {
       const formattedDate = now.toLocaleDateString();
       const formattedTime = now.toLocaleTimeString();
       
+      const websiteWithProtocol = formData.website 
+        ? (formData.website.includes('://') ? formData.website : `https://${formData.website}`)
+        : '';
+
       const contactResult = await emailjs.send(
         "service_qusffho",
         "template_x4sbavd",
         {
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          website: formData.website,
-          message: formData.message,
+          ...formData,
+          website: websiteWithProtocol,
           date: formattedDate,
           time: formattedTime
         }
@@ -161,10 +160,10 @@ const Contact = () => {
               <Input
                 id="website"
                 name="website"
-                type="url"
+                type="text"
                 value={formData.website}
                 onChange={handleChange}
-                placeholder="https://your-company.com (optional)"
+                placeholder="sams.com (optional)"
                 className="w-full"
               />
             </div>
