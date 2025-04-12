@@ -12,6 +12,8 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
+    website: "",
     message: ""
   });
 
@@ -40,6 +42,8 @@ const Contact = () => {
         {
           name: formData.name,
           email: formData.email,
+          company: formData.company,
+          website: formData.website,
           message: formData.message,
           date: formattedDate,
           time: formattedTime
@@ -68,7 +72,7 @@ const Contact = () => {
         });
         
         // Reset form after successful submission
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", company: "", website: "", message: "" });
         formRef.current?.reset();
       } else {
         throw new Error("Submission failed");
@@ -125,6 +129,36 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="your.email@example.com"
                 required
+                className="w-full"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                Company
+              </label>
+              <Input
+                id="company"
+                name="company"
+                type="text"
+                value={formData.company}
+                onChange={handleChange}
+                placeholder="Your company name (optional)"
+                className="w-full"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="website" className="block text-sm font-medium text-gray-700">
+                Website
+              </label>
+              <Input
+                id="website"
+                name="website"
+                type="url"
+                value={formData.website}
+                onChange={handleChange}
+                placeholder="https://your-company.com (optional)"
                 className="w-full"
               />
             </div>
