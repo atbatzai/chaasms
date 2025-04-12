@@ -18,10 +18,46 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // No need to prevent default as we want the form to actually submit
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    // FormSubmit will handle the redirection back to the page
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/jeff.turner@chaasms.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: "New contact form submission",
+          _template: "table"
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success === "true") {
+        toast({
+          title: "Message Sent",
+          description: "Thank you! We'll get back to you soon.",
+        });
+        
+        // Reset form after successful submission
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -35,19 +71,7 @@ const Contact = () => {
         </div>
         
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg max-w-lg mx-auto">
-          <form 
-            action="https://formsubmit.co/jeff.turner@chaasms.com" 
-            method="POST"
-            onSubmit={handleSubmit} 
-            className="space-y-6"
-          >
-            {/* FormSubmit configuration */}
-            <input type="hidden" name="_next" value={window.location.href} />
-            <input type="hidden" name="_subject" value="New contact form submission" />
-            <input type="text" name="_honey" style={{ display: 'none' }} />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
