@@ -107,90 +107,92 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-2">
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-          Name
-        </label>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Your name"
-          required
-          className="w-full bg-white border-gray-300"
-        />
+    <form ref={formRef} onSubmit={handleSubmit} className="p-6 md:p-8 bg-white rounded-lg shadow-sm">
+      <div className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            Name
+          </label>
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Your name"
+            required
+            className="w-full bg-white border-gray-300"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            Email
+          </label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="your@email.com"
+            required
+            className="w-full bg-white border-gray-300"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+            Company
+          </label>
+          <Input
+            id="company"
+            name="company"
+            type="text"
+            value={formData.company}
+            onChange={handleChange}
+            placeholder="Your company"
+            required
+            className="w-full bg-white border-gray-300"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
+            Website (optional)
+          </label>
+          <Input
+            id="website"
+            name="website"
+            type="text"
+            value={formData.website}
+            onChange={handleChange}
+            placeholder="https://yourcompany.com"
+            className="w-full bg-white border-gray-300"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+            Message
+          </label>
+          <Textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Tell us about your channel challenges"
+            required
+            className="w-full min-h-[120px] bg-white border-gray-300"
+          />
+        </div>
       </div>
       
-      <div className="space-y-2">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-          Email
-        </label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="your.email@example.com"
-          required
-          className="w-full bg-white border-gray-300"
-        />
-      </div>
-      
-      <div className="space-y-2">
-        <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-          Company
-        </label>
-        <Input
-          id="company"
-          name="company"
-          type="text"
-          value={formData.company}
-          onChange={handleChange}
-          placeholder="Your company name"
-          required
-          className="w-full bg-white border-gray-300"
-        />
-      </div>
-      
-      <div className="space-y-2">
-        <label htmlFor="website" className="block text-sm font-medium text-gray-700">
-          Website (optional)
-        </label>
-        <Input
-          id="website"
-          name="website"
-          type="text"
-          value={formData.website}
-          onChange={handleChange}
-          placeholder="https://yourcompany.com"
-          className="w-full bg-white border-gray-300"
-        />
-      </div>
-      
-      <div className="space-y-2">
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-          Message
-        </label>
-        <Textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Tell us about your channel challenges"
-          required
-          className="w-full min-h-[120px] bg-white border-gray-300"
-        />
-      </div>
-      
-      <div className="text-center">
+      <div className="mt-6">
         <Button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-full bg-[#0066B3] hover:bg-blue-700 text-white"
+          className="w-full bg-[#0066B3] hover:bg-blue-700 text-white font-medium py-3"
         >
           {isSubmitting ? "Sending..." : "Submit"}
         </Button>

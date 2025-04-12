@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import ContactForm from "./contact/ContactForm";
 import SubmissionSuccess from "./contact/SubmissionSuccess";
@@ -27,35 +28,35 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-10 md:py-16 bg-white">
+    <section id="contact" className="py-10 md:py-16 bg-[#D3E4FD]">
       <div className="chaasms-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-12">
           {/* Left side copy */}
-          <div className="flex-1 max-w-md">
-            <h2 className="text-3xl md:text-4xl font-light text-chaasms-dark mb-6">Contact Us</h2>
-            <p className="text-lg text-chaasms-text mb-6">
+          <div className="flex-1 max-w-md pt-4">
+            <h2 className="text-3xl md:text-4xl font-medium text-chaasms-dark mb-6">Contact Us</h2>
+            <p className="text-lg text-chaasms-text mb-8">
               Fill out the form to tell us about your channel challenges, and we'll get back to you within 24 hours.
             </p>
             
             {/* Process steps */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
-                <span>Discovery Call</span>
+                <div className="w-8 h-8 bg-[#0066B3] text-white rounded-full flex items-center justify-center font-bold">1</div>
+                <span className="text-base">Discovery Call</span>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
-                <span>Needs Assessment</span>
+                <div className="w-8 h-8 bg-[#0066B3] text-white rounded-full flex items-center justify-center font-bold">2</div>
+                <span className="text-base">Needs Assessment</span>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
-                <span>Proposal & Engagement</span>
+                <div className="w-8 h-8 bg-[#0066B3] text-white rounded-full flex items-center justify-center font-bold">3</div>
+                <span className="text-base">Proposal & Engagement</span>
               </div>
             </div>
           </div>
 
           {/* Right side form */}
-          <div className="flex-1 w-full max-w-md bg-blue-50 p-6 md:p-8 rounded-lg">
+          <div className="flex-1 w-full max-w-md">
             {isSubmitted ? (
               <SubmissionSuccess onReset={handleReset} />
             ) : (
